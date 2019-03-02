@@ -2,6 +2,7 @@
 using IT_Management.DTO;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace IT_Management.UI
@@ -13,6 +14,7 @@ namespace IT_Management.UI
             InitializeComponent();
             button1.Text = "Load Data";
             dtgData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            button1.BackColor = Color.Aqua;
         }
 
         private void fmData_Load(object sender, EventArgs e)
