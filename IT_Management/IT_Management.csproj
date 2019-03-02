@@ -54,10 +54,12 @@
     <Compile Include="DAO\FactoryDAO.cs" />
     <Compile Include="DAO\LocationDAO.cs" />
     <Compile Include="DAO\PartDAO.cs" />
+    <Compile Include="DAO\PartmentDAO.cs" />
     <Compile Include="DTO\Custommer.cs" />
     <Compile Include="DTO\Factory.cs" />
     <Compile Include="DTO\Location.cs" />
     <Compile Include="DTO\Part.cs" />
+    <Compile Include="DTO\Partment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\ADD DATA\fmAddData.cs">
@@ -83,6 +85,12 @@
     </Compile>
     <Compile Include="UI\ADD DATA\fmPart.Designer.cs">
       <DependentUpon>fmPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmPartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmPartment.Designer.cs">
+      <DependentUpon>fmPartment.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\fmData.cs">
       <SubType>Form</SubType>
@@ -110,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmPart.resx">
       <DependentUpon>fmPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmPartment.resx">
+      <DependentUpon>fmPartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>

@@ -90,6 +90,18 @@ namespace IT_Management.UI.ADD_DATA
                 factory.Dock = DockStyle.Fill;
                 factory.Show();
             }
+
+            if (e.Node.Text == "Partment")
+            {
+                fmPartment partment = new fmPartment();
+
+                pnData.Controls.Clear();
+                partment.TopLevel = false;
+                pnData.Controls.Add(partment);
+                //location.FormBorderStyle = FormBorderStyle.None;
+                partment.Dock = DockStyle.Fill;
+                partment.Show();
+            }
         }
 
         private void fmAddData_Load(object sender, EventArgs e)

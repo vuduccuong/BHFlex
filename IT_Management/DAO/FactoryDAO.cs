@@ -39,6 +39,24 @@ namespace IT_Management.DAO
         }
         #endregion
 
+        #region Get List Factory By Location
+        public List<Factory> GetListFactoryByLocation(string idLocation)
+        {
+            List<Factory> locationList = new List<Factory>();
+            string query = "Select ft.Id, lc.NameLocation, ft.NameFactory,ft.CreateBy,ft.CreateDate from Factorys ft inner join Locations lc on ft.IdLocation = lc.Id Where IdLocation = '"+idLocation.ToString()+"'";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Factory cust = new Factory(item);
+                locationList.Add(cust);
+            }
+
+            return locationList;
+        }
+        #endregion
+
         #region Create New Factory
 
         public int CreateNewFactory(string idLocation, string nameFactory)
