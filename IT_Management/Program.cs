@@ -1,6 +1,7 @@
 ﻿using IT_Management.UI;
 using System;
 using System.Windows.Forms;
+using IT_Management.UI.ADD_DATA;
 
 namespace IT_Management
 {
@@ -14,7 +15,7 @@ namespace IT_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fmData());
+            Application.Run(new fmAddData());
         }
     }
 }
