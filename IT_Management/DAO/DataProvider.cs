@@ -1,5 +1,6 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace IT_Management.DAO
@@ -18,17 +19,18 @@ namespace IT_Management.DAO
         {
         }
 
-        private string connectionSTR = "Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = "
-                                       + "localhost" + ")(PORT = " + "1521" + "))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = "
-                                       + "db12c" + ")));Password=" + "D0ila" + "ip" + "ass" + ";User ID=" + "C##u" + "on" + "gvd";
+        private string connectionSTR = @"Data Source=.\SQLEXPRESS;Initial Catalog=BHFlex;Integrated Security=True";
+        // "Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = "
+                                      // + "localhost" + ")(PORT = " + "1521" + "))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = "
+                                      // + "db12c" + ")));Password=" + "D0ila" + "ip" + "ass" + ";User ID=" + "C##u" + "on" + "gvd";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
-            using (OracleConnection connection = new OracleConnection(connectionSTR))
+            using (SqlConnection connection = new SqlConnection(connectionSTR))
             {
                 connection.Open();
-                OracleCommand command = new OracleCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
 
                 if (parameter != null)
                 {
@@ -38,13 +40,13 @@ namespace IT_Management.DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.Add(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameter[i]);
                             i++;
                         }
                     }
                 }
 
-                OracleDataAdapter adapter = new OracleDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
 
                 adapter.Fill(data);
                 connection.Close();
@@ -57,11 +59,11 @@ namespace IT_Management.DAO
         {
             var data = 0;
 
-            using (var connection = new OracleConnection(connectionSTR))
+            using (var connection = new SqlConnection(connectionSTR))
             {
                 connection.Open();
 
-                var command = new OracleCommand(query, connection);
+                var command = new SqlCommand(query, connection);
 
                 if (parameter != null)
                 {
@@ -71,7 +73,7 @@ namespace IT_Management.DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.Add(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameter[i]);
                             i++;
                         }
                     }
@@ -89,11 +91,11 @@ namespace IT_Management.DAO
         {
             object data;
 
-            using (var connection = new OracleConnection(connectionSTR))
+            using (var connection = new SqlConnection(connectionSTR))
             {
                 connection.Open();
 
-                var command = new OracleCommand(query, connection);
+                var command = new SqlCommand(query, connection);
 
                 if (parameter != null)
                 {
@@ -103,7 +105,7 @@ namespace IT_Management.DAO
                     {
                         if (item.Contains('@'))
                         {
-                            command.Parameters.Add(item, parameter[i]);
+                            command.Parameters.AddWithValue(item, parameter[i]);
                             i++;
                         }
                     }

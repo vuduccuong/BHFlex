@@ -51,9 +51,39 @@
   <ItemGroup>
     <Compile Include="DAO\CustommerDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\FactoryDAO.cs" />
+    <Compile Include="DAO\LocationDAO.cs" />
+    <Compile Include="DAO\PartDAO.cs" />
     <Compile Include="DTO\Custommer.cs" />
+    <Compile Include="DTO\Factory.cs" />
+    <Compile Include="DTO\Location.cs" />
+    <Compile Include="DTO\Part.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ADD DATA\fmAddData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmAddData.Designer.cs">
+      <DependentUpon>fmAddData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmFactory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmFactory.Designer.cs">
+      <DependentUpon>fmFactory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmLocation.Designer.cs">
+      <DependentUpon>fmLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmPart.Designer.cs">
+      <DependentUpon>fmPart.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\fmData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +99,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\ADD DATA\fmAddData.resx">
+      <DependentUpon>fmAddData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmFactory.resx">
+      <DependentUpon>fmFactory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmLocation.resx">
+      <DependentUpon>fmLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmPart.resx">
+      <DependentUpon>fmPart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>
     </EmbeddedResource>
