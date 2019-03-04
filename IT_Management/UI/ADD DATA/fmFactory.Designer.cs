@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.cbbListLocation = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dtgListFactory = new System.Windows.Forms.DataGridView();
-            this.txtID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListFactory)).BeginInit();
@@ -59,9 +59,16 @@
             this.panel1.Location = new System.Drawing.Point(4, 5);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1338, 354);
+            this.panel1.Size = new System.Drawing.Size(1338, 268);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(0, 3);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 30);
+            this.txtID.TabIndex = 11;
             // 
             // cbbListLocation
             // 
@@ -137,10 +144,10 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.dtgListFactory);
-            this.panel2.Location = new System.Drawing.Point(4, 369);
+            this.panel2.Location = new System.Drawing.Point(4, 283);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1338, 514);
+            this.panel2.Size = new System.Drawing.Size(1338, 600);
             this.panel2.TabIndex = 1;
             // 
             // dtgListFactory
@@ -151,19 +158,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgListFactory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgListFactory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgListFactory.Location = new System.Drawing.Point(4, 8);
+            this.dtgListFactory.Location = new System.Drawing.Point(4, 3);
             this.dtgListFactory.Name = "dtgListFactory";
             this.dtgListFactory.ReadOnly = true;
             this.dtgListFactory.RowTemplate.Height = 24;
-            this.dtgListFactory.Size = new System.Drawing.Size(1328, 503);
+            this.dtgListFactory.Size = new System.Drawing.Size(1328, 594);
             this.dtgListFactory.TabIndex = 0;
-            // 
-            // txtID
-            // 
-            this.txtID.Location = new System.Drawing.Point(0, 3);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 30);
-            this.txtID.TabIndex = 11;
             // 
             // fmFactory
             // 

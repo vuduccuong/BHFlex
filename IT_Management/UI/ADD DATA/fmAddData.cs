@@ -90,6 +90,30 @@ namespace IT_Management.UI.ADD_DATA
                 factory.Dock = DockStyle.Fill;
                 factory.Show();
             }
+
+            if (e.Node.Text == "Partment")
+            {
+                fmPartment partment = new fmPartment();
+
+                pnData.Controls.Clear();
+                partment.TopLevel = false;
+                pnData.Controls.Add(partment);
+                //location.FormBorderStyle = FormBorderStyle.None;
+                partment.Dock = DockStyle.Fill;
+                partment.Show();
+            }
+
+            if (e.Node.Text == "DeviceType")
+            {
+                fmDevice device = new fmDevice();
+
+                pnData.Controls.Clear();
+                device.TopLevel = false;
+                pnData.Controls.Add(device);
+                //location.FormBorderStyle = FormBorderStyle.None;
+                device.Dock = DockStyle.Fill;
+                device.Show();
+            }
         }
 
         private void fmAddData_Load(object sender, EventArgs e)

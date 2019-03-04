@@ -51,13 +51,17 @@
   <ItemGroup>
     <Compile Include="DAO\CustommerDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\DeviceTypeDAO.cs" />
     <Compile Include="DAO\FactoryDAO.cs" />
     <Compile Include="DAO\LocationDAO.cs" />
     <Compile Include="DAO\PartDAO.cs" />
+    <Compile Include="DAO\PartmentDAO.cs" />
     <Compile Include="DTO\Custommer.cs" />
+    <Compile Include="DTO\DeviceType.cs" />
     <Compile Include="DTO\Factory.cs" />
     <Compile Include="DTO\Location.cs" />
     <Compile Include="DTO\Part.cs" />
+    <Compile Include="DTO\Partment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\ADD DATA\fmAddData.cs">
@@ -65,6 +69,12 @@
     </Compile>
     <Compile Include="UI\ADD DATA\fmAddData.Designer.cs">
       <DependentUpon>fmAddData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmDevice.Designer.cs">
+      <DependentUpon>fmDevice.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ADD DATA\fmFactory.cs">
       <SubType>Form</SubType>
@@ -84,6 +94,12 @@
     <Compile Include="UI\ADD DATA\fmPart.Designer.cs">
       <DependentUpon>fmPart.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ADD DATA\fmPartment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ADD DATA\fmPartment.Designer.cs">
+      <DependentUpon>fmPartment.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\fmData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +118,9 @@
     <EmbeddedResource Include="UI\ADD DATA\fmAddData.resx">
       <DependentUpon>fmAddData.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmDevice.resx">
+      <DependentUpon>fmDevice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmFactory.resx">
       <DependentUpon>fmFactory.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmPart.resx">
       <DependentUpon>fmPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ADD DATA\fmPartment.resx">
+      <DependentUpon>fmPartment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>
