@@ -9,12 +9,13 @@ namespace IT_Management.UI
 {
     public partial class fmData : Form
     {
+
         public fmData()
         {
             InitializeComponent();
             button1.Text = "Load Data";
-            dtgData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //
+            //dtgData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+    
         }
 
         private void fmData_Load(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace IT_Management.UI
             {
                 MessageBox.Show("Không có dữ liệu");
             }
-            dtgData.DataSource = lstCustommer;
+            //dtgData.DataSource = lstCustommer;
         }
 
         private void button1_Click(object sender, EventArgs e)

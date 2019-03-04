@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using IT_Management.UI.ADD_DATA;
+using IT_Management.UI.FormTypeDevices;
 
 namespace IT_Management
 {
@@ -15,7 +16,7 @@ namespace IT_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fmAddData());
+            Application.Run(new fmTypeDevices());
         }
     }
 }

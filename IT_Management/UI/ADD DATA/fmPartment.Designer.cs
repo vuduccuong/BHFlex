@@ -74,7 +74,7 @@
             // 
             this.txtID.Location = new System.Drawing.Point(1089, 3);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 30);
+            this.txtID.Size = new System.Drawing.Size(100, 26);
             this.txtID.TabIndex = 11;
             // 
             // cbbListPart
@@ -82,15 +82,16 @@
             this.cbbListPart.FormattingEnabled = true;
             this.cbbListPart.Location = new System.Drawing.Point(176, 89);
             this.cbbListPart.Name = "cbbListPart";
-            this.cbbListPart.Size = new System.Drawing.Size(394, 33);
+            this.cbbListPart.Size = new System.Drawing.Size(394, 28);
             this.cbbListPart.TabIndex = 10;
+            this.cbbListPart.SelectedIndexChanged += new System.EventHandler(this.cbbListPart_SelectedIndexChanged);
             // 
             // cbbListFactory
             // 
             this.cbbListFactory.FormattingEnabled = true;
             this.cbbListFactory.Location = new System.Drawing.Point(176, 50);
             this.cbbListFactory.Name = "cbbListFactory";
-            this.cbbListFactory.Size = new System.Drawing.Size(394, 33);
+            this.cbbListFactory.Size = new System.Drawing.Size(394, 28);
             this.cbbListFactory.TabIndex = 10;
             this.cbbListFactory.SelectedIndexChanged += new System.EventHandler(this.cbbListFactory_SelectedIndexChanged);
             // 
@@ -99,7 +100,7 @@
             this.cbbListLocation.FormattingEnabled = true;
             this.cbbListLocation.Location = new System.Drawing.Point(176, 11);
             this.cbbListLocation.Name = "cbbListLocation";
-            this.cbbListLocation.Size = new System.Drawing.Size(394, 33);
+            this.cbbListLocation.Size = new System.Drawing.Size(394, 28);
             this.cbbListLocation.TabIndex = 10;
             this.cbbListLocation.SelectedIndexChanged += new System.EventHandler(this.cbbListLocation_SelectedIndexChanged);
             // 
@@ -109,7 +110,7 @@
             this.label3.Location = new System.Drawing.Point(14, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 25);
+            this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Part Name :";
             // 
@@ -119,7 +120,7 @@
             this.label4.Location = new System.Drawing.Point(14, 134);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 25);
+            this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Partment Name :";
             // 
@@ -129,7 +130,7 @@
             this.label2.Location = new System.Drawing.Point(14, 58);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 25);
+            this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Factory Name :";
             // 
@@ -139,7 +140,7 @@
             this.label1.Location = new System.Drawing.Point(14, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
+            this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Location Name :";
             // 
@@ -148,7 +149,7 @@
             this.txtPartmentName.Location = new System.Drawing.Point(176, 130);
             this.txtPartmentName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPartmentName.Name = "txtPartmentName";
-            this.txtPartmentName.Size = new System.Drawing.Size(394, 30);
+            this.txtPartmentName.Size = new System.Drawing.Size(394, 26);
             this.txtPartmentName.TabIndex = 6;
             // 
             // btnAdd
@@ -209,7 +210,7 @@
             // 
             // fmPartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 703);
             this.Controls.Add(this.panel1);

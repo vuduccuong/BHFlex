@@ -106,6 +106,78 @@
     <Compile Include="UI\fmData.Designer.cs">
       <DependentUpon>fmData.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarcodePrinter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarcodePrinter.Designer.cs">
+      <DependentUpon>fmBarcodePrinter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarScanner2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarScanner2D.Designer.cs">
+      <DependentUpon>fmBarScanner2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarScannerWifi2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmBarScannerWifi2D.Designer.cs">
+      <DependentUpon>fmBarScannerWifi2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPcDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPcDesktop.Designer.cs">
+      <DependentUpon>fmPcDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPcLaptop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPcLaptop.Designer.cs">
+      <DependentUpon>fmPcLaptop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPDA1D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPDA1D.Designer.cs">
+      <DependentUpon>fmPDA1D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPDA2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPDA2D.Designer.cs">
+      <DependentUpon>fmPDA2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterInk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterInk.Designer.cs">
+      <DependentUpon>fmPrinterInk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterLaser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterLaser.Designer.cs">
+      <DependentUpon>fmPrinterLaser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterPhotoCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmPrinterPhotoCopy.Designer.cs">
+      <DependentUpon>fmPrinterPhotoCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmScanner1D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmScanner1D.Designer.cs">
+      <DependentUpon>fmScanner1D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmTypeDevices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTypeDevices\fmTypeDevices.Designer.cs">
+      <DependentUpon>fmTypeDevices.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -135,6 +207,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmBarcodePrinter.resx">
+      <DependentUpon>fmBarcodePrinter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmBarScanner2D.resx">
+      <DependentUpon>fmBarScanner2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmBarScannerWifi2D.resx">
+      <DependentUpon>fmBarScannerWifi2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPcDesktop.resx">
+      <DependentUpon>fmPcDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPcLaptop.resx">
+      <DependentUpon>fmPcLaptop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPDA1D.resx">
+      <DependentUpon>fmPDA1D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPDA2D.resx">
+      <DependentUpon>fmPDA2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPrinterInk.resx">
+      <DependentUpon>fmPrinterInk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPrinterLaser.resx">
+      <DependentUpon>fmPrinterLaser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmPrinterPhotoCopy.resx">
+      <DependentUpon>fmPrinterPhotoCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmScanner1D.resx">
+      <DependentUpon>fmScanner1D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmTypeDevices.resx">
+      <DependentUpon>fmTypeDevices.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
