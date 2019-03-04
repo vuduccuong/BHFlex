@@ -31,7 +31,7 @@ namespace IT_Management.UI.ADD_DATA
             LoadLocation();
             //LoadFactory();
             //LoadPart();
-            LoadListPartment();
+            LoadListPartment();            
         }
 
         private void LoadListPartment()
@@ -154,13 +154,36 @@ namespace IT_Management.UI.ADD_DATA
             this.cbbListLocation.Enabled = false;
             this.cbbListFactory.Enabled = false;
             this.cbbListPart.Enabled = false;
+            this.txtPartmentName.Enabled = false;
 
             var idPart = this.cbbListPart.SelectedValue.ToString();
-            var namePart = txtPartmentName.Text;
+            var idLocation = this.cbbListLocation.SelectedValue.ToString();
+            var idFactory = this.cbbListFactory.SelectedValue.ToString();
+            var namePartment = txtPartmentName.Text;
             var idPartment = txtID.Text;
             if (this.btnSave.Text == "Save")
             {
-                AddPartment(idPart, namePart);
+                AddPartment(idPart, namePartment);
+            }
+
+            if (this.btnSave.Text == "Update")
+            {
+                UpdatePartment(idPartment,idLocation,idFactory,idPart,namePartment);
+            }
+        }
+
+        private void UpdatePartment(string idPartment, string idLocation, string idFactory, string idPart, string namePartment)
+        {
+            var checkStatus =
+                PartmentDAO.Instance.UpdatePartment(idPartment, idLocation, idFactory, idPart, namePartment);
+            if (checkStatus > 0)
+            {
+                MessageBox.Show("Success!");
+                LoadListPartment();
+            }
+            else
+            {
+                MessageBox.Show("Error!");
             }
         }
 
@@ -174,6 +197,19 @@ namespace IT_Management.UI.ADD_DATA
             }
             else
                 MessageBox.Show("Error!");
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            this.btnEdit.Enabled = false;
+            this.btnSave.Text = "Update";
+            this.btnSave.Show();
+            this.cbbListLocation.Enabled = true;
+            this.cbbListLocation.Text = "-- Select location --";
+            this.cbbListFactory.Enabled = true;
+            this.cbbListFactory.Text = "-- Select factory --";
+            this.cbbListPart.Enabled = true;
+            this.cbbListPart.Text = "-- Select part";
         }
     }
 }

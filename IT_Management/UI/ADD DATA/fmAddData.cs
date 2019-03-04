@@ -102,6 +102,18 @@ namespace IT_Management.UI.ADD_DATA
                 partment.Dock = DockStyle.Fill;
                 partment.Show();
             }
+
+            if (e.Node.Text == "DeviceType")
+            {
+                fmDevice device = new fmDevice();
+
+                pnData.Controls.Clear();
+                device.TopLevel = false;
+                pnData.Controls.Add(device);
+                //location.FormBorderStyle = FormBorderStyle.None;
+                device.Dock = DockStyle.Fill;
+                device.Show();
+            }
         }
 
         private void fmAddData_Load(object sender, EventArgs e)

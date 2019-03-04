@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevComponents.Editors.DateTimeAdv;
 using IT_Management.DTO;
 
 namespace IT_Management.DAO
@@ -51,6 +52,19 @@ namespace IT_Management.DAO
             var id = Guid.NewGuid().ToString();
             var createDate = DateTime.Now;
             var query = string.Format("insert into Partments(Id, IdPart, NamePartment, CreateDate) values('{0}','{1}', N'{2}','{3}')", id, idPart, namePartment, createDate);
+            return DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        #endregion
+
+        #region Update Partment
+
+        public int UpdatePartment(string id, string idLocation, string idFactory, string idPart, string namePartment)
+        {
+            var updateDate = DateTime.Now;
+            var query = string.Format(
+                "Update Partments set IdLocation = N'{0}',IdFactory = N'{1}', IdPart = N'{2}', NamePartment = N'{3}', UpdateDate = '{4}' where Id = '{5}'",
+                idLocation, idFactory, idPart, namePartment, updateDate, id);
             return DataProvider.Instance.ExecuteNonQuery(query);
         }
 

@@ -32,17 +32,13 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Factory");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Part");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Partment");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Room");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("DeviceType");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("DeviceInfo");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Category", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("DeviceType");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Category", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
             treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7});
+            treeNode5});
             this.panel1 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pnData = new System.Windows.Forms.Panel();
@@ -75,16 +71,12 @@
             treeNode3.Text = "Part";
             treeNode4.Name = "ntPartment";
             treeNode4.Text = "Partment";
-            treeNode5.Name = "ntRoom";
-            treeNode5.Text = "Room";
-            treeNode6.Name = "ntDeviceType";
-            treeNode6.Text = "DeviceType";
-            treeNode7.Name = "ntDeviceInfo";
-            treeNode7.Text = "DeviceInfo";
-            treeNode8.Name = "ntCategory";
-            treeNode8.Text = "Category";
+            treeNode5.Name = "ntDeviceType";
+            treeNode5.Text = "DeviceType";
+            treeNode6.Name = "ntCategory";
+            treeNode6.Text = "Category";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode6});
             this.treeView1.Size = new System.Drawing.Size(212, 493);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
