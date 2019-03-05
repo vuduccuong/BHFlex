@@ -28,6 +28,7 @@ namespace IT_Management.UI.FormTypeDevices
             {
                 fmPcDesktop DeskTop = new fmPcDesktop();
 
+                DeskTop.NameDevice = "PC";
                 panelTypeDevices.Controls.Clear();
                 DeskTop.TopLevel = false;
                 panelTypeDevices.Controls.Add(DeskTop);
@@ -146,6 +147,12 @@ namespace IT_Management.UI.FormTypeDevices
                 barPrinter.Dock = DockStyle.Fill;
                 barPrinter.Show();
             }
+        }
+
+        private void fmTypeDevices_Leave(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FormStart().ShowDialog();
         }
     }
 }

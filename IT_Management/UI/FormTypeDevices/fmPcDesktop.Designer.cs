@@ -60,19 +60,19 @@
             this.cbPartment = new System.Windows.Forms.ComboBox();
             this.cbParts = new System.Windows.Forms.ComboBox();
             this.cbFactorys = new System.Windows.Forms.ComboBox();
-            this.grbSW = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtGroup = new System.Windows.Forms.TextBox();
             this.têt = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbSW = new System.Windows.Forms.ListBox();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
+            this.txtBuydate = new System.Windows.Forms.DateTimePicker();
             this.txtSW = new System.Windows.Forms.TextBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.txtModel = new System.Windows.Forms.TextBox();
-            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtTypeDiveces = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtBuydate = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
@@ -331,7 +331,7 @@
             this.btnInsert.TabIndex = 20;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
-            this.btnInsert.Click += new System.EventHandler(this.button1_Click);
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnDelete
             // 
@@ -350,6 +350,7 @@
             this.btnUpdate.TabIndex = 21;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // cbPartment
             // 
@@ -359,6 +360,7 @@
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
             this.cbPartment.TabIndex = 7;
+            this.cbPartment.SelectedIndexChanged += new System.EventHandler(this.cbPartment_SelectedIndexChanged);
             // 
             // cbParts
             // 
@@ -368,6 +370,7 @@
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 6;
+            this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // cbFactorys
             // 
@@ -377,14 +380,7 @@
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
             this.cbFactorys.TabIndex = 5;
-            // 
-            // grbSW
-            // 
-            this.grbSW.Location = new System.Drawing.Point(787, 58);
-            this.grbSW.Name = "grbSW";
-            this.grbSW.Size = new System.Drawing.Size(272, 143);
-            this.grbSW.TabIndex = 38;
-            this.grbSW.TabStop = false;
+            this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -431,18 +427,18 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lbSW);
+            this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
             this.panel1.Controls.Add(this.txtSW);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.txtModel);
-            this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtTypeDiveces);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.têt);
             this.panel1.Controls.Add(this.txtGroup);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.grbSW);
             this.panel1.Controls.Add(this.cbFactorys);
             this.panel1.Controls.Add(this.cbParts);
             this.panel1.Controls.Add(this.cbPartment);
@@ -478,6 +474,35 @@
             this.panel1.Size = new System.Drawing.Size(1129, 344);
             this.panel1.TabIndex = 0;
             // 
+            // lbSW
+            // 
+            this.lbSW.FormattingEnabled = true;
+            this.lbSW.Location = new System.Drawing.Point(789, 60);
+            this.lbSW.Name = "lbSW";
+            this.lbSW.Size = new System.Drawing.Size(270, 134);
+            this.lbSW.TabIndex = 51;
+            // 
+            // cbLocation
+            // 
+            this.cbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Location = new System.Drawing.Point(151, 164);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(168, 26);
+            this.cbLocation.TabIndex = 50;
+            this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
+            // 
+            // txtBuydate
+            // 
+            this.txtBuydate.CustomFormat = "yyyy/MM/dd";
+            this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtBuydate.Location = new System.Drawing.Point(493, 271);
+            this.txtBuydate.Name = "txtBuydate";
+            this.txtBuydate.Size = new System.Drawing.Size(168, 20);
+            this.txtBuydate.TabIndex = 49;
+            this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
+            this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
+            // 
             // txtSW
             // 
             this.txtSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -504,17 +529,6 @@
             this.txtModel.Size = new System.Drawing.Size(168, 26);
             this.txtModel.TabIndex = 15;
             // 
-            // cbLocation
-            // 
-            this.cbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Location = new System.Drawing.Point(151, 163);
-            this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 4;
-            this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
-            this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
-            // 
             // txtTypeDiveces
             // 
             this.txtTypeDiveces.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -534,17 +548,6 @@
             this.label7.Size = new System.Drawing.Size(111, 20);
             this.label7.TabIndex = 47;
             this.label7.Text = "Name Devices";
-            // 
-            // txtBuydate
-            // 
-            this.txtBuydate.CustomFormat = "yyyy/MM/dd";
-            this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBuydate.Location = new System.Drawing.Point(493, 271);
-            this.txtBuydate.Name = "txtBuydate";
-            this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 49;
-            this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
-            this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
             // fmPcDesktop
             // 
@@ -599,7 +602,6 @@
         private System.Windows.Forms.ComboBox cbPartment;
         private System.Windows.Forms.ComboBox cbParts;
         private System.Windows.Forms.ComboBox cbFactorys;
-        private System.Windows.Forms.GroupBox grbSW;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtGroup;
         private System.Windows.Forms.Label têt;
@@ -607,10 +609,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtTypeDiveces;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.TextBox txtSW;
         private System.Windows.Forms.DateTimePicker txtBuydate;
+        private System.Windows.Forms.ComboBox cbLocation;
+        private System.Windows.Forms.ListBox lbSW;
     }
 }

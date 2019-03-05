@@ -42,15 +42,15 @@ namespace IT_Management.DAO
 
         #endregion
 
-        #region Get List Part By Location
+        #region Get List Part By Factory
 
-        public List<Part> GetListPartByLocation(string idLocation)
+        public List<Part> GetListPartByFactory(string idFactory)
         {
             List<Part> partList = new List<Part>();
             string query =
                 "select p.Id, p.NamePart,p.CreateBy,p.CreateDate, ft.NameFactory, lc.NameLocation from Parts p inner join Factorys ft on p.IdFactory = ft.Id";
             query += " inner join Locations lc on ft.IdLocation = lc.Id";
-            query += " Where ft.Id = '" + idLocation.ToString() + "'";
+            query += " Where ft.Id = '" + idFactory.ToString() + "'";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

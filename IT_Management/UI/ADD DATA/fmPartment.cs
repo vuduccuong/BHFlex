@@ -127,7 +127,7 @@ namespace IT_Management.UI.ADD_DATA
         private void LoadListPartByFactory(string idFactory)
         {
             cbbListPart.DataSource = null;
-            List<Part> lstPart = PartDAO.Instance.GetListPartByLocation(idFactory);
+            List<Part> lstPart = PartDAO.Instance.GetListPartByFactory(idFactory);
 
             cbbListPart.DataSource = lstPart;
             cbbListPart.DisplayMember = "PartName";
@@ -212,6 +212,11 @@ namespace IT_Management.UI.ADD_DATA
         }
 
         private void cbbListPart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

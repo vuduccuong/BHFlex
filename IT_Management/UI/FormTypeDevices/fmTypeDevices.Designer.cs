@@ -131,6 +131,7 @@
             this.Text = "Type Devices";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fmTypeDevices_Load);
+            this.Leave += new System.EventHandler(this.fmTypeDevices_Leave);
             this.ResumeLayout(false);
 
         }
