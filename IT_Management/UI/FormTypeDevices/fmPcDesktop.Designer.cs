@@ -262,6 +262,7 @@
             this.txtPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPcName.Location = new System.Drawing.Point(151, 128);
             this.txtPcName.Name = "txtPcName";
+            this.txtPcName.ReadOnly = true;
             this.txtPcName.Size = new System.Drawing.Size(168, 26);
             this.txtPcName.TabIndex = 3;
             // 
@@ -341,6 +342,7 @@
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -354,6 +356,7 @@
             // 
             // cbPartment
             // 
+            this.cbPartment.Enabled = false;
             this.cbPartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPartment.FormattingEnabled = true;
             this.cbPartment.Location = new System.Drawing.Point(151, 267);
@@ -361,9 +364,11 @@
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
             this.cbPartment.TabIndex = 7;
             this.cbPartment.SelectedIndexChanged += new System.EventHandler(this.cbPartment_SelectedIndexChanged);
+            this.cbPartment.Click += new System.EventHandler(this.cbPartment_Click);
             // 
             // cbParts
             // 
+            this.cbParts.Enabled = false;
             this.cbParts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbParts.FormattingEnabled = true;
             this.cbParts.Location = new System.Drawing.Point(151, 232);
@@ -371,9 +376,11 @@
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 6;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
+            this.cbParts.Click += new System.EventHandler(this.cbParts_Click);
             // 
             // cbFactorys
             // 
+            this.cbFactorys.Enabled = false;
             this.cbFactorys.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFactorys.FormattingEnabled = true;
             this.cbFactorys.Location = new System.Drawing.Point(151, 197);
@@ -381,6 +388,7 @@
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
             this.cbFactorys.TabIndex = 5;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
+            this.cbFactorys.Click += new System.EventHandler(this.cbFactorys_Click);
             // 
             // label4
             // 
@@ -491,6 +499,7 @@
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
             this.cbLocation.TabIndex = 50;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
+            this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click_1);
             // 
             // txtBuydate
             // 

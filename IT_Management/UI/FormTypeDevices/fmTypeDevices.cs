@@ -39,7 +39,7 @@ namespace IT_Management.UI.FormTypeDevices
             if (e.Node.Text == "LapTop")
             {
                 fmPcLaptop LapTop = new fmPcLaptop();
-
+                LapTop.NameDevice = "MT";
                 panelTypeDevices.Controls.Clear();
                 LapTop.TopLevel = false;
                 panelTypeDevices.Controls.Add(LapTop);
