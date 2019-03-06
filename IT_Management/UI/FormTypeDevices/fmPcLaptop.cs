@@ -225,7 +225,7 @@ namespace IT_Management.UI.FormTypeDevices
                 soft = soft + "," + item;
             }
             //var idDevideInfo = Guid.NewGuid();
-            var IdDevices = String.Format("select Id from TypeDevices where NameDeviceType='laptop'");
+            var IdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+txtTypeDiveces.Text+"'");
             var IdDevice = DataProvider.Instance.ExecuteQuery(IdDevices);
             String getIdDevices = IdDevice.Rows[0][0].ToString();
             var idPartment = cbPartment.SelectedValue.ToString();

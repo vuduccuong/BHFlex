@@ -19,26 +19,6 @@ namespace IT_Management.UI.FormTypeDevices
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbFactorys_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void fmPrinterInk_Load(object sender, EventArgs e)
         {
             printerLoaddata();
@@ -48,11 +28,22 @@ namespace IT_Management.UI.FormTypeDevices
             String strLoaddata = "select di.Id, di.NameUser,di.pcName, di.NameDevice, di.IPAdress, di.BuyDate, di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text + "' and di.isDelete='0'";
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPCDesktop.DataSource = datable;
-
+            #region ClearDataBindings
+            txtIdPrinter.DataBindings.Clear();
+            txtUserName.DataBindings.Clear();
+            txtPrinterName.DataBindings.Clear();
+            cbLocation.DataBindings.Clear();
+            cbFactorys.DataBindings.Clear();
+            cbParts.DataBindings.Clear();
+            cbPartment.DataBindings.Clear();
+            txtModel.DataBindings.Clear();
+            txtIPPrinter.DataBindings.Clear();
+            txtBuydate.DataBindings.Clear();
+            #endregion
             #region DataBindinds
             txtIdPrinter.DataBindings.Add("text", datable, "id");
             txtUserName.DataBindings.Add("text", datable, "NameUser");
-            txtPrinterName.DataBindings.Add("text", datable, "pcName");
+            txtPrinterName.DataBindings.Add("text", datable, "PcName");
             cbLocation.DataBindings.Add("text", datable, "NameLocation");
             cbFactorys.DataBindings.Add("text", datable, "NameFactory");
             cbParts.DataBindings.Add("text", datable, "NamePart");
@@ -63,31 +54,9 @@ namespace IT_Management.UI.FormTypeDevices
             #endregion
         }
 
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtModel_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNew_Click(object sender, EventArgs e)
         {
-            enableTrue();
-            txtIdPrinter.Clear();
-            txtUserName.Clear();
-            txtPrinterName.Clear();
-            cbLocation.Text = "-- Select location --";
-            cbFactorys.Text = "";
-            cbParts.Text = "";
-            cbPartment.Text = "";
-            txtModel.Clear();
-            txtIPPrinter.Clear();
-        }
-        public void enableTrue()
-        {
+            #region Enabled=true
             btnInsert.Enabled = true;
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
@@ -99,11 +68,21 @@ namespace IT_Management.UI.FormTypeDevices
             txtIPPrinter.Enabled = true;
             txtModel.Enabled = true;
             txtBuydate.Enabled = true;
+            #endregion
+            txtIdPrinter.Clear();
+            txtUserName.Clear();
+            txtPrinterName.Clear();
+            cbLocation.Text = "-- Select location --";
+            cbFactorys.Text = "";
+            cbParts.Text = "";
+            cbPartment.Text = "";
+            txtModel.Clear();
+            txtIPPrinter.Clear();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='Printer Ink'");
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+txtTypeDiveces.Text+"'");
             var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
             String getIdDevices = IdDevice.Rows[0][0].ToString();
 
@@ -203,6 +182,40 @@ namespace IT_Management.UI.FormTypeDevices
 
             txtIdPrinter.Text = (String.Format(name + "PR" + lastIp + setBuydate));
             txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
+            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+            String getIdPartmnet = idPartment.Rows[0][0].ToString();
+
+            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',IPAdress='" + txtIPPrinter.Text + "',Model='" + txtModel.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtIdPrinter.Text + "'";
+            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+            if (Updated > 0)
+            {
+                MessageBox.Show("Update Sucess !!!");
+                printerLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPrinter.Text + "'");
+            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
+            if (Delete > 0)
+            {
+                MessageBox.Show("Delete Sucess !!!");
+                printerLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Delete Fall :(");
+            }
         }
     }
 }

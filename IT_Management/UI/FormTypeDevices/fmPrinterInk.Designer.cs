@@ -53,10 +53,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel2.SuspendLayout();
@@ -169,6 +169,7 @@
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -179,6 +180,7 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnInsert
             // 
@@ -338,31 +340,10 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-7, 1);
+            this.panel1.Location = new System.Drawing.Point(2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1118, 275);
+            this.panel1.Size = new System.Drawing.Size(1116, 282);
             this.panel1.TabIndex = 6;
-            // 
-            // dgvPCDesktop
-            // 
-            this.dgvPCDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPCDesktop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPCDesktop.BackgroundColor = System.Drawing.Color.Khaki;
-            this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPCDesktop.Location = new System.Drawing.Point(0, 20);
-            this.dgvPCDesktop.Name = "dgvPCDesktop";
-            this.dgvPCDesktop.Size = new System.Drawing.Size(1106, 320);
-            this.dgvPCDesktop.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dgvPCDesktop);
-            this.panel2.Location = new System.Drawing.Point(2, 293);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1109, 343);
-            this.panel2.TabIndex = 7;
             // 
             // txtModel
             // 
@@ -372,7 +353,6 @@
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(168, 26);
             this.txtModel.TabIndex = 48;
-            this.txtModel.TextChanged += new System.EventHandler(this.txtModel_TextChanged);
             // 
             // label15
             // 
@@ -383,18 +363,39 @@
             this.label15.Size = new System.Drawing.Size(52, 20);
             this.label15.TabIndex = 49;
             this.label15.Text = "Model";
-            this.label15.Click += new System.EventHandler(this.label15_Click);
+            // 
+            // dgvPCDesktop
+            // 
+            this.dgvPCDesktop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPCDesktop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPCDesktop.BackgroundColor = System.Drawing.Color.Khaki;
+            this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPCDesktop.Location = new System.Drawing.Point(0, 41);
+            this.dgvPCDesktop.Name = "dgvPCDesktop";
+            this.dgvPCDesktop.Size = new System.Drawing.Size(1105, 352);
+            this.dgvPCDesktop.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvPCDesktop);
+            this.panel2.Location = new System.Drawing.Point(2, 291);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1116, 393);
+            this.panel2.TabIndex = 7;
             // 
             // fmPrinterInk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 637);
+            this.ClientSize = new System.Drawing.Size(1119, 655);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fmPrinterInk";
             this.Text = "Printer Ink";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fmPrinterInk_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -94,7 +94,7 @@
             this.dgvPCDesktop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPCDesktop.BackgroundColor = System.Drawing.Color.Khaki;
             this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPCDesktop.Location = new System.Drawing.Point(0, 3);
+            this.dgvPCDesktop.Location = new System.Drawing.Point(0, 4);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
             this.dgvPCDesktop.Size = new System.Drawing.Size(1119, 282);
             this.dgvPCDesktop.TabIndex = 0;
@@ -381,7 +381,6 @@
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 6;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
-            this.cbParts.Click += new System.EventHandler(this.cbParts_Click);
             // 
             // cbFactorys
             // 

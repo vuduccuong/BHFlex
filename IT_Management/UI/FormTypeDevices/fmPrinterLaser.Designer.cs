@@ -112,6 +112,8 @@
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
             this.cbLocation.TabIndex = 5;
+            this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged_1);
+            this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
             // txtBuydate
             // 
@@ -123,6 +125,7 @@
             this.txtBuydate.Size = new System.Drawing.Size(168, 20);
             this.txtBuydate.TabIndex = 9;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
+            this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
             // btnNew
             // 
@@ -132,6 +135,7 @@
             this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtTypeDiveces
             // 
@@ -141,7 +145,7 @@
             this.txtTypeDiveces.ReadOnly = true;
             this.txtTypeDiveces.Size = new System.Drawing.Size(168, 26);
             this.txtTypeDiveces.TabIndex = 0;
-            this.txtTypeDiveces.Text = "Printer Ink";
+            this.txtTypeDiveces.Text = "Printer Laser";
             // 
             // label7
             // 
@@ -172,6 +176,7 @@
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
             this.cbFactorys.TabIndex = 6;
+            this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // cbParts
             // 
@@ -182,6 +187,7 @@
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 7;
+            this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // cbPartment
             // 
@@ -202,6 +208,7 @@
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -212,6 +219,7 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnInsert
             // 
@@ -222,6 +230,7 @@
             this.btnInsert.TabIndex = 11;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // txtIPPrinter
             // 
@@ -384,6 +393,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "fmPrinterLaser";
             this.Text = "Printer Laser";
+            this.Load += new System.EventHandler(this.fmPrinterLaser_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).EndInit();
             this.panel1.ResumeLayout(false);

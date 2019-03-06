@@ -77,7 +77,7 @@ namespace IT_Management.UI.FormTypeDevices
             }
 
             //var idDevideInfo = Guid.NewGuid();
-            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='Desktop'");
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+txtTypeDiveces.Text+"'");
             var IdDevice =DataProvider.Instance.ExecuteQuery(strIdDevices);
             String getIdDevices = IdDevice.Rows[0][0].ToString();
 
@@ -285,7 +285,11 @@ namespace IT_Management.UI.FormTypeDevices
             var idFactory = this.cbFactorys.SelectedValue.ToString();
             LoadListPartByFactory(idFactory);
         }
-
+        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var idPart = this.cbParts.SelectedValue.ToString();
+            LoadListPartmentByPart(idPart);
+        }
         private void LoadListPartByFactory(string idFactory)
         {
             cbParts.DataSource = null;
@@ -302,10 +306,6 @@ namespace IT_Management.UI.FormTypeDevices
             cbPartment.DataSource = lstPartment;
             cbPartment.DisplayMember = "PartmentName";
             cbPartment.ValueMember = "Id";
-        }
-        private void cbParts_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -356,10 +356,5 @@ namespace IT_Management.UI.FormTypeDevices
             lbSW.Items.Remove(lbSW.SelectedItem);
         }
 
-        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var idPart = this.cbParts.SelectedValue.ToString();
-            LoadListPartmentByPart(idPart);
-        }
     }
 }
