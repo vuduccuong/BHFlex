@@ -30,6 +30,7 @@ namespace IT_Management.UI.ADD_DATA
             btnSave.Hide();
             txtFactoryName.Enabled = false;
             cbbListLocation.Enabled = false;
+
             LoadListLocation();
             LoadListFactory();
         }
