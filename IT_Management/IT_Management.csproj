@@ -269,5 +269,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Icon\0657a660a706f97.jpg" />
+    <Content Include="Icon\asdada.PNG" />
+    <Content Include="Icon\BackImage.PNG" />
+    <Content Include="Icon\bhflex.jpg" />
+    <Content Include="Icon\BhflexBackgroup1.png" />
+    <Content Include="Icon\BhflexBackgroup2.jpg" />
+    <Content Include="Icon\Capture.PNG" />
+    <Content Include="Icon\check.PNG" />
+    <Content Include="Icon\Delete.PNG" />
+    <Content Include="Icon\hinh-mat-cuoi-ba-dao.jpg" />
+    <Content Include="Icon\iconok.png" />
+    <Content Include="Icon\IconUpdate.png" />
+    <Content Include="Icon\IconXoa.png" />
+    <Content Include="Icon\images %281%29.jpg" />
+    <Content Include="Icon\images %282%29.jpg" />
+    <Content Include="Icon\images %283%29.jpg" />
+    <Content Include="Icon\matkhoc.jpg" />
+    <Content Include="Icon\reset.png" />
+    <Content Include="Icon\smile.jpg" />
+    <Content Include="Icon\tải xuống.png" />
+    <Content Include="Icon\Update.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
