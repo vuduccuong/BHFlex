@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevComponents.Editors.DateTimeAdv;
 using IT_Management.DAO;
 using IT_Management.DTO;
 
@@ -128,7 +127,7 @@ namespace IT_Management.UI.ADD_DATA
         private void LoadListPartByFactory(string idFactory)
         {
             cbbListPart.DataSource = null;
-            List<Part> lstPart = PartDAO.Instance.GetListPartByLocation(idFactory);
+            List<Part> lstPart = PartDAO.Instance.GetListPartByFactory(idFactory);
 
             cbbListPart.DataSource = lstPart;
             cbbListPart.DisplayMember = "PartName";
@@ -210,6 +209,16 @@ namespace IT_Management.UI.ADD_DATA
             this.cbbListFactory.Text = "-- Select factory --";
             this.cbbListPart.Enabled = true;
             this.cbbListPart.Text = "-- Select part";
+        }
+
+        private void cbbListPart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

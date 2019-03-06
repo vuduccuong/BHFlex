@@ -50,9 +50,10 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.treeView1);
-            this.panel1.Location = new System.Drawing.Point(6, 6);
+            this.panel1.Location = new System.Drawing.Point(4, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 505);
+            this.panel1.Size = new System.Drawing.Size(166, 410);
             this.panel1.TabIndex = 0;
             // 
             // treeView1
@@ -61,7 +62,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(6, 3);
+            this.treeView1.Location = new System.Drawing.Point(4, 2);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "ntLocation";
             treeNode1.Text = "Location";
@@ -77,7 +79,7 @@
             treeNode6.Text = "Category";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode6});
-            this.treeView1.Size = new System.Drawing.Size(212, 493);
+            this.treeView1.Size = new System.Drawing.Size(160, 401);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -86,22 +88,25 @@
             this.pnData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnData.Location = new System.Drawing.Point(233, 6);
+            this.pnData.Location = new System.Drawing.Point(175, 5);
+            this.pnData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnData.Name = "pnData";
-            this.pnData.Size = new System.Drawing.Size(792, 505);
+            this.pnData.Size = new System.Drawing.Size(594, 410);
             this.pnData.TabIndex = 1;
             // 
             // fmAddData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 514);
+            this.ClientSize = new System.Drawing.Size(772, 418);
             this.Controls.Add(this.pnData);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "fmAddData";
             this.Text = "fmAddData";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fmAddData_Load);
+            this.Leave += new System.EventHandler(this.fmAddData_Leave);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

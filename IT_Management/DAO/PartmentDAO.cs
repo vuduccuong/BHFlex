@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevComponents.Editors.DateTimeAdv;
 using IT_Management.DTO;
 
 namespace IT_Management.DAO
@@ -32,6 +31,30 @@ namespace IT_Management.DAO
             query+=" from Partments pm  inner join Parts p on pm.IdPart = p.Id";
             query += " inner join Factorys ft on p.IdFactory = ft.Id";
             query += " inner join Locations lc on ft.IdLocation = lc.Id";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Partment cust = new Partment(item);
+                partmentList.Add(cust);
+            }
+
+            return partmentList;
+        }
+
+        #endregion
+
+        #region Get List Partment By Part
+
+        public List<Partment> GetListPartmentByPart(string idPart)
+        {
+            List<Partment> partmentList = new List<Partment>();
+            string query =
+                "select pm.Id,pm.NamePartment, p.NamePart,p.CreateBy,p.CreateDate, ft.NameFactory, lc.NameLocation ";
+            query += " from Partments pm  inner join Parts p on pm.IdPart = p.Id";
+            query += " inner join Factorys ft on p.IdFactory = ft.Id";
+            query += " inner join Locations lc on ft.IdLocation = lc.Id";
+            query += " where p.Id = '" + idPart.ToString()+"'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
