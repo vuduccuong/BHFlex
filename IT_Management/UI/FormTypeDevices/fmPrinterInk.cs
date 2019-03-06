@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IT_Management.DAO;
+using IT_Management.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,192 @@ namespace IT_Management.UI.FormTypeDevices
         public fmPrinterInk()
         {
             InitializeComponent();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbFactorys_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fmPrinterInk_Load(object sender, EventArgs e)
+        {
+            printerLoaddata();
+        }
+        public void printerLoaddata()
+        {// di.IdDevice
+            String strLoaddata = "select di.Id, di.NameUser,di.pcName, di.NameDevice, di.IPAdress, di.BuyDate, di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text + "' and di.isDelete='0'";
+            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
+            dgvPCDesktop.DataSource = datable;
+
+            #region DataBindinds
+            txtIdPrinter.DataBindings.Add("text", datable, "id");
+            txtUserName.DataBindings.Add("text", datable, "NameUser");
+            txtPrinterName.DataBindings.Add("text", datable, "pcName");
+            cbLocation.DataBindings.Add("text", datable, "NameLocation");
+            cbFactorys.DataBindings.Add("text", datable, "NameFactory");
+            cbParts.DataBindings.Add("text", datable, "NamePart");
+            cbPartment.DataBindings.Add("text", datable, "NamePartment");
+            txtModel.DataBindings.Add("text", datable, "Model");
+            txtIPPrinter.DataBindings.Add("text", datable, "IPAdress");
+            txtBuydate.DataBindings.Add("text", datable, "BuyDate");
+            #endregion
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtModel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            enableTrue();
+            txtIdPrinter.Clear();
+            txtUserName.Clear();
+            txtPrinterName.Clear();
+            cbLocation.Text = "-- Select location --";
+            cbFactorys.Text = "";
+            cbParts.Text = "";
+            cbPartment.Text = "";
+            txtModel.Clear();
+            txtIPPrinter.Clear();
+        }
+        public void enableTrue()
+        {
+            btnInsert.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            cbFactorys.Enabled = true;
+            cbParts.Enabled = true;
+            cbPartment.Enabled = true;
+            cbLocation.Enabled = true;
+            txtUserName.Enabled = true;
+            txtIPPrinter.Enabled = true;
+            txtModel.Enabled = true;
+            txtBuydate.Enabled = true;
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='Printer Ink'");
+            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
+            String getIdDevices = IdDevice.Rows[0][0].ToString();
+
+            var idPartment = cbPartment.SelectedValue.ToString();
+
+            var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,IPAdress,Model,BuyDate,IdDevice,IdPartment,isDelete) values('" + txtIdPrinter.Text + "', '"+txtTypeDiveces.Text+"', '" + txtUserName.Text + "','" + txtPrinterName.Text + "','"+txtIPPrinter.Text+"', '" + txtModel.Text + "', '" + txtBuydate.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+            var check = DataProvider.Instance.ExecuteNonQuery(query);
+            if (check > 0)
+            {
+                MessageBox.Show("Succes !!!");
+                printerLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Error !!!");
+            }
+        }
+
+        private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var idLocation = this.cbLocation.SelectedValue.ToString();
+            LoadFactorybyLocation(idLocation);
+        }
+
+        private void LoadFactorybyLocation(string idLocation)
+        {
+            List<Factory> lstFactory = FactoryDAO.Instance.GetListFactoryByLocation(idLocation);
+            cbFactorys.DataSource = lstFactory;
+
+            cbFactorys.DisplayMember = "FactoryName";
+            cbFactorys.ValueMember = "Id";
+        }
+        private void cbLocation_Click(object sender, EventArgs e)
+        {
+            LoadLocation();
+        }
+        private void LoadLocation()
+        {
+            List<Location> lstLocation = LocationDAO.Instance.GetListCustommer();
+            if (lstLocation.Count == 0)
+            {
+                MessageBox.Show("No data in Location!");
+            }
+
+            cbLocation.DataSource = lstLocation;
+            cbLocation.DisplayMember = "LocationName";
+            cbLocation.ValueMember = "Id";
+        }
+        private void cbFactorys_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            var idFactory = this.cbFactorys.SelectedValue.ToString();
+            LoadListPartByFactory(idFactory);
+        }
+
+        private void LoadListPartByFactory(string idFactory)
+        {
+            List<Part> lstPart = PartDAO.Instance.GetListPartByFactory(idFactory);
+            cbParts.DataSource = lstPart;
+
+            cbParts.DisplayMember = "PartName";
+            cbParts.ValueMember = "Id";
+        }
+
+        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var idPart = this.cbParts.SelectedValue.ToString();
+            LoadListPartmentByPart(idPart);
+        }
+
+        private void LoadListPartmentByPart(string idPart)
+        {
+            List<Partment> lstPartment = PartmentDAO.Instance.GetListPartmentByPart(idPart);
+            cbPartment.DataSource = lstPartment;
+
+            cbPartment.DisplayMember = "PartmentName";
+            cbPartment.ValueMember = "Id";
+        }
+
+        private void cbPartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBuydate_Leave(object sender, EventArgs e)
+        {
+            String lastIp = null;
+            string[] listPara = txtIPPrinter.Text.ToString().Split('.');
+            lastIp += listPara[2];
+            lastIp += listPara[3];
+            var a = txtBuydate.Value;
+            var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
+
+
+            String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
+            var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
+            string name = getCodeLocation.Rows[0][0].ToString();
+
+            txtIdPrinter.Text = (String.Format(name + "PR" + lastIp + setBuydate));
+            txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
         }
     }
 }

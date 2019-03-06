@@ -98,7 +98,6 @@
             this.dgvPCDesktop.Name = "dgvPCDesktop";
             this.dgvPCDesktop.Size = new System.Drawing.Size(1119, 282);
             this.dgvPCDesktop.TabIndex = 0;
-            this.dgvPCDesktop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPCDesktop_CellContentClick);
             // 
             // label1
             // 
@@ -251,6 +250,7 @@
             // 
             // txtUserName
             // 
+            this.txtUserName.Enabled = false;
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(151, 94);
             this.txtUserName.Name = "txtUserName";
@@ -268,6 +268,7 @@
             // 
             // txtIP
             // 
+            this.txtIP.Enabled = false;
             this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIP.Location = new System.Drawing.Point(493, 26);
             this.txtIP.Name = "txtIP";
@@ -276,6 +277,7 @@
             // 
             // txtMAC
             // 
+            this.txtMAC.Enabled = false;
             this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMAC.Location = new System.Drawing.Point(493, 60);
             this.txtMAC.Name = "txtMAC";
@@ -284,6 +286,7 @@
             // 
             // txtCPU
             // 
+            this.txtCPU.Enabled = false;
             this.txtCPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPU.Location = new System.Drawing.Point(493, 94);
             this.txtCPU.Name = "txtCPU";
@@ -292,6 +295,7 @@
             // 
             // txtRAM
             // 
+            this.txtRAM.Enabled = false;
             this.txtRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRAM.Location = new System.Drawing.Point(493, 128);
             this.txtRAM.Name = "txtRAM";
@@ -300,6 +304,7 @@
             // 
             // txtHDD
             // 
+            this.txtHDD.Enabled = false;
             this.txtHDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHDD.Location = new System.Drawing.Point(493, 163);
             this.txtHDD.Name = "txtHDD";
@@ -308,6 +313,7 @@
             // 
             // txtOS
             // 
+            this.txtOS.Enabled = false;
             this.txtOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOS.Location = new System.Drawing.Point(493, 197);
             this.txtOS.Name = "txtOS";
@@ -316,6 +322,7 @@
             // 
             // btnAddSW
             // 
+            this.btnAddSW.Enabled = false;
             this.btnAddSW.Location = new System.Drawing.Point(981, 26);
             this.btnAddSW.Name = "btnAddSW";
             this.btnAddSW.Size = new System.Drawing.Size(78, 28);
@@ -329,7 +336,7 @@
             this.btnInsert.Location = new System.Drawing.Point(787, 259);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 46);
-            this.btnInsert.TabIndex = 20;
+            this.btnInsert.TabIndex = 21;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
@@ -339,7 +346,7 @@
             this.btnDelete.Location = new System.Drawing.Point(984, 259);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 46);
-            this.btnDelete.TabIndex = 22;
+            this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -349,7 +356,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(886, 259);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 46);
-            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.TabIndex = 22;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -363,8 +370,6 @@
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
             this.cbPartment.TabIndex = 7;
-            this.cbPartment.SelectedIndexChanged += new System.EventHandler(this.cbPartment_SelectedIndexChanged);
-            this.cbPartment.Click += new System.EventHandler(this.cbPartment_Click);
             // 
             // cbParts
             // 
@@ -388,7 +393,6 @@
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
             this.cbFactorys.TabIndex = 5;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
-            this.cbFactorys.Click += new System.EventHandler(this.cbFactorys_Click);
             // 
             // label4
             // 
@@ -484,54 +488,61 @@
             // 
             // lbSW
             // 
+            this.lbSW.Enabled = false;
             this.lbSW.FormattingEnabled = true;
             this.lbSW.Location = new System.Drawing.Point(789, 60);
             this.lbSW.Name = "lbSW";
             this.lbSW.Size = new System.Drawing.Size(270, 134);
-            this.lbSW.TabIndex = 51;
+            this.lbSW.TabIndex = 19;
+            this.lbSW.SelectedIndexChanged += new System.EventHandler(this.lbSW_SelectedIndexChanged);
+            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick);
             // 
             // cbLocation
             // 
+            this.cbLocation.CausesValidation = false;
+            this.cbLocation.Enabled = false;
             this.cbLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLocation.FormattingEnabled = true;
             this.cbLocation.Location = new System.Drawing.Point(151, 164);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 50;
+            this.cbLocation.TabIndex = 4;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
-            this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click_1);
             // 
             // txtBuydate
             // 
             this.txtBuydate.CustomFormat = "yyyy/MM/dd";
+            this.txtBuydate.Enabled = false;
             this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtBuydate.Location = new System.Drawing.Point(493, 271);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 49;
+            this.txtBuydate.TabIndex = 16;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
             // txtSW
             // 
+            this.txtSW.Enabled = false;
             this.txtSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSW.Location = new System.Drawing.Point(789, 26);
             this.txtSW.Name = "txtSW";
             this.txtSW.Size = new System.Drawing.Size(186, 26);
-            this.txtSW.TabIndex = 48;
+            this.txtSW.TabIndex = 17;
             // 
             // btnNew
             // 
             this.btnNew.Location = new System.Drawing.Point(787, 207);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(272, 40);
-            this.btnNew.TabIndex = 19;
+            this.btnNew.TabIndex = 20;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtModel
             // 
+            this.txtModel.Enabled = false;
             this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtModel.Location = new System.Drawing.Point(493, 232);
             this.txtModel.Name = "txtModel";

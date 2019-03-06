@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbSW = new System.Windows.Forms.ListBox();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
@@ -71,7 +72,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvPCLaptop = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCLaptop)).BeginInit();
@@ -130,13 +130,23 @@
             this.panel1.Size = new System.Drawing.Size(1126, 350);
             this.panel1.TabIndex = 1;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(0, 352);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1129, 262);
+            this.panel2.TabIndex = 52;
+            // 
             // lbSW
             // 
+            this.lbSW.Enabled = false;
             this.lbSW.FormattingEnabled = true;
             this.lbSW.Location = new System.Drawing.Point(789, 60);
             this.lbSW.Name = "lbSW";
             this.lbSW.Size = new System.Drawing.Size(270, 134);
-            this.lbSW.TabIndex = 51;
+            this.lbSW.TabIndex = 19;
+            this.lbSW.SelectedIndexChanged += new System.EventHandler(this.lbSW_SelectedIndexChanged);
+            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick);
             // 
             // cbLocation
             // 
@@ -146,41 +156,44 @@
             this.cbLocation.Location = new System.Drawing.Point(151, 164);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 50;
+            this.cbLocation.TabIndex = 4;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
             // txtBuydate
             // 
             this.txtBuydate.CustomFormat = "yyyy/MM/dd";
+            this.txtBuydate.Enabled = false;
             this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtBuydate.Location = new System.Drawing.Point(493, 271);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 49;
+            this.txtBuydate.TabIndex = 16;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
             // txtSW
             // 
+            this.txtSW.Enabled = false;
             this.txtSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSW.Location = new System.Drawing.Point(789, 26);
             this.txtSW.Name = "txtSW";
             this.txtSW.Size = new System.Drawing.Size(186, 26);
-            this.txtSW.TabIndex = 48;
+            this.txtSW.TabIndex = 17;
             // 
             // btnNewLap
             // 
             this.btnNewLap.Location = new System.Drawing.Point(787, 207);
             this.btnNewLap.Name = "btnNewLap";
             this.btnNewLap.Size = new System.Drawing.Size(272, 40);
-            this.btnNewLap.TabIndex = 19;
+            this.btnNewLap.TabIndex = 20;
             this.btnNewLap.Text = "New";
             this.btnNewLap.UseVisualStyleBackColor = true;
             this.btnNewLap.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtModel
             // 
+            this.txtModel.Enabled = false;
             this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtModel.Location = new System.Drawing.Point(493, 232);
             this.txtModel.Name = "txtModel";
@@ -284,16 +297,17 @@
             this.btnUpdateLap.Location = new System.Drawing.Point(886, 259);
             this.btnUpdateLap.Name = "btnUpdateLap";
             this.btnUpdateLap.Size = new System.Drawing.Size(75, 46);
-            this.btnUpdateLap.TabIndex = 21;
+            this.btnUpdateLap.TabIndex = 22;
             this.btnUpdateLap.Text = "Update";
             this.btnUpdateLap.UseVisualStyleBackColor = true;
+            this.btnUpdateLap.Click += new System.EventHandler(this.btnUpdateLap_Click);
             // 
             // btnDeleteLap
             // 
             this.btnDeleteLap.Location = new System.Drawing.Point(984, 259);
             this.btnDeleteLap.Name = "btnDeleteLap";
             this.btnDeleteLap.Size = new System.Drawing.Size(75, 46);
-            this.btnDeleteLap.TabIndex = 22;
+            this.btnDeleteLap.TabIndex = 23;
             this.btnDeleteLap.Text = "Delete";
             this.btnDeleteLap.UseVisualStyleBackColor = true;
             this.btnDeleteLap.Click += new System.EventHandler(this.btnDelete_Click);
@@ -303,13 +317,14 @@
             this.btnInsertLap.Location = new System.Drawing.Point(787, 259);
             this.btnInsertLap.Name = "btnInsertLap";
             this.btnInsertLap.Size = new System.Drawing.Size(75, 46);
-            this.btnInsertLap.TabIndex = 20;
+            this.btnInsertLap.TabIndex = 21;
             this.btnInsertLap.Text = "Insert";
             this.btnInsertLap.UseVisualStyleBackColor = true;
             this.btnInsertLap.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnAddSW
             // 
+            this.btnAddSW.Enabled = false;
             this.btnAddSW.Location = new System.Drawing.Point(981, 26);
             this.btnAddSW.Name = "btnAddSW";
             this.btnAddSW.Size = new System.Drawing.Size(78, 28);
@@ -320,6 +335,7 @@
             // 
             // txtOS
             // 
+            this.txtOS.Enabled = false;
             this.txtOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOS.Location = new System.Drawing.Point(493, 197);
             this.txtOS.Name = "txtOS";
@@ -328,6 +344,7 @@
             // 
             // txtHDD
             // 
+            this.txtHDD.Enabled = false;
             this.txtHDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHDD.Location = new System.Drawing.Point(493, 163);
             this.txtHDD.Name = "txtHDD";
@@ -336,6 +353,7 @@
             // 
             // txtRAM
             // 
+            this.txtRAM.Enabled = false;
             this.txtRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRAM.Location = new System.Drawing.Point(493, 128);
             this.txtRAM.Name = "txtRAM";
@@ -344,6 +362,7 @@
             // 
             // txtCPU
             // 
+            this.txtCPU.Enabled = false;
             this.txtCPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPU.Location = new System.Drawing.Point(493, 94);
             this.txtCPU.Name = "txtCPU";
@@ -352,6 +371,7 @@
             // 
             // txtMAC
             // 
+            this.txtMAC.Enabled = false;
             this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMAC.Location = new System.Drawing.Point(493, 60);
             this.txtMAC.Name = "txtMAC";
@@ -360,6 +380,7 @@
             // 
             // txtIP
             // 
+            this.txtIP.Enabled = false;
             this.txtIP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIP.Location = new System.Drawing.Point(493, 26);
             this.txtIP.Name = "txtIP";
@@ -377,6 +398,7 @@
             // 
             // txtUserName
             // 
+            this.txtUserName.Enabled = false;
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(151, 94);
             this.txtUserName.Name = "txtUserName";
@@ -531,13 +553,6 @@
             this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Pc";
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(0, 352);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1129, 262);
-            this.panel2.TabIndex = 52;
             // 
             // dgvPCLaptop
             // 

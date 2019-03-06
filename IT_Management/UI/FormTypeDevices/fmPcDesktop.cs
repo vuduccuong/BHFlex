@@ -77,9 +77,10 @@ namespace IT_Management.UI.FormTypeDevices
             }
 
             //var idDevideInfo = Guid.NewGuid();
-            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+NameDevice+"'");
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='Desktop'");
             var IdDevice =DataProvider.Instance.ExecuteQuery(strIdDevices);
             String getIdDevices = IdDevice.Rows[0][0].ToString();
+
             var idPartment = cbPartment.SelectedValue.ToString();
             var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,IdDevice,IdPartment,isDelete) values('" + txtIdPc.Text+"', 'Desktop', '"+txtUserName.Text+"','"+txtPcName.Text+"', '"+txtMAC.Text+"', '"+txtIP.Text+"', '"+txtModel.Text+"', '"+txtCPU.Text+"', '"+txtRAM.Text+"', '"+txtHDD.Text+"', '"+txtOS.Text+"', '"+txtBuydate.Text+"','"+soft.Substring(1)+"', '"+ getIdDevices.ToString()+"', '"+ idPartment.ToString()+"',0)");
             var check = DataProvider.Instance.ExecuteNonQuery(query);
@@ -102,25 +103,16 @@ namespace IT_Management.UI.FormTypeDevices
             
         }
 
-        private void dgvPCDesktop_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
+        }                                   //di.IdDevice ,
         public void pcLoaddata() {
-            String strLoaddata = "select di.Id, di.IdDevice , di.NameUser,di.pcName, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='"+txtTypeDiveces.Text+ "' and di.isDelete='0'";
+            String strLoaddata = "select di.Id, di.NameUser,di.pcName, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='"+txtTypeDiveces.Text+ "' and di.isDelete='0'";
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPCDesktop.DataSource = datable;
 
             ClearDataGipView();
-            //cbLocation.Enabled = false;
-            //cbFactorys.Enabled = false;
-            //cbParts.Enabled = false;
-            ///cbPartment.Enabled = false;
             #region DataBindinds
             txtIdPc.DataBindings.Add("text", datable,"id");
             txtUserName.DataBindings.Add("text", datable, "NameUser");
@@ -137,8 +129,17 @@ namespace IT_Management.UI.FormTypeDevices
             txtHDD.DataBindings.Add("text", datable, "HDD");
             txtOS.DataBindings.Add("text", datable, "OS");
             txtBuydate.DataBindings.Add("text", datable, "BuyDate");
-            lbSW.DataBindings.Add("text", datable, "SoftWare");
+            txtSW.DataBindings.Add("text", datable, "SoftWare");
+            var arrData = txtSW.Text.Split(',');
+            loadDataListBox(arrData);
             #endregion
+        }
+
+        private void loadDataListBox(string[] arrData)
+        {
+            foreach (string item in arrData) {
+                lbSW.Items.Add(item);
+            }
         }
 
         public void ClearDataGipView() {
@@ -197,14 +198,12 @@ namespace IT_Management.UI.FormTypeDevices
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            cbFactorys.Enabled = true;
-            cbParts.Enabled = true;
-            cbPartment.Enabled = true;
+            txtSW.Clear();
+            enableTrue();
             txtIdPc.Clear();
             txtUserName.Clear();
             txtPcName.Clear();
             cbLocation.Text = "-- Select location --";
-            cbLocation.Enabled = true;
             cbFactorys.Text = "";
             cbParts.Text = "";
             cbPartment.Text = "";
@@ -217,19 +216,34 @@ namespace IT_Management.UI.FormTypeDevices
             txtOS.Clear();
             txtSW.Clear();
             lbSW.Text = "";
-            btnInsert.Enabled = true;
-            btnDelete.Enabled = true;
-            btnUpdate.Enabled = true;
 
             txtUserName.Focus();
+        }
+        public void enableTrue()
+        {
+            btnInsert.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            btnAddSW.Enabled = true;
+            cbFactorys.Enabled = true;
+            cbParts.Enabled = true;
+            cbPartment.Enabled = true;
+            cbLocation.Enabled = true;
+            txtUserName.Enabled = true;
+            txtIP.Enabled = true;
+            txtMAC.Enabled = true;
+            txtCPU.Enabled = true;
+            txtRAM.Enabled = true;
+            txtHDD.Enabled = true;
+            txtOS.Enabled = true;
+            txtModel.Enabled = true;
+            txtBuydate.Enabled = true;
+            txtSW.Enabled = true;
+            lbSW.Enabled = true;
         }
 
         private void cbLocation_Click(object sender, EventArgs e)
         {
-            this.cbLocation.Enabled = true;
-            this.cbLocation.Text = "-- Select location --";
-            this.cbFactorys.Enabled = true;
-            this.cbFactorys.Text = "-- Select factory --";
             LoadLocation();
         }
         private void txtBuydate_Leave(object sender, EventArgs e)
@@ -253,9 +267,8 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cbFactorys.Show();
-           // var idLocation = this.cbLocation.SelectedValue.ToString();
-           // LoadListFactoryByLocation(idLocation);
+            var idLocation = this.cbLocation.SelectedValue.ToString();
+            LoadListFactoryByLocation(idLocation);
         }
 
         private void LoadListFactoryByLocation(string idLocation)
@@ -269,9 +282,8 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbFactorys_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cbParts.Show();
-            //var idFactory = this.cbFactorys.SelectedValue.ToString();
-            //LoadListPartByFactory(idFactory);
+            var idFactory = this.cbFactorys.SelectedValue.ToString();
+            LoadListPartByFactory(idFactory);
         }
 
         private void LoadListPartByFactory(string idFactory)
@@ -283,20 +295,6 @@ namespace IT_Management.UI.FormTypeDevices
             cbParts.DisplayMember = "PartName";
             cbParts.ValueMember = "Id";
         }
-
-        private void cbPartment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //var idpartment = this.cbPartment.SelectedValue.ToString();
-            //LoadlistPartmentbyPart();
-        }
-
-        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-                //cbPartment.Show();
-                //var idPart = this.cbParts.SelectedValue.ToString();
-                //LoadListPartmentByPart(idPart);
-        }
-
         private void LoadListPartmentByPart(string idPart)
         {
             cbPartment.DataSource = null;
@@ -305,36 +303,62 @@ namespace IT_Management.UI.FormTypeDevices
             cbPartment.DisplayMember = "PartmentName";
             cbPartment.ValueMember = "Id";
         }
+        private void cbParts_Click(object sender, EventArgs e)
+        {
+            
+        }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            var soft = "";
+            foreach (var item in lbSW.Items)
+            {
+                soft = soft + "," + item;
+            }
+            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='"+cbPartment.Text+"'";
+            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+            String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
+            var strUpdate = "update DeviceInfos set NameUser='"+txtUserName.Text+"',MACAdress='"+txtMAC.Text+"',IPAdress='"+txtIP.Text+"',Model='"+txtModel.Text+"',CPU='"+txtCPU.Text+"',RAM='"+txtRAM.Text+"',HDD='"+txtHDD.Text+"',OS='"+txtOS.Text+"',SoftWare='"+ soft.Substring(1)+"',BuyDate='"+txtBuydate.Text+"',IdPartment='"+ getIdPartmnet.ToString()+ "' where id='"+txtIdPc.Text+"'";
+            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+            if (Updated > 0)
+            {
+                MessageBox.Show("Update Sucess !!!");
+                pcLoaddata();
+            }
+            else {
+                MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPc.Text + "'");
+            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
+            if (Delete > 0)
+            {
+                MessageBox.Show("Delete Sucess !!!");
+                pcLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Delete Fall :(");
+            }
         }
 
-        private void cbLocation_Click_1(object sender, EventArgs e)
+        private void lbSW_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idLocation = this.cbLocation.SelectedValue.ToString();
+            
         }
 
-        private void cbFactorys_Click(object sender, EventArgs e)
+        private void lbSW_DoubleClick(object sender, EventArgs e)
         {
-            idFactory = this.cbFactorys.SelectedValue.ToString();
-            LoadListFactoryByLocation(idLocation);
+            lbSW.Items.Remove(lbSW.SelectedItem);
         }
 
-        private void cbParts_Click(object sender, EventArgs e)
+        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            idPart = this.cbParts.SelectedValue.ToString();
-            LoadListPartByFactory(idFactory);
-        }
-
-        private void cbPartment_Click(object sender, EventArgs e)
-        {
+            var idPart = this.cbParts.SelectedValue.ToString();
             LoadListPartmentByPart(idPart);
         }
     }

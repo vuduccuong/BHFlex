@@ -26,9 +26,6 @@ namespace IT_Management.UI.FormTypeDevices
             btnInsertLap.Enabled = false;
             btnUpdateLap.Enabled = false;
             btnDeleteLap.Enabled = false;
-            //cbFactorys.Hide();
-            //cbParts.Hide();
-            //cbPartment.Hide();
             LoadLocation();
         }
 
@@ -67,9 +64,19 @@ namespace IT_Management.UI.FormTypeDevices
             txtHDD.DataBindings.Add("text", datable, "HDD");
             txtOS.DataBindings.Add("text", datable, "OS");
             txtBuydate.DataBindings.Add("text", datable, "BuyDate");
-            lbSW.DataBindings.Add("text", datable, "SoftWare");
+            txtSW.DataBindings.Add("text", datable, "SoftWare");
+            var arrData = txtSW.Text.Split(',');
+            LoadDataToListView(arrData);
             #endregion
 
+        }
+
+        private void LoadDataToListView(string[] arrData)
+        {
+           foreach(var item in arrData)
+            {
+                lbSW.Items.Add(item);
+            }
         }
 
         private void ClearDataGipView()
@@ -95,14 +102,12 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            cbFactorys.Enabled=true;
-            cbParts.Enabled = true;
-            cbPartment.Enabled = true;
+            enableTrue();
+            txtSW.Clear();
             txtIdPc.Clear();
             txtUserName.Clear();
             txtPcName.Clear();
             cbLocation.Text = "-- Select location --";
-            cbLocation.Enabled = true;
             cbFactorys.Text = "";
             cbParts.Text = "";
             cbPartment.Text = "";
@@ -115,18 +120,33 @@ namespace IT_Management.UI.FormTypeDevices
             txtOS.Clear();
             txtSW.Clear();
             lbSW.Text = "";
+            
+            txtUserName.Focus();
+        }
+        public void enableTrue() {
             btnInsertLap.Enabled = true;
             btnUpdateLap.Enabled = true;
             btnDeleteLap.Enabled = true;
-
-
-
-            txtUserName.Focus();
+            btnAddSW.Enabled = true;
+            cbFactorys.Enabled = true;
+            cbParts.Enabled = true;
+            cbPartment.Enabled = true;
+            cbLocation.Enabled = true;
+            txtUserName.Enabled = true;
+            txtIP.Enabled = true;
+            txtMAC.Enabled = true;
+            txtCPU.Enabled = true;
+            txtRAM.Enabled = true;
+            txtHDD.Enabled = true;
+            txtOS.Enabled = true;
+            txtModel.Enabled = true;
+            txtBuydate.Enabled = true;
+            txtSW.Enabled = true;
+            lbSW.Enabled = true;
         }
 
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbFactorys.Show();
             var idLocation = this.cbLocation.SelectedValue.ToString();
             LoadListFactoryByLocation(idLocation);
         }
@@ -142,9 +162,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbLocation_Click(object sender, EventArgs e)
         {
-
-            //this.cbLocation.Enabled = true;
-            //this.cbLocation.Text = "-- Select location --";
+            this.cbLocation.Text = "-- Select location --";
             //this.cbFactorys.Enabled = true;
             //this.cbFactorys.Text = "-- Select factory --";
             //LoadLocation();
@@ -170,7 +188,6 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbFactorys_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbParts.Show();
             var idFactory = this.cbFactorys.SelectedValue.ToString();
             LoadListPartByFactory(idFactory);
         }
@@ -187,10 +204,8 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbParts_Click(object sender, EventArgs e)
         {
-            cbPartment.Show();
             var idPart = this.cbParts.SelectedValue.ToString();
             LoadListPartmentByPart(idPart);
-            cbPartment.Show();
         }
 
         private void LoadListPartmentByPart(string idPart)
@@ -209,9 +224,8 @@ namespace IT_Management.UI.FormTypeDevices
             {
                 soft = soft + "," + item;
             }
-
             //var idDevideInfo = Guid.NewGuid();
-            var IdDevices = String.Format("select Id from TypeDevices where NameDeviceType='" + NameDevice + "'");
+            var IdDevices = String.Format("select Id from TypeDevices where NameDeviceType='laptop'");
             var IdDevice = DataProvider.Instance.ExecuteQuery(IdDevices);
             String getIdDevices = IdDevice.Rows[0][0].ToString();
             var idPartment = cbPartment.SelectedValue.ToString();
@@ -266,12 +280,44 @@ namespace IT_Management.UI.FormTypeDevices
             var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
             if (Delete > 0)
             {
-                MessageBox.Show("Sucess !!!");
+                MessageBox.Show("Delete Sucess !!!");
                 pcLoaddata();
             }
             else {
-                MessageBox.Show("Fall :(");
+                MessageBox.Show("Delete Fall :(");
             }
+        }
+
+        private void btnUpdateLap_Click(object sender, EventArgs e)
+        {
+            var soft = "";
+            foreach (var item in lbSW.Items)
+            {
+                soft = soft + "," + item;
+            }
+            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='"+cbPartment.Text+"'";
+            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+            String getIdPartmnet = idPartment.Rows[0][0].ToString();
+            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + txtModel.Text + "',CPU='" + txtCPU.Text + "',RAM='" + txtRAM.Text + "',HDD='" + txtHDD.Text + "',OS='" + txtOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtIdPc.Text + "'";
+            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+            if (Updated > 0)
+            {
+                MessageBox.Show("Update Sucess !!!");
+                pcLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Update fall \nLỗi lòi mắt rồi :(");
+            }
+        }
+        private void lbSW_DoubleClick(object sender, EventArgs e)
+        {
+            lbSW.Items.Remove(lbSW.SelectedItem);
+        }
+
+        private void lbSW_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
