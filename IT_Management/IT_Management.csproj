@@ -48,6 +48,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\CustommerDAO.cs" />
@@ -100,6 +103,12 @@
     </Compile>
     <Compile Include="UI\ADD DATA\fmPartment.Designer.cs">
       <DependentUpon>fmPartment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\fmBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\fmBarcode.Designer.cs">
+      <DependentUpon>fmBarcode.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\fmData.cs">
       <SubType>Form</SubType>
@@ -211,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmPartment.resx">
       <DependentUpon>fmPartment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\fmBarcode.resx">
+      <DependentUpon>fmBarcode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>
