@@ -68,7 +68,7 @@ namespace IT_Management.UI.FormTypeDevices
             cbFactorys.ValueMember = "Id";
         }
 
-        private void btnInsert_Click(object sender, EventArgs e)
+        private void btnInsert_Click_1(object sender, EventArgs e)
         {
             var soft = "";
             foreach (var item in lbSW.Items)
@@ -196,7 +196,7 @@ namespace IT_Management.UI.FormTypeDevices
             cbLocation.DisplayMember = "LocationName";
             cbLocation.ValueMember = "Id";
         }
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnNew_Click_1(object sender, EventArgs e)
         {
             txtSW.Clear();
             enableTrue();
@@ -308,7 +308,7 @@ namespace IT_Management.UI.FormTypeDevices
             cbPartment.ValueMember = "Id";
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click_1(object sender, EventArgs e)
         {
             var soft = "";
             foreach (var item in lbSW.Items)
@@ -331,7 +331,7 @@ namespace IT_Management.UI.FormTypeDevices
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
             var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPc.Text + "'");
             var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
@@ -355,6 +355,5 @@ namespace IT_Management.UI.FormTypeDevices
         {
             lbSW.Items.Remove(lbSW.SelectedItem);
         }
-
     }
 }
