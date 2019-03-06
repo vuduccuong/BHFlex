@@ -305,6 +305,7 @@
             // 
             // btnUpdateLap
             // 
+            this.btnUpdateLap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdateLap.BackgroundImage")));
             this.btnUpdateLap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdateLap.Location = new System.Drawing.Point(886, 320);
             this.btnUpdateLap.Name = "btnUpdateLap";
