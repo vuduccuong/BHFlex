@@ -54,53 +54,6 @@ namespace IT_Management.UI.FormTypeDevices
             #endregion
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            #region Enabled=true
-            btnInsert.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            cbFactorys.Enabled = true;
-            cbParts.Enabled = true;
-            cbPartment.Enabled = true;
-            cbLocation.Enabled = true;
-            txtUserName.Enabled = true;
-            txtIPPrinter.Enabled = true;
-            txtModel.Enabled = true;
-            txtBuydate.Enabled = true;
-            #endregion
-            txtIdPrinter.Clear();
-            txtUserName.Clear();
-            txtPrinterName.Clear();
-            cbLocation.Text = "-- Select location --";
-            cbFactorys.Text = "";
-            cbParts.Text = "";
-            cbPartment.Text = "";
-            txtModel.Clear();
-            txtIPPrinter.Clear();
-        }
-
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+txtTypeDiveces.Text+"'");
-            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
-            String getIdDevices = IdDevice.Rows[0][0].ToString();
-
-            var idPartment = cbPartment.SelectedValue.ToString();
-
-            var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,IPAdress,Model,BuyDate,IdDevice,IdPartment,isDelete) values('" + txtIdPrinter.Text + "', '"+txtTypeDiveces.Text+"', '" + txtUserName.Text + "','" + txtPrinterName.Text + "','"+txtIPPrinter.Text+"', '" + txtModel.Text + "', '" + txtBuydate.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
-            var check = DataProvider.Instance.ExecuteNonQuery(query);
-            if (check > 0)
-            {
-                MessageBox.Show("Succes !!!");
-                printerLoaddata();
-            }
-            else
-            {
-                MessageBox.Show("Error !!!");
-            }
-        }
-
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             var idLocation = this.cbLocation.SelectedValue.ToString();
@@ -161,11 +114,6 @@ namespace IT_Management.UI.FormTypeDevices
             cbPartment.ValueMember = "Id";
         }
 
-        private void cbPartment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtBuydate_Leave(object sender, EventArgs e)
         {
             String lastIp = null;
@@ -184,7 +132,48 @@ namespace IT_Management.UI.FormTypeDevices
             txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnNew_Click_2(object sender, EventArgs e)
+        {
+            #region Enabled=true
+            btnInsert.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
+            cbFactorys.Enabled = true;
+            cbParts.Enabled = true;
+            cbPartment.Enabled = true;
+            cbLocation.Enabled = true;
+            txtUserName.Enabled = true;
+            txtIPPrinter.Enabled = true;
+            txtModel.Enabled = true;
+            txtBuydate.Enabled = true;
+            #endregion
+            txtIdPrinter.Clear();
+            txtUserName.Clear();
+            txtPrinterName.Clear();
+            cbLocation.Text = "-- Select location --";
+            cbFactorys.Text = "";
+            cbParts.Text = "";
+            cbPartment.Text = "";
+            txtModel.Clear();
+            txtIPPrinter.Clear();
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPrinter.Text + "'");
+            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
+            if (Delete > 0)
+            {
+                MessageBox.Show("Delete Sucess !!!");
+                printerLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Delete Fall :(");
+            }
+        }
+
+        private void btnUpdate_Click_1(object sender, EventArgs e)
         {
             var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
             var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
@@ -203,18 +192,24 @@ namespace IT_Management.UI.FormTypeDevices
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnInsert_Click_1(object sender, EventArgs e)
         {
-            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPrinter.Text + "'");
-            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
-            if (Delete > 0)
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='" + txtTypeDiveces.Text + "'");
+            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
+            String getIdDevices = IdDevice.Rows[0][0].ToString();
+
+            var idPartment = cbPartment.SelectedValue.ToString();
+
+            var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,IPAdress,Model,BuyDate,IdDevice,IdPartment,isDelete) values('" + txtIdPrinter.Text + "', '" + txtTypeDiveces.Text + "', '" + txtUserName.Text + "','" + txtPrinterName.Text + "','" + txtIPPrinter.Text + "', '" + txtModel.Text + "', '" + txtBuydate.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+            var check = DataProvider.Instance.ExecuteNonQuery(query);
+            if (check > 0)
             {
-                MessageBox.Show("Delete Sucess !!!");
+                MessageBox.Show("Succes !!!");
                 printerLoaddata();
             }
             else
             {
-                MessageBox.Show("Delete Fall :(");
+                MessageBox.Show("Error !!!");
             }
         }
     }

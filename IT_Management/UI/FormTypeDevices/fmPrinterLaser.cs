@@ -210,5 +210,9 @@ namespace IT_Management.UI.FormTypeDevices
             txtIdPrinter.Text = (String.Format(name + "PR" + lastIp + setBuydate));
             txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
         }
+        private void dgvPCDesktop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
