@@ -24,10 +24,11 @@ namespace IT_Management.UI.FormTypeDevices
             PrinterLoadData();
         }
         public void PrinterLoadData() {
-            String strLoaddata = "select di.Id, di.NameUser,di.pcName, di.NameDevice, di.IPAdress, di.BuyDate, di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text + "' and di.isDelete='0'";
+            String strLoaddata = "select di.id, di.NameDevice, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.IPAdress, di.BuyDate, di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text + "' and di.isDelete='0'";
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPCDesktop.DataSource = datable;
             #region ClearDatabindings
+            txtid.DataBindings.Clear();
             txtIdPrinter.DataBindings.Clear();
             txtUserName.DataBindings.Clear();
             txtPrinterName.DataBindings.Clear();
@@ -40,9 +41,10 @@ namespace IT_Management.UI.FormTypeDevices
             txtBuydate.DataBindings.Clear();
             #endregion
             #region addDataBindinds
-            txtIdPrinter.DataBindings.Add("text", datable, "id");
+            txtid.DataBindings.Add("text",datable,"id");
+            txtIdPrinter.DataBindings.Add("text", datable, "idDevice");
             txtUserName.DataBindings.Add("text", datable, "NameUser");
-            txtPrinterName.DataBindings.Add("text", datable, "PcName");
+            txtPrinterName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
             cbLocation.DataBindings.Add("text", datable, "NameLocation");
             cbFactorys.DataBindings.Add("text", datable, "NameFactory");
             cbParts.DataBindings.Add("text", datable, "NamePart");
@@ -86,7 +88,7 @@ namespace IT_Management.UI.FormTypeDevices
 
             var idPartment = cbPartment.SelectedValue.ToString();
 
-            var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,IPAdress,Model,BuyDate,IdDevice,IdPartment,isDelete) values('" + txtIdPrinter.Text + "', '" + txtTypeDiveces.Text + "', '" + txtUserName.Text + "','" + txtPrinterName.Text + "','" + txtIPPrinter.Text + "', '" + txtModel.Text + "', '" + txtBuydate.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+            var query = String.Format("insert into DeviceInfos(IdDevice,NameDevice,NameUser,nameTypeDeviceInfos,IPAdress,Model,BuyDate,idDeviceType,IdPartment,isDelete) values('" + txtIdPrinter.Text + "', '" + txtTypeDiveces.Text + "', '" + txtUserName.Text + "','" + txtPrinterName.Text + "','" + txtIPPrinter.Text + "', '" + txtModel.Text + "', '" + txtBuydate.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
             var check = DataProvider.Instance.ExecuteNonQuery(query);
             if (check > 0)
             {
@@ -105,7 +107,7 @@ namespace IT_Management.UI.FormTypeDevices
             var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
             String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
-            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',IPAdress='" + txtIPPrinter.Text + "',Model='" + txtModel.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtIdPrinter.Text + "'";
+            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',IPAdress='" + txtIPPrinter.Text + "',Model='" + txtModel.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtid.Text + "'";
             var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
             if (Updated > 0)
             {
@@ -119,7 +121,7 @@ namespace IT_Management.UI.FormTypeDevices
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtIdPrinter.Text + "'");
+            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
             var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
             if (Delete > 0)
             {
@@ -211,6 +213,11 @@ namespace IT_Management.UI.FormTypeDevices
             txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
         }
         private void dgvPCDesktop_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

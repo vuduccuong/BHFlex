@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPrinterPhotoCopy));
             this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
-            this.txtModel = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +57,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.txtModel = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,15 +75,6 @@
             this.dgvPCDesktop.Name = "dgvPCDesktop";
             this.dgvPCDesktop.Size = new System.Drawing.Size(1106, 320);
             this.dgvPCDesktop.TabIndex = 0;
-            // 
-            // txtModel
-            // 
-            this.txtModel.Enabled = false;
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(534, 240);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(168, 26);
-            this.txtModel.TabIndex = 48;
             // 
             // label15
             // 
@@ -351,8 +343,9 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtModel);
+            this.panel1.Controls.Add(this.txtid);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
@@ -382,6 +375,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1118, 308);
             this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -393,6 +387,22 @@
             this.label4.Size = new System.Drawing.Size(261, 31);
             this.label4.TabIndex = 50;
             this.label4.Text = "Printer Photo Copy";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(626, 245);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(76, 20);
+            this.txtid.TabIndex = 51;
+            // 
+            // txtModel
+            // 
+            this.txtModel.Enabled = false;
+            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModel.Location = new System.Drawing.Point(534, 240);
+            this.txtModel.Name = "txtModel";
+            this.txtModel.Size = new System.Drawing.Size(168, 26);
+            this.txtModel.TabIndex = 52;
             // 
             // fmPrinterPhotoCopy
             // 
@@ -415,7 +425,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgvPCDesktop;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.DateTimePicker txtBuydate;
@@ -443,5 +452,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtModel;
+        private System.Windows.Forms.TextBox txtid;
     }
 }

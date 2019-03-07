@@ -32,13 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.18, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +55,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\CustommerDAO.cs" />
@@ -57,6 +67,11 @@
     <Compile Include="DAO\LocationDAO.cs" />
     <Compile Include="DAO\PartDAO.cs" />
     <Compile Include="DAO\PartmentDAO.cs" />
+    <Compile Include="DATASET\DeviceInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeviceInfo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DTO\Custommer.cs" />
     <Compile Include="DTO\DeviceType.cs" />
     <Compile Include="DTO\Factory.cs" />
@@ -69,6 +84,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="REPORT\RPDeviceInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPDeviceInfo.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ADD DATA\fmAddData.cs">
       <SubType>Form</SubType>
@@ -112,11 +133,11 @@
     <Compile Include="UI\fmData.Designer.cs">
       <DependentUpon>fmData.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormStart.cs">
+    <Compile Include="UI\fmStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormStart.Designer.cs">
-      <DependentUpon>FormStart.cs</DependentUpon>
+    <Compile Include="UI\fmStart.Designer.cs">
+      <DependentUpon>fmStart.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormTypeDevices\fmBarcodePrinter.cs">
       <SubType>Form</SubType>
@@ -195,6 +216,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="REPORT\RPDeviceInfo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPDeviceInfo.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmAddData.resx">
       <DependentUpon>fmAddData.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,8 +241,8 @@
     <EmbeddedResource Include="UI\fmData.resx">
       <DependentUpon>fmData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormStart.resx">
-      <DependentUpon>FormStart.cs</DependentUpon>
+    <EmbeddedResource Include="UI\fmStart.resx">
+      <DependentUpon>fmStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormTypeDevices\fmBarcodePrinter.resx">
       <DependentUpon>fmBarcodePrinter.cs</DependentUpon>
@@ -255,6 +280,17 @@
     <EmbeddedResource Include="UI\FormTypeDevices\fmTypeDevices.resx">
       <DependentUpon>fmTypeDevices.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DATASET\DeviceInfo.xsc">
+      <DependentUpon>DeviceInfo.xsd</DependentUpon>
+    </None>
+    <None Include="DATASET\DeviceInfo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DeviceInfo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DATASET\DeviceInfo.xss">
+      <DependentUpon>DeviceInfo.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -269,7 +305,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Icon\0657a660a706f97.jpg" />
     <Content Include="Icon\asdada.PNG" />

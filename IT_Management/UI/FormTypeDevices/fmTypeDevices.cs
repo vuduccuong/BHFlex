@@ -152,7 +152,7 @@ namespace IT_Management.UI.FormTypeDevices
         private void fmTypeDevices_Leave(object sender, EventArgs e)
         {
             this.Hide();
-            new FormStart().ShowDialog();
+            new fmStart().ShowDialog();
         }
     }
 }

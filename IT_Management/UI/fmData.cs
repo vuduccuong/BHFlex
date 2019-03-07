@@ -1,7 +1,9 @@
 ﻿using IT_Management.DAO;
 using IT_Management.DTO;
+using IT_Management.REPORT;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,29 +15,27 @@ namespace IT_Management.UI
         public fmData()
         {
             InitializeComponent();
-            button1.Text = "Load Data";
+           
             //dtgData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
     
         }
 
         private void fmData_Load(object sender, EventArgs e)
         {
-            //LoadCustommer();
+            GetAllDeviceInfos();
         }
 
-        private void LoadCustommer()
+        private void GetAllDeviceInfos()
         {
-            List<Custommer> lstCustommer = CustommerDAO.Instance.GetListCustommer();
-            if (lstCustommer.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu");
-            }
-            //dtgData.DataSource = lstCustommer;
-        }
+            var query = "Select * from DeviceInfos";
+            
+           var tlbDeviceInfos = DataProvider.Instance.ExecuteQuery(query);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadCustommer();
+            RPDeviceInfo rp = new RPDeviceInfo();
+            rp.SetDataSource(tlbDeviceInfos);
+            crystalReportViewer1.ReportSource = rp;
+            crystalReportViewer1.RefreshReport();
+
         }
     }
 }

@@ -35,7 +35,6 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtModel = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +57,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.txtModel = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.SuspendLayout();
@@ -67,12 +68,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.txtModel);
+            this.panel1.Controls.Add(this.txtid);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnInsert);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtModel);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
@@ -98,6 +100,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1145, 326);
             this.panel1.TabIndex = 6;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnDelete
             // 
@@ -159,15 +162,6 @@
             this.label4.Size = new System.Drawing.Size(149, 31);
             this.label4.TabIndex = 50;
             this.label4.Text = "Printer Ink";
-            // 
-            // txtModel
-            // 
-            this.txtModel.Enabled = false;
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(544, 235);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(168, 26);
-            this.txtModel.TabIndex = 48;
             // 
             // label15
             // 
@@ -395,6 +389,22 @@
             this.dgvPCDesktop.Size = new System.Drawing.Size(1139, 336);
             this.dgvPCDesktop.TabIndex = 0;
             // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(652, 238);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(60, 20);
+            this.txtid.TabIndex = 61;
+            // 
+            // txtModel
+            // 
+            this.txtModel.Enabled = false;
+            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModel.Location = new System.Drawing.Point(544, 235);
+            this.txtModel.Name = "txtModel";
+            this.txtModel.Size = new System.Drawing.Size(168, 26);
+            this.txtModel.TabIndex = 62;
+            // 
             // fmPrinterInk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,7 +428,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.DateTimePicker txtBuydate;
@@ -445,5 +454,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.TextBox txtModel;
+        private System.Windows.Forms.TextBox txtid;
     }
 }

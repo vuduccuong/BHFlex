@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPcLaptop));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbSW = new System.Windows.Forms.ListBox();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
             this.txtSW = new System.Windows.Forms.TextBox();
@@ -74,6 +73,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPCLaptop = new System.Windows.Forms.DataGridView();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.lbSW = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCLaptop)).BeginInit();
             this.SuspendLayout();
@@ -83,8 +84,9 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.lbSW);
+            this.panel1.Controls.Add(this.txtid);
+            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
             this.panel1.Controls.Add(this.txtSW);
@@ -130,7 +132,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1126, 388);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label16
             // 
@@ -142,17 +143,6 @@
             this.label16.Size = new System.Drawing.Size(172, 29);
             this.label16.TabIndex = 53;
             this.label16.Text = "PC - LAPTOP";
-            // 
-            // lbSW
-            // 
-            this.lbSW.Enabled = false;
-            this.lbSW.FormattingEnabled = true;
-            this.lbSW.Location = new System.Drawing.Point(789, 104);
-            this.lbSW.Name = "lbSW";
-            this.lbSW.Size = new System.Drawing.Size(270, 108);
-            this.lbSW.TabIndex = 19;
-            this.lbSW.SelectedIndexChanged += new System.EventHandler(this.lbSW_SelectedIndexChanged);
-            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick);
             // 
             // cbLocation
             // 
@@ -291,6 +281,7 @@
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 6;
+            this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             this.cbParts.Click += new System.EventHandler(this.cbParts_Click);
             // 
             // cbPartment
@@ -584,6 +575,23 @@
             this.dgvPCLaptop.Size = new System.Drawing.Size(1119, 273);
             this.dgvPCLaptop.TabIndex = 0;
             // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(996, 177);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(39, 20);
+            this.txtid.TabIndex = 54;
+            // 
+            // lbSW
+            // 
+            this.lbSW.Enabled = false;
+            this.lbSW.FormattingEnabled = true;
+            this.lbSW.Location = new System.Drawing.Point(789, 109);
+            this.lbSW.Name = "lbSW";
+            this.lbSW.Size = new System.Drawing.Size(270, 108);
+            this.lbSW.TabIndex = 55;
+            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick_1);
+            // 
             // fmPcLaptop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,7 +614,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox lbSW;
         private System.Windows.Forms.ComboBox cbLocation;
         private System.Windows.Forms.DateTimePicker txtBuydate;
         private System.Windows.Forms.TextBox txtSW;
@@ -650,5 +657,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvPCLaptop;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ListBox lbSW;
+        private System.Windows.Forms.TextBox txtid;
     }
 }

@@ -44,14 +44,15 @@ namespace IT_Management.UI.FormTypeDevices
 
         public void pcLoaddata()
         {
-            String strLoaddata = "select di.Id, di.NameUser,di.pcName, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='"+txtTypeDiveces.Text+ "' and di.isDelete='0';";
+            String strLoaddata = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text+ "' and di.isDelete='0';";
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPCLaptop.DataSource = datable;
             ClearDataGipView();
             #region DataBindinds
-            txtIdPc.DataBindings.Add("text", datable, "id");
+            txtid.DataBindings.Add("text", datable, "id");
+            txtIdPc.DataBindings.Add("text", datable, "idDevice");
             txtUserName.DataBindings.Add("text", datable, "NameUser");
-            txtPcName.DataBindings.Add("text", datable, "pcName");
+            txtPcName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
             cbLocation.DataBindings.Add("text", datable, "NameLocation");
             cbFactorys.DataBindings.Add("text", datable, "NameFactory");
             cbParts.DataBindings.Add("text", datable, "NamePart");
@@ -81,6 +82,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void ClearDataGipView()
         {
+            txtid.DataBindings.Clear();
             txtIdPc.DataBindings.Clear();
             txtUserName.DataBindings.Clear();
             txtPcName.DataBindings.Clear();
@@ -147,12 +149,13 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var idLocation = this.cbLocation.SelectedValue.ToString();
-            LoadListFactoryByLocation(idLocation);
+            if (this.cbLocation.SelectedValue !=null) {
+                var idLocation = this.cbLocation.SelectedValue.ToString();
+                LoadListFactoryByLocation(idLocation);
+            }
         }
         private void LoadListFactoryByLocation(string idLocation)
         {
-
             List<Factory> lstFactory = FactoryDAO.Instance.GetListFactoryByLocation(idLocation);
             cbFactorys.DataSource = lstFactory;
 
@@ -188,8 +191,11 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbFactorys_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var idFactory = this.cbFactorys.SelectedValue.ToString();
-            LoadListPartByFactory(idFactory);
+            if (this.cbLocation.SelectedValue != null)
+            {
+                var idFactory = this.cbFactorys.SelectedValue.ToString();
+                LoadListPartByFactory(idFactory);
+            }
         }
 
         private void LoadListPartByFactory(string idFactory)
@@ -204,17 +210,8 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void cbParts_Click(object sender, EventArgs e)
         {
-            var idPart = this.cbParts.SelectedValue.ToString();
-            LoadListPartmentByPart(idPart);
-        }
-
-        private void LoadListPartmentByPart(string idPart)
-        {
-            cbPartment.DataSource = null;
-            List<Partment> lstPartment = PartmentDAO.Instance.GetListPartmentByPart(idPart);
-            cbPartment.DataSource = lstPartment;
-            cbPartment.DisplayMember = "PartmentName";
-            cbPartment.ValueMember = "Id";
+            //var idPart = this.cbParts.SelectedValue.ToString();
+            //LoadListPartmentByPart(idPart);
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -230,7 +227,7 @@ namespace IT_Management.UI.FormTypeDevices
             String getIdDevices = IdDevice.Rows[0][0].ToString();
             var idPartment = cbPartment.SelectedValue.ToString();
 
-            var query = String.Format("insert into DeviceInfos(Id,NameDevice,NameUser,pcName,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,IdDevice,IdPartment,isDelete) values('" + txtIdPc.Text + "', 'Laptop', '" + txtUserName.Text + "','"+txtPcName.Text+"', '" + txtMAC.Text + "', '" + txtIP.Text + "', '" + txtModel.Text + "', '" + txtCPU.Text + "', '" + txtRAM.Text + "', '" + txtHDD.Text + "', '" + txtOS.Text + "', '" + txtBuydate.Text + "','" + soft.Substring(1) + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+            var query = String.Format("insert into DeviceInfos(IdDevice,NameDevice,NameUser,nameTypeDeviceInfos,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,idDeviceType,IdPartment,isDelete) values('" + txtIdPc.Text + "', 'Laptop', '" + txtUserName.Text + "','"+txtPcName.Text+"', '" + txtMAC.Text + "', '" + txtIP.Text + "', '" + txtModel.Text + "', '" + txtCPU.Text + "', '" + txtRAM.Text + "', '" + txtHDD.Text + "', '" + txtOS.Text + "', '" + txtBuydate.Text + "','" + soft.Substring(1) + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
             var check = DataProvider.Instance.ExecuteNonQuery(query);
             if (check > 0)
             {
@@ -276,7 +273,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='"+txtIdPc.Text+"'");
+            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='"+txtid.Text+"'");
             var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
             if (Delete > 0)
             {
@@ -298,7 +295,7 @@ namespace IT_Management.UI.FormTypeDevices
             var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='"+cbPartment.Text+"'";
             var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
             String getIdPartmnet = idPartment.Rows[0][0].ToString();
-            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + txtModel.Text + "',CPU='" + txtCPU.Text + "',RAM='" + txtRAM.Text + "',HDD='" + txtHDD.Text + "',OS='" + txtOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtIdPc.Text + "'";
+            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + txtModel.Text + "',CPU='" + txtCPU.Text + "',RAM='" + txtRAM.Text + "',HDD='" + txtHDD.Text + "',OS='" + txtOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "' where id='" + txtid.Text + "'";
             var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
             if (Updated > 0)
             {
@@ -310,19 +307,28 @@ namespace IT_Management.UI.FormTypeDevices
                 MessageBox.Show("Update fall \nLỗi lòi mắt rồi :(");
             }
         }
-        private void lbSW_DoubleClick(object sender, EventArgs e)
+
+        private void cbParts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cbParts.SelectedValue != null)
+            {
+                var idPart = this.cbParts.SelectedValue.ToString();
+                LoadListPartmentByPart(idPart);
+            }
+        }
+
+        private void LoadListPartmentByPart(string idPart)
+        {
+            //cbPartment.DataSource = null;
+            List<Partment> lstPartment = PartmentDAO.Instance.GetListPartmentByPart(idPart);
+            cbPartment.DataSource = lstPartment;
+            cbPartment.DisplayMember = "PartmentName";
+            cbPartment.ValueMember = "Id";
+        }
+
+        private void lbSW_DoubleClick_1(object sender, EventArgs e)
         {
             lbSW.Items.Remove(lbSW.SelectedItem);
-        }
-
-        private void lbSW_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

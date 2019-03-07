@@ -124,7 +124,7 @@ namespace IT_Management.UI.ADD_DATA
         private void fmAddData_Leave(object sender, EventArgs e)
         {
             this.Hide();
-            new FormStart().ShowDialog();
+            new fmStart().ShowDialog();
         }
     }
 }

@@ -78,7 +78,6 @@ namespace IT_Management.DAO
                         }
                     }
                 }
-
                 data = command.ExecuteNonQuery();
 
                 connection.Close();

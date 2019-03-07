@@ -68,13 +68,14 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbSW = new System.Windows.Forms.ListBox();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
             this.txtSW = new System.Windows.Forms.TextBox();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.txtTypeDiveces = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.lbSW = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
@@ -412,12 +413,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lbSW);
+            this.panel1.Controls.Add(this.txtid);
             this.panel1.Controls.Add(this.btnNew);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnInsert);
             this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.lbSW);
             this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
             this.panel1.Controls.Add(this.txtSW);
@@ -520,17 +522,6 @@
             this.label16.TabIndex = 48;
             this.label16.Text = "PC - DESKTOP";
             // 
-            // lbSW
-            // 
-            this.lbSW.Enabled = false;
-            this.lbSW.FormattingEnabled = true;
-            this.lbSW.Location = new System.Drawing.Point(789, 95);
-            this.lbSW.Name = "lbSW";
-            this.lbSW.Size = new System.Drawing.Size(270, 108);
-            this.lbSW.TabIndex = 19;
-            this.lbSW.SelectedIndexChanged += new System.EventHandler(this.lbSW_SelectedIndexChanged);
-            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick);
-            // 
             // cbLocation
             // 
             this.cbLocation.CausesValidation = false;
@@ -592,6 +583,22 @@
             this.label7.Size = new System.Drawing.Size(111, 20);
             this.label7.TabIndex = 47;
             this.label7.Text = "Name Devices";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(1023, 186);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(36, 20);
+            this.txtid.TabIndex = 54;
+            // 
+            // lbSW
+            // 
+            this.lbSW.FormattingEnabled = true;
+            this.lbSW.Location = new System.Drawing.Point(789, 98);
+            this.lbSW.Name = "lbSW";
+            this.lbSW.Size = new System.Drawing.Size(270, 108);
+            this.lbSW.TabIndex = 55;
+            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick_1);
             // 
             // fmPcDesktop
             // 
@@ -655,11 +662,12 @@
         private System.Windows.Forms.TextBox txtSW;
         private System.Windows.Forms.DateTimePicker txtBuydate;
         private System.Windows.Forms.ComboBox cbLocation;
-        private System.Windows.Forms.ListBox lbSW;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.ListBox lbSW;
+        private System.Windows.Forms.TextBox txtid;
     }
 }

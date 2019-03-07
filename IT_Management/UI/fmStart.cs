@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace IT_Management.UI
 {
-    public partial class FormStart : Form
+    public partial class fmStart : Form
     {
-        public FormStart()
+        public fmStart()
         {
             InitializeComponent();
         }
