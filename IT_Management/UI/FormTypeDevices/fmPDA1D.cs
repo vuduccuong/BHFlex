@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,25 +20,51 @@ namespace IT_Management.UI.FormTypeDevices
             InitializeComponent();
         }
 
+        public void Inserted()
+        {
+            int ip = txtIPPDA1D.Text.Length;
+            int model = cbModel.Text.Length;
+            int mac = txtMAC.Text.Length;
+            int buydate = txtBuydate.Text.Length;
+            int location = cbLocation.Text.Length;
+            int factory = cbFactorys.Text.Length;
+            int part = cbParts.Text.Length;
+            int partment = cbPartment.Text.Length;
+            int note = rtbNote.Text.Length;
+
+            if ( ip == 0 || model == 0 || mac == 0 || buydate <= 0 || location<=0 || factory <= 0 || part <= 0 || partment <= 0 || note <= 0)
+            {
+                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dia == DialogResult.Yes)
+                {
+                    var strIdDevices = String.Format("select id from TypeDevices where NameDeviceType='PDA 1D'");
+                    var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
+                    String getIdDevices = IdDevice.Rows[0][0].ToString();
+
+                    var idPartment = cbPartment.SelectedValue.ToString();
+
+                    var query = String.Format("insert into DeviceInfos(IdDevice,nameTypeDeviceInfos,NameDevice,IPAdress,MACAdress,Model,BuyDate,Note,idDeviceType,IdPartment,isDelete) values('" + txtPDAName.Text + "','" + txtPDAName.Text + "','PDA 1D','" + txtIPPDA1D.Text + "', '" + txtMAC.Text + "','" + cbModel.Text + "', '" + txtBuydate.Text + "','" + rtbNote.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+                    var check = DataProvider.Instance.ExecuteNonQuery(query);
+                    if (check > 0)
+                    {
+                        MessageBox.Show("Insert Succes !!!");
+                        PDALoaddata();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Faill !!!");
+                    }
+                }
+                else
+                {
+                    rtbNote.Focus();
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {                                                                   // chú ý NameDeviceType =?
-            var strIdDevices = String.Format("select id from TypeDevices where NameDeviceType='PDA 2D'");
-            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
-            String getIdDevices = IdDevice.Rows[0][0].ToString();
-
-            var idPartment = cbPartment.SelectedValue.ToString();
-
-            var query = String.Format("insert into DeviceInfos(IdDevice,nameTypeDeviceInfos,NameDevice,IPAdress,Model,BuyDate,Note,idDeviceType,IdPartment,isDelete) values('" + txtPDAName.Text+ "','" + txtPDAName.Text + "','PDA 1D','" + txtIPPDA1D.Text + "', '" + txtMAC.Text + "', '" + txtBuydate.Text + "','" + rtbNote.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
-            var check = DataProvider.Instance.ExecuteNonQuery(query);
-            if (check > 0)
-            {
-                MessageBox.Show("Insert Succes !!!");
-                PDALoaddata();
-            }
-            else
-            {
-                MessageBox.Show("Faill !!!");
-            }
+            Inserted();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -52,6 +79,7 @@ namespace IT_Management.UI.FormTypeDevices
             rtbNote.Clear();
 
             txtIPPDA1D.Enabled = true;
+            cbModel.Enabled = true;
             txtMAC.Enabled = true;
             txtBuydate.Enabled = true;
             cbLocation.Enabled = true;
@@ -85,24 +113,28 @@ namespace IT_Management.UI.FormTypeDevices
             String strLoaddata = "select di.id,di.NameDevice, di.nameTypeDeviceInfos, di.IPAdress,di.MACAdress, di.Model, di.BuyDate, lc.NameLocation, fa.NameFactory, p.NamePart, pt.NamePartment, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='PDA 1D' and di.isDelete='0'";
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPDA1D.DataSource = datable;
-
+            txtMAC.Enabled = false;
+            lbMACError.Hide();
+            lbIpError.Hide();
             #region ClearDataBindings
+            txtMAC.DataBindings.Clear();
             txtid.DataBindings.Clear();
             txtPDAName.DataBindings.Clear();
             txtIPPDA1D.DataBindings.Clear();
-            txtMAC.DataBindings.Clear();
             rtbNote.DataBindings.Clear();
             cbLocation.DataBindings.Clear();
             cbFactorys.DataBindings.Clear();
             cbParts.DataBindings.Clear();
             cbPartment.DataBindings.Clear();
+            cbModel.DataBindings.Clear();
 
             #endregion
             #region DataBindinds
+            txtMAC.DataBindings.Add("text",datable, "MACAdress");
             txtid.DataBindings.Add("text", datable, "id");
             txtPDAName.DataBindings.Add("text",datable, "nameTypeDeviceInfos");
             txtIPPDA1D.DataBindings.Add("text", datable, "IPAdress");
-            txtMAC.DataBindings.Add("text", datable, "Model");
+            cbModel.DataBindings.Add("text", datable, "Model");
             rtbNote.DataBindings.Add("text", datable, "Note");
             cbLocation.DataBindings.Add("text", datable, "NameLocation");
             cbFactorys.DataBindings.Add("text", datable, "NameFactory");
@@ -175,6 +207,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void txtBuydate_Leave(object sender, EventArgs e)
         {
+            try { 
             String lastIp = null;
             string[] listPara = txtIPPDA1D.Text.ToString().Split('.');
             lastIp += listPara[2];
@@ -188,6 +221,12 @@ namespace IT_Management.UI.FormTypeDevices
             string name = getCodeLocation.Rows[0][0].ToString();
 
             txtPDAName.Text = (String.Format(name + "P1D" + lastIp + setBuydate));
+            }
+            catch
+            {
+                MessageBox.Show("Vui Lòng Nhập IP và Locition");
+                txtIPPDA1D.Focus();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -196,7 +235,7 @@ namespace IT_Management.UI.FormTypeDevices
             var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
             String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
-            var strUpdate = "update DeviceInfos set Model='" + txtMAC.Text + "',idDevice='" + txtPDAName.Text+ "',nameTypeDeviceInfos='"+txtPDAName.Text+"', IPAdress='" + txtIPPDA1D.Text+"',BuyDate='"+txtBuydate.Text+"',IdPartment='"+getIdPartmnet+"' where id='"+ txtid.Text+"'";
+            var strUpdate = "update DeviceInfos set Model='" + cbModel.Text + "',MACAdress='"+txtMAC.Text+"',idDevice='" + txtPDAName.Text+ "',nameTypeDeviceInfos='"+txtPDAName.Text+"', IPAdress='" + txtIPPDA1D.Text+"',BuyDate='"+txtBuydate.Text+"',IdPartment='"+getIdPartmnet+"' where id='"+ txtid.Text+"'";
             var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
             if (Updated > 0)
             {
@@ -232,6 +271,51 @@ namespace IT_Management.UI.FormTypeDevices
             {
                 MessageBox.Show("Delete Fall :(");
             }
+        }
+
+        private void lbIpError_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIPPDA1D_Leave(object sender, EventArgs e)
+        {
+            var a = txtIPPDA1D.Text;
+            if (a.Length < 7 | a.Length > 15)
+            {
+                MessageBox.Show("The IP address must be in the form of 000.111.222.333");
+                lbIpError.Show();
+                txtIPPDA1D.Focus();
+            }
+            else
+            {
+                lbIpError.Hide();
+            }
+        }
+
+        private void txtMAC_Leave(object sender, EventArgs e)
+        {
+            var a = txtMAC.Text;
+            if (a.Length != 17)
+            {
+                MessageBox.Show("The MAC address must be in the form of A1:B2:C3:D4:E5:G6");
+                lbMACError.Show();
+                txtMAC.Focus();
+            }
+            else
+            {
+                lbMACError.Hide();
+            }
+        }
+
+        private void txtIPPDA1D_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            var a = txtIPPDA1D.Text;
+            var b = Regex.IsMatch(a, @"\.");
         }
     }
 }

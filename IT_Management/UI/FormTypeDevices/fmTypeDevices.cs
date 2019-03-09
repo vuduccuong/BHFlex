@@ -105,7 +105,7 @@ namespace IT_Management.UI.FormTypeDevices
 
             if (e.Node.Text == "Scanner 1D")
             {
-                fmScanner1D sc1D = new fmScanner1D();
+                fmBarScanner1D sc1D = new fmBarScanner1D();
 
                 panelTypeDevices.Controls.Clear();
                 sc1D.TopLevel = false;
@@ -139,7 +139,7 @@ namespace IT_Management.UI.FormTypeDevices
                 scWifi2D.Show();
             }
             if (e.Node.Text == "Barcode Printer") {
-                fmBarcodePrinter barPrinter= new fmBarcodePrinter();
+                fmBarCodePrinter barPrinter= new fmBarCodePrinter();
 
                 panelTypeDevices.Controls.Clear();
                 barPrinter.TopLevel = false;
@@ -153,6 +153,16 @@ namespace IT_Management.UI.FormTypeDevices
         {
             this.Hide();
             new fmStart().ShowDialog();
+        }
+
+        private void panelTypeDevices_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

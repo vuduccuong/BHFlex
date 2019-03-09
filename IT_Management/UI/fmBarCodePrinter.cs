@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace IT_Management.UI
 {
-    public partial class fmData : Form
+    public partial class fmBarCodePrinter : Form
     {
 
-        public fmData()
+        public fmBarCodePrinter()
         {
             InitializeComponent();
            
@@ -31,7 +31,7 @@ namespace IT_Management.UI
             
            var tlbDeviceInfos = DataProvider.Instance.ExecuteQuery(query);
 
-            RPDeviceInfo rp = new RPDeviceInfo();
+            TEST rp = new TEST();
             rp.SetDataSource(tlbDeviceInfos);
             crystalReportViewer1.ReportSource = rp;
             crystalReportViewer1.RefreshReport();

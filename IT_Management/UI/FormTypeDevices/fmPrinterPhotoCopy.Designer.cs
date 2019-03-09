@@ -56,9 +56,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.rtbNote = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbModel = new System.Windows.Forms.ComboBox();
+            this.lbMACError = new System.Windows.Forms.Label();
+            this.lbIpError = new System.Windows.Forms.Label();
+            this.txtMAC = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
-            this.txtModel = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -71,9 +77,9 @@
             this.dgvPCDesktop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPCDesktop.BackgroundColor = System.Drawing.Color.Khaki;
             this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPCDesktop.Location = new System.Drawing.Point(3, 315);
+            this.dgvPCDesktop.Location = new System.Drawing.Point(3, 339);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
-            this.dgvPCDesktop.Size = new System.Drawing.Size(1106, 320);
+            this.dgvPCDesktop.Size = new System.Drawing.Size(1110, 339);
             this.dgvPCDesktop.TabIndex = 0;
             // 
             // label15
@@ -95,19 +101,21 @@
             this.cbLocation.Location = new System.Drawing.Point(534, 72);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 5;
+            this.cbLocation.TabIndex = 3;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
             // txtBuydate
             // 
+            this.txtBuydate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuydate.CustomFormat = "yyyy/MM/dd";
             this.txtBuydate.Enabled = false;
+            this.txtBuydate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBuydate.Location = new System.Drawing.Point(534, 282);
+            this.txtBuydate.Location = new System.Drawing.Point(534, 280);
             this.txtBuydate.Name = "txtBuydate";
-            this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 9;
+            this.txtBuydate.Size = new System.Drawing.Size(168, 26);
+            this.txtBuydate.TabIndex = 8;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -115,10 +123,11 @@
             // 
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.Tomato;
+            this.btnNew.Image = global::IT_Management.Properties.Resources.icon3;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNew.Location = new System.Drawing.Point(795, 158);
+            this.btnNew.Location = new System.Drawing.Point(795, 193);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(272, 51);
+            this.btnNew.Size = new System.Drawing.Size(272, 44);
             this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -162,7 +171,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(534, 114);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
-            this.cbFactorys.TabIndex = 6;
+            this.cbFactorys.TabIndex = 4;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // cbParts
@@ -173,7 +182,7 @@
             this.cbParts.Location = new System.Drawing.Point(534, 156);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
-            this.cbParts.TabIndex = 7;
+            this.cbParts.TabIndex = 5;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // cbPartment
@@ -184,14 +193,14 @@
             this.cbPartment.Location = new System.Drawing.Point(534, 198);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
-            this.cbPartment.TabIndex = 8;
+            this.cbPartment.TabIndex = 6;
             // 
             // btnUpdate
             // 
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(894, 221);
+            this.btnUpdate.Location = new System.Drawing.Point(894, 249);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 57);
             this.btnUpdate.TabIndex = 12;
@@ -203,7 +212,7 @@
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(992, 221);
+            this.btnDelete.Location = new System.Drawing.Point(992, 249);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 57);
             this.btnDelete.TabIndex = 13;
@@ -215,7 +224,7 @@
             this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
             this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInsert.Enabled = false;
-            this.btnInsert.Location = new System.Drawing.Point(795, 221);
+            this.btnInsert.Location = new System.Drawing.Point(795, 249);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 57);
             this.btnInsert.TabIndex = 11;
@@ -229,7 +238,9 @@
             this.txtIPPrinter.Location = new System.Drawing.Point(182, 240);
             this.txtIPPrinter.Name = "txtIPPrinter";
             this.txtIPPrinter.Size = new System.Drawing.Size(168, 26);
-            this.txtIPPrinter.TabIndex = 4;
+            this.txtIPPrinter.TabIndex = 1;
+            this.txtIPPrinter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPPrinter_KeyPress);
+            this.txtIPPrinter.Leave += new System.EventHandler(this.txtIPPrinter_Leave);
             // 
             // txtPrinterName
             // 
@@ -247,7 +258,7 @@
             this.txtUserName.Location = new System.Drawing.Point(182, 156);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(168, 26);
-            this.txtUserName.TabIndex = 2;
+            this.txtUserName.TabIndex = 0;
             // 
             // txtIdPrinter
             // 
@@ -343,7 +354,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.txtModel);
+            this.panel1.Controls.Add(this.rtbNote);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.cbModel);
+            this.panel1.Controls.Add(this.lbMACError);
+            this.panel1.Controls.Add(this.lbIpError);
+            this.panel1.Controls.Add(this.txtMAC);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtid);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label15);
@@ -373,9 +390,93 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-5, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1118, 308);
-            this.panel1.TabIndex = 8;
+            this.panel1.Size = new System.Drawing.Size(1118, 335);
+            this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // rtbNote
+            // 
+            this.rtbNote.Enabled = false;
+            this.rtbNote.Location = new System.Drawing.Point(795, 72);
+            this.rtbNote.Name = "rtbNote";
+            this.rtbNote.Size = new System.Drawing.Size(272, 102);
+            this.rtbNote.TabIndex = 9;
+            this.rtbNote.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(736, 75);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 20);
+            this.label17.TabIndex = 108;
+            this.label17.Text = "Note";
+            // 
+            // cbModel
+            // 
+            this.cbModel.Enabled = false;
+            this.cbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "HP",
+            "Dell",
+            "Asus",
+            "LG",
+            "Motorola"});
+            this.cbModel.Location = new System.Drawing.Point(534, 241);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(168, 26);
+            this.cbModel.TabIndex = 7;
+            // 
+            // lbMACError
+            // 
+            this.lbMACError.AutoSize = true;
+            this.lbMACError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMACError.ForeColor = System.Drawing.Color.Red;
+            this.lbMACError.Location = new System.Drawing.Point(356, 285);
+            this.lbMACError.Name = "lbMACError";
+            this.lbMACError.Size = new System.Drawing.Size(29, 37);
+            this.lbMACError.TabIndex = 69;
+            this.lbMACError.Text = "*";
+            // 
+            // lbIpError
+            // 
+            this.lbIpError.AutoSize = true;
+            this.lbIpError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIpError.ForeColor = System.Drawing.Color.Red;
+            this.lbIpError.Location = new System.Drawing.Point(356, 243);
+            this.lbIpError.Name = "lbIpError";
+            this.lbIpError.Size = new System.Drawing.Size(29, 37);
+            this.lbIpError.TabIndex = 68;
+            this.lbIpError.Text = "*";
+            // 
+            // txtMAC
+            // 
+            this.txtMAC.Enabled = false;
+            this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMAC.Location = new System.Drawing.Point(182, 280);
+            this.txtMAC.Name = "txtMAC";
+            this.txtMAC.Size = new System.Drawing.Size(168, 26);
+            this.txtMAC.TabIndex = 2;
+            this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(60, 282);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 20);
+            this.label9.TabIndex = 67;
+            this.label9.Text = "MAC";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(626, 245);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(76, 20);
+            this.txtid.TabIndex = 51;
             // 
             // label4
             // 
@@ -387,22 +488,6 @@
             this.label4.Size = new System.Drawing.Size(261, 31);
             this.label4.TabIndex = 50;
             this.label4.Text = "Printer Photo Copy";
-            // 
-            // txtid
-            // 
-            this.txtid.Location = new System.Drawing.Point(626, 245);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(76, 20);
-            this.txtid.TabIndex = 51;
-            // 
-            // txtModel
-            // 
-            this.txtModel.Enabled = false;
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(534, 240);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(168, 26);
-            this.txtModel.TabIndex = 52;
             // 
             // fmPrinterPhotoCopy
             // 
@@ -452,7 +537,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.TextBox txtMAC;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbMACError;
+        private System.Windows.Forms.Label lbIpError;
+        private System.Windows.Forms.ComboBox cbModel;
+        private System.Windows.Forms.RichTextBox rtbNote;
+        private System.Windows.Forms.Label label17;
     }
 }

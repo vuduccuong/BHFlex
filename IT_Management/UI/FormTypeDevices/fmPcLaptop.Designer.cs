@@ -30,12 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPcLaptop));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rtbNote = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbModel = new System.Windows.Forms.ComboBox();
+            this.cbOS = new System.Windows.Forms.ComboBox();
+            this.cbHDD = new System.Windows.Forms.ComboBox();
+            this.cbRAM = new System.Windows.Forms.ComboBox();
+            this.cbCPU = new System.Windows.Forms.ComboBox();
+            this.lbMACError = new System.Windows.Forms.Label();
+            this.lbSW = new System.Windows.Forms.ListBox();
+            this.lbIpError = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.cbLocation = new System.Windows.Forms.ComboBox();
             this.txtBuydate = new System.Windows.Forms.DateTimePicker();
             this.txtSW = new System.Windows.Forms.TextBox();
             this.btnNewLap = new System.Windows.Forms.Button();
-            this.txtModel = new System.Windows.Forms.TextBox();
             this.txtTypeDiveces = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -49,10 +61,6 @@
             this.btnDeleteLap = new System.Windows.Forms.Button();
             this.btnInsertLap = new System.Windows.Forms.Button();
             this.btnAddSW = new System.Windows.Forms.Button();
-            this.txtOS = new System.Windows.Forms.TextBox();
-            this.txtHDD = new System.Windows.Forms.TextBox();
-            this.txtRAM = new System.Windows.Forms.TextBox();
-            this.txtCPU = new System.Windows.Forms.TextBox();
             this.txtMAC = new System.Windows.Forms.TextBox();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.txtPcName = new System.Windows.Forms.TextBox();
@@ -73,8 +81,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPCLaptop = new System.Windows.Forms.DataGridView();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.lbSW = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCLaptop)).BeginInit();
             this.SuspendLayout();
@@ -84,14 +90,24 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.txtSearchByPcName);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.rtbNote);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.cbModel);
+            this.panel1.Controls.Add(this.cbOS);
+            this.panel1.Controls.Add(this.cbHDD);
+            this.panel1.Controls.Add(this.cbRAM);
+            this.panel1.Controls.Add(this.cbCPU);
+            this.panel1.Controls.Add(this.lbMACError);
             this.panel1.Controls.Add(this.lbSW);
+            this.panel1.Controls.Add(this.lbIpError);
             this.panel1.Controls.Add(this.txtid);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.cbLocation);
             this.panel1.Controls.Add(this.txtBuydate);
             this.panel1.Controls.Add(this.txtSW);
             this.panel1.Controls.Add(this.btnNewLap);
-            this.panel1.Controls.Add(this.txtModel);
             this.panel1.Controls.Add(this.txtTypeDiveces);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label15);
@@ -105,10 +121,6 @@
             this.panel1.Controls.Add(this.btnDeleteLap);
             this.panel1.Controls.Add(this.btnInsertLap);
             this.panel1.Controls.Add(this.btnAddSW);
-            this.panel1.Controls.Add(this.txtOS);
-            this.panel1.Controls.Add(this.txtHDD);
-            this.panel1.Controls.Add(this.txtRAM);
-            this.panel1.Controls.Add(this.txtCPU);
             this.panel1.Controls.Add(this.txtMAC);
             this.panel1.Controls.Add(this.txtIP);
             this.panel1.Controls.Add(this.txtPcName);
@@ -131,7 +143,167 @@
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1126, 388);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtSearchByPcName
+            // 
+            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.txtSearchByPcName.Location = new System.Drawing.Point(789, 8);
+            this.txtSearchByPcName.Name = "txtSearchByPcName";
+            this.txtSearchByPcName.Size = new System.Drawing.Size(186, 26);
+            this.txtSearchByPcName.TabIndex = 21;
+            this.txtSearchByPcName.Text = "Search by PCName";
+            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(981, 8);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 26);
+            this.button1.TabIndex = 22;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // rtbNote
+            // 
+            this.rtbNote.Enabled = false;
+            this.rtbNote.Location = new System.Drawing.Point(789, 198);
+            this.rtbNote.Name = "rtbNote";
+            this.rtbNote.Size = new System.Drawing.Size(272, 62);
+            this.rtbNote.TabIndex = 16;
+            this.rtbNote.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(730, 201);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 20);
+            this.label17.TabIndex = 104;
+            this.label17.Text = "Note";
+            // 
+            // cbModel
+            // 
+            this.cbModel.Enabled = false;
+            this.cbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "HP",
+            "Dell",
+            "Asus",
+            "LG",
+            "Motorola"});
+            this.cbModel.Location = new System.Drawing.Point(493, 275);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(168, 26);
+            this.cbModel.TabIndex = 11;
+            // 
+            // cbOS
+            // 
+            this.cbOS.Enabled = false;
+            this.cbOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbOS.FormattingEnabled = true;
+            this.cbOS.Items.AddRange(new object[] {
+            "Windows XP",
+            "Windows 7",
+            "Windows 8",
+            "Windows 10",
+            "Unbutu",
+            "Linux",
+            "Mac OS X"});
+            this.cbOS.Location = new System.Drawing.Point(493, 240);
+            this.cbOS.Name = "cbOS";
+            this.cbOS.Size = new System.Drawing.Size(168, 26);
+            this.cbOS.TabIndex = 10;
+            // 
+            // cbHDD
+            // 
+            this.cbHDD.Enabled = false;
+            this.cbHDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbHDD.FormattingEnabled = true;
+            this.cbHDD.Items.AddRange(new object[] {
+            "120GB",
+            "500GB",
+            "1000GB (1TB)"});
+            this.cbHDD.Location = new System.Drawing.Point(493, 206);
+            this.cbHDD.Name = "cbHDD";
+            this.cbHDD.Size = new System.Drawing.Size(168, 26);
+            this.cbHDD.TabIndex = 9;
+            // 
+            // cbRAM
+            // 
+            this.cbRAM.Enabled = false;
+            this.cbRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbRAM.FormattingEnabled = true;
+            this.cbRAM.Items.AddRange(new object[] {
+            "1GB",
+            "2GB",
+            "4GB",
+            "8GB",
+            "16GB",
+            "32GB"});
+            this.cbRAM.Location = new System.Drawing.Point(493, 171);
+            this.cbRAM.Name = "cbRAM";
+            this.cbRAM.Size = new System.Drawing.Size(168, 26);
+            this.cbRAM.TabIndex = 8;
+            // 
+            // cbCPU
+            // 
+            this.cbCPU.Enabled = false;
+            this.cbCPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCPU.FormattingEnabled = true;
+            this.cbCPU.Items.AddRange(new object[] {
+            "Intel Core i3",
+            "Intel Core i5",
+            "Intel Core i7"});
+            this.cbCPU.Location = new System.Drawing.Point(493, 139);
+            this.cbCPU.Name = "cbCPU";
+            this.cbCPU.Size = new System.Drawing.Size(168, 26);
+            this.cbCPU.TabIndex = 7;
+            // 
+            // lbMACError
+            // 
+            this.lbMACError.AutoSize = true;
+            this.lbMACError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMACError.ForeColor = System.Drawing.Color.Red;
+            this.lbMACError.Location = new System.Drawing.Point(667, 105);
+            this.lbMACError.Name = "lbMACError";
+            this.lbMACError.Size = new System.Drawing.Size(29, 37);
+            this.lbMACError.TabIndex = 65;
+            this.lbMACError.Text = "*";
+            // 
+            // lbSW
+            // 
+            this.lbSW.Enabled = false;
+            this.lbSW.FormattingEnabled = true;
+            this.lbSW.Location = new System.Drawing.Point(789, 109);
+            this.lbSW.Name = "lbSW";
+            this.lbSW.Size = new System.Drawing.Size(270, 82);
+            this.lbSW.TabIndex = 15;
+            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick_1);
+            // 
+            // lbIpError
+            // 
+            this.lbIpError.AutoSize = true;
+            this.lbIpError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIpError.ForeColor = System.Drawing.Color.Red;
+            this.lbIpError.Location = new System.Drawing.Point(667, 70);
+            this.lbIpError.Name = "lbIpError";
+            this.lbIpError.Size = new System.Drawing.Size(29, 37);
+            this.lbIpError.TabIndex = 64;
+            this.lbIpError.Text = "*";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(1020, 145);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(39, 20);
+            this.txtid.TabIndex = 54;
             // 
             // label16
             // 
@@ -152,7 +324,7 @@
             this.cbLocation.Location = new System.Drawing.Point(151, 208);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 4;
+            this.cbLocation.TabIndex = 1;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
@@ -164,7 +336,7 @@
             this.txtBuydate.Location = new System.Drawing.Point(493, 315);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 16;
+            this.txtBuydate.TabIndex = 12;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -175,7 +347,7 @@
             this.txtSW.Location = new System.Drawing.Point(789, 70);
             this.txtSW.Name = "txtSW";
             this.txtSW.Size = new System.Drawing.Size(186, 26);
-            this.txtSW.TabIndex = 17;
+            this.txtSW.TabIndex = 13;
             // 
             // btnNewLap
             // 
@@ -187,19 +359,10 @@
             this.btnNewLap.Location = new System.Drawing.Point(787, 271);
             this.btnNewLap.Name = "btnNewLap";
             this.btnNewLap.Size = new System.Drawing.Size(272, 40);
-            this.btnNewLap.TabIndex = 20;
+            this.btnNewLap.TabIndex = 17;
             this.btnNewLap.Text = "New";
             this.btnNewLap.UseVisualStyleBackColor = true;
             this.btnNewLap.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // txtModel
-            // 
-            this.txtModel.Enabled = false;
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(493, 276);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(168, 26);
-            this.txtModel.TabIndex = 15;
             // 
             // txtTypeDiveces
             // 
@@ -269,7 +432,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(151, 241);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
-            this.cbFactorys.TabIndex = 5;
+            this.cbFactorys.TabIndex = 2;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // cbParts
@@ -280,7 +443,7 @@
             this.cbParts.Location = new System.Drawing.Point(151, 276);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
-            this.cbParts.TabIndex = 6;
+            this.cbParts.TabIndex = 3;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             this.cbParts.Click += new System.EventHandler(this.cbParts_Click);
             // 
@@ -292,7 +455,7 @@
             this.cbPartment.Location = new System.Drawing.Point(151, 311);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
-            this.cbPartment.TabIndex = 7;
+            this.cbPartment.TabIndex = 4;
             // 
             // btnUpdateLap
             // 
@@ -301,7 +464,7 @@
             this.btnUpdateLap.Location = new System.Drawing.Point(886, 320);
             this.btnUpdateLap.Name = "btnUpdateLap";
             this.btnUpdateLap.Size = new System.Drawing.Size(75, 53);
-            this.btnUpdateLap.TabIndex = 22;
+            this.btnUpdateLap.TabIndex = 19;
             this.btnUpdateLap.UseVisualStyleBackColor = true;
             this.btnUpdateLap.Click += new System.EventHandler(this.btnUpdateLap_Click);
             // 
@@ -312,7 +475,7 @@
             this.btnDeleteLap.Location = new System.Drawing.Point(984, 320);
             this.btnDeleteLap.Name = "btnDeleteLap";
             this.btnDeleteLap.Size = new System.Drawing.Size(75, 53);
-            this.btnDeleteLap.TabIndex = 23;
+            this.btnDeleteLap.TabIndex = 20;
             this.btnDeleteLap.UseVisualStyleBackColor = true;
             this.btnDeleteLap.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -323,7 +486,7 @@
             this.btnInsertLap.Location = new System.Drawing.Point(787, 320);
             this.btnInsertLap.Name = "btnInsertLap";
             this.btnInsertLap.Size = new System.Drawing.Size(75, 53);
-            this.btnInsertLap.TabIndex = 21;
+            this.btnInsertLap.TabIndex = 18;
             this.btnInsertLap.UseVisualStyleBackColor = true;
             this.btnInsertLap.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -336,46 +499,10 @@
             this.btnAddSW.Location = new System.Drawing.Point(981, 70);
             this.btnAddSW.Name = "btnAddSW";
             this.btnAddSW.Size = new System.Drawing.Size(78, 28);
-            this.btnAddSW.TabIndex = 18;
+            this.btnAddSW.TabIndex = 14;
             this.btnAddSW.Text = "ADD SW";
             this.btnAddSW.UseVisualStyleBackColor = true;
             this.btnAddSW.Click += new System.EventHandler(this.btnAddSW_Click);
-            // 
-            // txtOS
-            // 
-            this.txtOS.Enabled = false;
-            this.txtOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOS.Location = new System.Drawing.Point(493, 241);
-            this.txtOS.Name = "txtOS";
-            this.txtOS.Size = new System.Drawing.Size(168, 26);
-            this.txtOS.TabIndex = 14;
-            // 
-            // txtHDD
-            // 
-            this.txtHDD.Enabled = false;
-            this.txtHDD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHDD.Location = new System.Drawing.Point(493, 207);
-            this.txtHDD.Name = "txtHDD";
-            this.txtHDD.Size = new System.Drawing.Size(168, 26);
-            this.txtHDD.TabIndex = 13;
-            // 
-            // txtRAM
-            // 
-            this.txtRAM.Enabled = false;
-            this.txtRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRAM.Location = new System.Drawing.Point(493, 172);
-            this.txtRAM.Name = "txtRAM";
-            this.txtRAM.Size = new System.Drawing.Size(168, 26);
-            this.txtRAM.TabIndex = 12;
-            // 
-            // txtCPU
-            // 
-            this.txtCPU.Enabled = false;
-            this.txtCPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPU.Location = new System.Drawing.Point(493, 138);
-            this.txtCPU.Name = "txtCPU";
-            this.txtCPU.Size = new System.Drawing.Size(168, 26);
-            this.txtCPU.TabIndex = 11;
             // 
             // txtMAC
             // 
@@ -384,7 +511,8 @@
             this.txtMAC.Location = new System.Drawing.Point(493, 104);
             this.txtMAC.Name = "txtMAC";
             this.txtMAC.Size = new System.Drawing.Size(168, 26);
-            this.txtMAC.TabIndex = 10;
+            this.txtMAC.TabIndex = 6;
+            this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
             // 
             // txtIP
             // 
@@ -393,7 +521,9 @@
             this.txtIP.Location = new System.Drawing.Point(493, 70);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(168, 26);
-            this.txtIP.TabIndex = 9;
+            this.txtIP.TabIndex = 5;
+            this.txtIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIP_KeyPress);
+            this.txtIP.Leave += new System.EventHandler(this.txtIP_Leave);
             // 
             // txtPcName
             // 
@@ -411,7 +541,7 @@
             this.txtUserName.Location = new System.Drawing.Point(151, 138);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(168, 26);
-            this.txtUserName.TabIndex = 2;
+            this.txtUserName.TabIndex = 0;
             // 
             // txtIdPc
             // 
@@ -575,23 +705,6 @@
             this.dgvPCLaptop.Size = new System.Drawing.Size(1119, 273);
             this.dgvPCLaptop.TabIndex = 0;
             // 
-            // txtid
-            // 
-            this.txtid.Location = new System.Drawing.Point(996, 177);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(39, 20);
-            this.txtid.TabIndex = 54;
-            // 
-            // lbSW
-            // 
-            this.lbSW.Enabled = false;
-            this.lbSW.FormattingEnabled = true;
-            this.lbSW.Location = new System.Drawing.Point(789, 109);
-            this.lbSW.Name = "lbSW";
-            this.lbSW.Size = new System.Drawing.Size(270, 108);
-            this.lbSW.TabIndex = 55;
-            this.lbSW.DoubleClick += new System.EventHandler(this.lbSW_DoubleClick_1);
-            // 
             // fmPcLaptop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,7 +731,6 @@
         private System.Windows.Forms.DateTimePicker txtBuydate;
         private System.Windows.Forms.TextBox txtSW;
         private System.Windows.Forms.Button btnNewLap;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.TextBox txtTypeDiveces;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label15;
@@ -632,10 +744,6 @@
         private System.Windows.Forms.Button btnDeleteLap;
         private System.Windows.Forms.Button btnInsertLap;
         private System.Windows.Forms.Button btnAddSW;
-        private System.Windows.Forms.TextBox txtOS;
-        private System.Windows.Forms.TextBox txtHDD;
-        private System.Windows.Forms.TextBox txtRAM;
-        private System.Windows.Forms.TextBox txtCPU;
         private System.Windows.Forms.TextBox txtMAC;
         private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.TextBox txtPcName;
@@ -659,5 +767,16 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ListBox lbSW;
         private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.Label lbMACError;
+        private System.Windows.Forms.Label lbIpError;
+        private System.Windows.Forms.ComboBox cbModel;
+        private System.Windows.Forms.ComboBox cbOS;
+        private System.Windows.Forms.ComboBox cbHDD;
+        private System.Windows.Forms.ComboBox cbRAM;
+        private System.Windows.Forms.ComboBox cbCPU;
+        private System.Windows.Forms.RichTextBox rtbNote;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtSearchByPcName;
+        private System.Windows.Forms.Button button1;
     }
 }

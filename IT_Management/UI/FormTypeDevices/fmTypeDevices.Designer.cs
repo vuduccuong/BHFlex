@@ -68,7 +68,9 @@
             this.treeViewTypeDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeViewTypeDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeViewTypeDevices.BackColor = System.Drawing.Color.Firebrick;
+            this.treeViewTypeDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeViewTypeDevices.ForeColor = System.Drawing.Color.Bisque;
             this.treeViewTypeDevices.ItemHeight = 22;
             this.treeViewTypeDevices.Location = new System.Drawing.Point(0, 0);
             this.treeViewTypeDevices.Name = "treeViewTypeDevices";
@@ -106,7 +108,7 @@
             treeNode16.Text = "TypeDevices";
             this.treeViewTypeDevices.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode16});
-            this.treeViewTypeDevices.Size = new System.Drawing.Size(217, 516);
+            this.treeViewTypeDevices.Size = new System.Drawing.Size(211, 607);
             this.treeViewTypeDevices.TabIndex = 0;
             this.treeViewTypeDevices.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewTypeDevices_AfterSelect);
             // 
@@ -115,18 +117,21 @@
             this.panelTypeDevices.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTypeDevices.Location = new System.Drawing.Point(223, 0);
+            this.panelTypeDevices.BackColor = System.Drawing.SystemColors.Info;
+            this.panelTypeDevices.Location = new System.Drawing.Point(208, -1);
             this.panelTypeDevices.Name = "panelTypeDevices";
-            this.panelTypeDevices.Size = new System.Drawing.Size(939, 516);
+            this.panelTypeDevices.Size = new System.Drawing.Size(912, 607);
             this.panelTypeDevices.TabIndex = 1;
+            this.panelTypeDevices.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTypeDevices_Paint);
             // 
             // fmTypeDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 517);
+            this.ClientSize = new System.Drawing.Size(1116, 608);
             this.Controls.Add(this.panelTypeDevices);
             this.Controls.Add(this.treeViewTypeDevices);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "fmTypeDevices";
             this.Text = "Type Devices";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

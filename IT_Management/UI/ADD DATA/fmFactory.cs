@@ -138,5 +138,10 @@ namespace IT_Management.UI.ADD_DATA
             this.btnSave.Text = "Update";
             this.btnSave.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

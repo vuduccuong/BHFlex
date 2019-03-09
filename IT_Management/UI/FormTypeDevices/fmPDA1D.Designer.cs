@@ -55,7 +55,9 @@
             this.txtid = new System.Windows.Forms.TextBox();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbMACError = new System.Windows.Forms.Label();
+            this.lbIpError = new System.Windows.Forms.Label();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +68,7 @@
             this.btnInsert.Location = new System.Drawing.Point(824, 286);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 53);
-            this.btnInsert.TabIndex = 10;
+            this.btnInsert.TabIndex = 11;
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -87,7 +89,9 @@
             this.txtIPPDA1D.Location = new System.Drawing.Point(529, 128);
             this.txtIPPDA1D.Name = "txtIPPDA1D";
             this.txtIPPDA1D.Size = new System.Drawing.Size(190, 26);
-            this.txtIPPDA1D.TabIndex = 1;
+            this.txtIPPDA1D.TabIndex = 5;
+            this.txtIPPDA1D.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPPDA1D_KeyPress);
+            this.txtIPPDA1D.Leave += new System.EventHandler(this.txtIPPDA1D_Leave);
             // 
             // label2
             // 
@@ -103,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(427, 217);
+            this.label3.Location = new System.Drawing.Point(427, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 5;
@@ -112,10 +116,11 @@
             // txtMAC
             // 
             this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMAC.Location = new System.Drawing.Point(529, 214);
+            this.txtMAC.Location = new System.Drawing.Point(529, 171);
             this.txtMAC.Name = "txtMAC";
             this.txtMAC.Size = new System.Drawing.Size(190, 26);
-            this.txtMAC.TabIndex = 2;
+            this.txtMAC.TabIndex = 6;
+            this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
             // 
             // btnUpdate
             // 
@@ -124,7 +129,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(924, 286);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 53);
-            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -135,7 +140,7 @@
             this.btnDelete.Location = new System.Drawing.Point(1024, 286);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 53);
-            this.btnDelete.TabIndex = 12;
+            this.btnDelete.TabIndex = 13;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -158,7 +163,7 @@
             this.btnNew.Location = new System.Drawing.Point(824, 236);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(275, 44);
-            this.btnNew.TabIndex = 9;
+            this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -168,9 +173,9 @@
             this.dgvPDA1D.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPDA1D.BackgroundColor = System.Drawing.Color.Khaki;
             this.dgvPDA1D.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPDA1D.Location = new System.Drawing.Point(0, 352);
+            this.dgvPDA1D.Location = new System.Drawing.Point(2, 359);
             this.dgvPDA1D.Name = "dgvPDA1D";
-            this.dgvPDA1D.Size = new System.Drawing.Size(1130, 347);
+            this.dgvPDA1D.Size = new System.Drawing.Size(1130, 417);
             this.dgvPDA1D.TabIndex = 12;
             // 
             // cbLocation
@@ -182,7 +187,7 @@
             this.cbLocation.Location = new System.Drawing.Point(161, 87);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(190, 26);
-            this.cbLocation.TabIndex = 3;
+            this.cbLocation.TabIndex = 0;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
@@ -195,7 +200,7 @@
             this.txtBuydate.Location = new System.Drawing.Point(529, 257);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(190, 26);
-            this.txtBuydate.TabIndex = 7;
+            this.txtBuydate.TabIndex = 8;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -217,7 +222,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(161, 129);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(190, 26);
-            this.cbFactorys.TabIndex = 4;
+            this.cbFactorys.TabIndex = 1;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // cbParts
@@ -228,7 +233,7 @@
             this.cbParts.Location = new System.Drawing.Point(161, 171);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(190, 26);
-            this.cbParts.TabIndex = 5;
+            this.cbParts.TabIndex = 2;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // label6
@@ -269,7 +274,7 @@
             this.cbPartment.Location = new System.Drawing.Point(161, 215);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(190, 26);
-            this.cbPartment.TabIndex = 6;
+            this.cbPartment.TabIndex = 3;
             // 
             // labelPartment
             // 
@@ -297,7 +302,7 @@
             this.txtPDAName.Location = new System.Drawing.Point(529, 87);
             this.txtPDAName.Name = "txtPDAName";
             this.txtPDAName.Size = new System.Drawing.Size(190, 26);
-            this.txtPDAName.TabIndex = 0;
+            this.txtPDAName.TabIndex = 4;
             // 
             // txtid
             // 
@@ -312,7 +317,7 @@
             this.rtbNote.Location = new System.Drawing.Point(886, 87);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(213, 128);
-            this.rtbNote.TabIndex = 63;
+            this.rtbNote.TabIndex = 9;
             this.rtbNote.Text = "";
             this.rtbNote.TextChanged += new System.EventHandler(this.rtbNote_TextChanged);
             // 
@@ -320,19 +325,50 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(427, 173);
+            this.label8.Location = new System.Drawing.Point(427, 218);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 20);
             this.label8.TabIndex = 65;
             this.label8.Text = "Model";
             // 
-            // textBox1
+            // lbMACError
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(529, 170);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 26);
-            this.textBox1.TabIndex = 64;
+            this.lbMACError.AutoSize = true;
+            this.lbMACError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMACError.ForeColor = System.Drawing.Color.Red;
+            this.lbMACError.Location = new System.Drawing.Point(725, 171);
+            this.lbMACError.Name = "lbMACError";
+            this.lbMACError.Size = new System.Drawing.Size(29, 37);
+            this.lbMACError.TabIndex = 67;
+            this.lbMACError.Text = "*";
+            // 
+            // lbIpError
+            // 
+            this.lbIpError.AutoSize = true;
+            this.lbIpError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIpError.ForeColor = System.Drawing.Color.Red;
+            this.lbIpError.Location = new System.Drawing.Point(725, 128);
+            this.lbIpError.Name = "lbIpError";
+            this.lbIpError.Size = new System.Drawing.Size(29, 37);
+            this.lbIpError.TabIndex = 66;
+            this.lbIpError.Text = "*";
+            this.lbIpError.Click += new System.EventHandler(this.lbIpError_Click);
+            // 
+            // cbModel
+            // 
+            this.cbModel.Enabled = false;
+            this.cbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "HP",
+            "Dell",
+            "Asus",
+            "LG",
+            "Motorola"});
+            this.cbModel.Location = new System.Drawing.Point(529, 215);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(190, 26);
+            this.cbModel.TabIndex = 7;
             // 
             // fmPDA1D
             // 
@@ -340,8 +376,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1132, 647);
+            this.Controls.Add(this.cbModel);
+            this.Controls.Add(this.lbMACError);
+            this.Controls.Add(this.lbIpError);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.rtbNote);
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.label7);
@@ -370,6 +408,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fmPDA1D";
             this.Text = "PDA 1D";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fmPDA1D_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).EndInit();
             this.ResumeLayout(false);
@@ -405,6 +444,8 @@
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbMACError;
+        private System.Windows.Forms.Label lbIpError;
+        private System.Windows.Forms.ComboBox cbModel;
     }
 }

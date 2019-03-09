@@ -1,6 +1,6 @@
 ﻿namespace IT_Management.UI.FormTypeDevices
 {
-    partial class fmScanner1D
+    partial class fmBarScanner1D
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmScanner1D));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmBarScanner1D));
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,11 +49,15 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtModel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIPBarcodeScanner = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.txtMAC = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbMACError = new System.Windows.Forms.Label();
+            this.lbIpError = new System.Windows.Forms.Label();
+            this.cbModel = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +66,7 @@
             this.rtbNote.Location = new System.Drawing.Point(887, 85);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(213, 128);
-            this.rtbNote.TabIndex = 88;
+            this.rtbNote.TabIndex = 9;
             this.rtbNote.Text = "";
             // 
             // txtid
@@ -88,7 +92,7 @@
             this.txtBarcodeScannerName.Location = new System.Drawing.Point(575, 85);
             this.txtBarcodeScannerName.Name = "txtBarcodeScannerName";
             this.txtBarcodeScannerName.Size = new System.Drawing.Size(190, 26);
-            this.txtBarcodeScannerName.TabIndex = 64;
+            this.txtBarcodeScannerName.TabIndex = 4;
             // 
             // cbPartment
             // 
@@ -98,7 +102,7 @@
             this.cbPartment.Location = new System.Drawing.Point(128, 213);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(190, 26);
-            this.cbPartment.TabIndex = 73;
+            this.cbPartment.TabIndex = 3;
             // 
             // labelPartment
             // 
@@ -119,7 +123,7 @@
             this.cbLocation.Location = new System.Drawing.Point(128, 85);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(190, 26);
-            this.cbLocation.TabIndex = 69;
+            this.cbLocation.TabIndex = 0;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
@@ -129,10 +133,10 @@
             this.txtBuydate.Enabled = false;
             this.txtBuydate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBuydate.Location = new System.Drawing.Point(575, 213);
+            this.txtBuydate.Location = new System.Drawing.Point(575, 257);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(190, 26);
-            this.txtBuydate.TabIndex = 74;
+            this.txtBuydate.TabIndex = 8;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -140,7 +144,7 @@
             // 
             this.têt.AutoSize = true;
             this.têt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.têt.Location = new System.Drawing.Point(384, 218);
+            this.têt.Location = new System.Drawing.Point(384, 262);
             this.têt.Name = "têt";
             this.têt.Size = new System.Drawing.Size(75, 20);
             this.têt.TabIndex = 84;
@@ -154,7 +158,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(128, 127);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(190, 26);
-            this.cbFactorys.TabIndex = 70;
+            this.cbFactorys.TabIndex = 1;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // cbParts
@@ -165,7 +169,7 @@
             this.cbParts.Location = new System.Drawing.Point(128, 169);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(190, 26);
-            this.cbParts.TabIndex = 72;
+            this.cbParts.TabIndex = 2;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // label6
@@ -205,7 +209,7 @@
             this.dgvPDA1D.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPDA1D.Location = new System.Drawing.Point(1, 352);
             this.dgvPDA1D.Name = "dgvPDA1D";
-            this.dgvPDA1D.Size = new System.Drawing.Size(1130, 347);
+            this.dgvPDA1D.Size = new System.Drawing.Size(1131, 347);
             this.dgvPDA1D.TabIndex = 79;
             // 
             // btnNew
@@ -217,7 +221,7 @@
             this.btnNew.Location = new System.Drawing.Point(825, 234);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(275, 44);
-            this.btnNew.TabIndex = 76;
+            this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -239,7 +243,7 @@
             this.btnDelete.Location = new System.Drawing.Point(1025, 284);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 53);
-            this.btnDelete.TabIndex = 80;
+            this.btnDelete.TabIndex = 13;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -250,7 +254,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(925, 284);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 53);
-            this.btnUpdate.TabIndex = 78;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -258,19 +262,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(384, 171);
+            this.label3.Location = new System.Drawing.Point(384, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 20);
             this.label3.TabIndex = 71;
             this.label3.Text = "Model";
-            // 
-            // txtModel
-            // 
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(575, 168);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(190, 26);
-            this.txtModel.TabIndex = 67;
             // 
             // label2
             // 
@@ -288,7 +284,9 @@
             this.txtIPBarcodeScanner.Location = new System.Drawing.Point(575, 126);
             this.txtIPBarcodeScanner.Name = "txtIPBarcodeScanner";
             this.txtIPBarcodeScanner.Size = new System.Drawing.Size(190, 26);
-            this.txtIPBarcodeScanner.TabIndex = 65;
+            this.txtIPBarcodeScanner.TabIndex = 5;
+            this.txtIPBarcodeScanner.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPBarcodeScanner_KeyPress);
+            this.txtIPBarcodeScanner.Leave += new System.EventHandler(this.txtIPBarcodeScanner_Leave);
             // 
             // label1
             // 
@@ -308,16 +306,79 @@
             this.btnInsert.Location = new System.Drawing.Point(825, 284);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 53);
-            this.btnInsert.TabIndex = 77;
+            this.btnInsert.TabIndex = 11;
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // fmScanner1D
+            // txtMAC
+            // 
+            this.txtMAC.Enabled = false;
+            this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMAC.Location = new System.Drawing.Point(575, 169);
+            this.txtMAC.Name = "txtMAC";
+            this.txtMAC.Size = new System.Drawing.Size(190, 26);
+            this.txtMAC.TabIndex = 6;
+            this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(384, 172);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 20);
+            this.label9.TabIndex = 89;
+            this.label9.Text = "MAC";
+            // 
+            // lbMACError
+            // 
+            this.lbMACError.AutoSize = true;
+            this.lbMACError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMACError.ForeColor = System.Drawing.Color.Red;
+            this.lbMACError.Location = new System.Drawing.Point(772, 172);
+            this.lbMACError.Name = "lbMACError";
+            this.lbMACError.Size = new System.Drawing.Size(29, 37);
+            this.lbMACError.TabIndex = 91;
+            this.lbMACError.Text = "*";
+            // 
+            // lbIpError
+            // 
+            this.lbIpError.AutoSize = true;
+            this.lbIpError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIpError.ForeColor = System.Drawing.Color.Red;
+            this.lbIpError.Location = new System.Drawing.Point(771, 127);
+            this.lbIpError.Name = "lbIpError";
+            this.lbIpError.Size = new System.Drawing.Size(29, 37);
+            this.lbIpError.TabIndex = 90;
+            this.lbIpError.Text = "*";
+            // 
+            // cbModel
+            // 
+            this.cbModel.Enabled = false;
+            this.cbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "HP",
+            "Dell",
+            "Asus",
+            "LG",
+            "Motorola"});
+            this.cbModel.Location = new System.Drawing.Point(575, 213);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(190, 26);
+            this.cbModel.TabIndex = 7;
+            // 
+            // fmBarScanner1D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1132, 647);
+            this.Controls.Add(this.cbModel);
+            this.Controls.Add(this.lbMACError);
+            this.Controls.Add(this.lbIpError);
+            this.Controls.Add(this.txtMAC);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.rtbNote);
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.label7);
@@ -338,13 +399,12 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtModel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtIPBarcodeScanner);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnInsert);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "fmScanner1D";
+            this.Name = "fmBarScanner1D";
             this.Text = "Scanner 1D";
             this.Load += new System.EventHandler(this.fmScanner1D_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).EndInit();
@@ -375,10 +435,14 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtIPBarcodeScanner;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.TextBox txtMAC;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbMACError;
+        private System.Windows.Forms.Label lbIpError;
+        private System.Windows.Forms.ComboBox cbModel;
     }
 }

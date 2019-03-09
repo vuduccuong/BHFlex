@@ -91,6 +91,12 @@
       <DependentUpon>RPDeviceInfo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="REPORT\TEST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TEST.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\ADD DATA\fmAddData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,23 +133,17 @@
     <Compile Include="UI\ADD DATA\fmPartment.Designer.cs">
       <DependentUpon>fmPartment.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\fmData.cs">
+    <Compile Include="UI\fmBarCodePrinter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\fmData.Designer.cs">
-      <DependentUpon>fmData.cs</DependentUpon>
+    <Compile Include="UI\fmBarCodePrinter.Designer.cs">
+      <DependentUpon>fmBarCodePrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\fmStart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\fmStart.Designer.cs">
       <DependentUpon>fmStart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormTypeDevices\fmBarcodePrinter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FormTypeDevices\fmBarcodePrinter.Designer.cs">
-      <DependentUpon>fmBarcodePrinter.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormTypeDevices\fmBarScanner2D.cs">
       <SubType>Form</SubType>
@@ -199,11 +199,11 @@
     <Compile Include="UI\FormTypeDevices\fmPrinterPhotoCopy.Designer.cs">
       <DependentUpon>fmPrinterPhotoCopy.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormTypeDevices\fmScanner1D.cs">
+    <Compile Include="UI\FormTypeDevices\fmBarScanner1D.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormTypeDevices\fmScanner1D.Designer.cs">
-      <DependentUpon>fmScanner1D.cs</DependentUpon>
+    <Compile Include="UI\FormTypeDevices\fmBarScanner1D.Designer.cs">
+      <DependentUpon>fmBarScanner1D.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormTypeDevices\fmTypeDevices.cs">
       <SubType>Form</SubType>
@@ -219,6 +219,10 @@
     <EmbeddedResource Include="REPORT\RPDeviceInfo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPDeviceInfo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORT\TEST.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TEST.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ADD DATA\fmAddData.resx">
       <DependentUpon>fmAddData.cs</DependentUpon>
@@ -238,14 +242,11 @@
     <EmbeddedResource Include="UI\ADD DATA\fmPartment.resx">
       <DependentUpon>fmPartment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\fmData.resx">
-      <DependentUpon>fmData.cs</DependentUpon>
+    <EmbeddedResource Include="UI\fmBarCodePrinter.resx">
+      <DependentUpon>fmBarCodePrinter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\fmStart.resx">
       <DependentUpon>fmStart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormTypeDevices\fmBarcodePrinter.resx">
-      <DependentUpon>fmBarcodePrinter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormTypeDevices\fmBarScanner2D.resx">
       <DependentUpon>fmBarScanner2D.cs</DependentUpon>
@@ -274,8 +275,8 @@
     <EmbeddedResource Include="UI\FormTypeDevices\fmPrinterPhotoCopy.resx">
       <DependentUpon>fmPrinterPhotoCopy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormTypeDevices\fmScanner1D.resx">
-      <DependentUpon>fmScanner1D.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormTypeDevices\fmBarScanner1D.resx">
+      <DependentUpon>fmBarScanner1D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormTypeDevices\fmTypeDevices.resx">
       <DependentUpon>fmTypeDevices.cs</DependentUpon>
@@ -330,6 +331,7 @@
     <Content Include="Icon\smile.jpg" />
     <Content Include="Icon\tải xuống.png" />
     <Content Include="Icon\Update.PNG" />
+    <None Include="Resources\bhflex.jpg" />
     <None Include="Resources\IconXoa.png" />
     <None Include="Resources\IconUpdate.png" />
     <None Include="Resources\check.PNG" />

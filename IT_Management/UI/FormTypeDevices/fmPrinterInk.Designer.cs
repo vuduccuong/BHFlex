@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPrinterInk));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rtbNote = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbModel = new System.Windows.Forms.ComboBox();
+            this.lbMACError = new System.Windows.Forms.Label();
+            this.txtMAC = new System.Windows.Forms.TextBox();
+            this.lbIpError = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
@@ -57,8 +65,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.txtModel = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +74,13 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.txtModel);
+            this.panel1.Controls.Add(this.rtbNote);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.cbModel);
+            this.panel1.Controls.Add(this.lbMACError);
+            this.panel1.Controls.Add(this.txtMAC);
+            this.panel1.Controls.Add(this.lbIpError);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtid);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnUpdate);
@@ -102,15 +114,99 @@
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // rtbNote
+            // 
+            this.rtbNote.Enabled = false;
+            this.rtbNote.Location = new System.Drawing.Point(832, 67);
+            this.rtbNote.Name = "rtbNote";
+            this.rtbNote.Size = new System.Drawing.Size(267, 102);
+            this.rtbNote.TabIndex = 9;
+            this.rtbNote.Text = "";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(773, 70);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(43, 20);
+            this.label17.TabIndex = 104;
+            this.label17.Text = "Note";
+            // 
+            // cbModel
+            // 
+            this.cbModel.Enabled = false;
+            this.cbModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbModel.FormattingEnabled = true;
+            this.cbModel.Items.AddRange(new object[] {
+            "HP",
+            "Dell",
+            "Asus",
+            "LG",
+            "Motorola"});
+            this.cbModel.Location = new System.Drawing.Point(544, 235);
+            this.cbModel.Name = "cbModel";
+            this.cbModel.Size = new System.Drawing.Size(168, 26);
+            this.cbModel.TabIndex = 7;
+            // 
+            // lbMACError
+            // 
+            this.lbMACError.AutoSize = true;
+            this.lbMACError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMACError.ForeColor = System.Drawing.Color.Red;
+            this.lbMACError.Location = new System.Drawing.Point(347, 281);
+            this.lbMACError.Name = "lbMACError";
+            this.lbMACError.Size = new System.Drawing.Size(29, 37);
+            this.lbMACError.TabIndex = 65;
+            this.lbMACError.Text = "*";
+            // 
+            // txtMAC
+            // 
+            this.txtMAC.Enabled = false;
+            this.txtMAC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMAC.Location = new System.Drawing.Point(173, 278);
+            this.txtMAC.Name = "txtMAC";
+            this.txtMAC.Size = new System.Drawing.Size(168, 26);
+            this.txtMAC.TabIndex = 2;
+            this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
+            // 
+            // lbIpError
+            // 
+            this.lbIpError.AutoSize = true;
+            this.lbIpError.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIpError.ForeColor = System.Drawing.Color.Red;
+            this.lbIpError.Location = new System.Drawing.Point(347, 238);
+            this.lbIpError.Name = "lbIpError";
+            this.lbIpError.Size = new System.Drawing.Size(29, 37);
+            this.lbIpError.TabIndex = 64;
+            this.lbIpError.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(51, 280);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 20);
+            this.label9.TabIndex = 63;
+            this.label9.Text = "MAC";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(652, 238);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(60, 20);
+            this.txtid.TabIndex = 61;
+            // 
             // btnDelete
             // 
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(1028, 230);
+            this.btnDelete.Location = new System.Drawing.Point(1028, 241);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(71, 55);
-            this.btnDelete.TabIndex = 60;
+            this.btnDelete.TabIndex = 13;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
@@ -119,10 +215,10 @@
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(931, 230);
+            this.btnUpdate.Location = new System.Drawing.Point(931, 241);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(71, 55);
-            this.btnUpdate.TabIndex = 59;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
             // 
@@ -131,10 +227,10 @@
             this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
             this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInsert.Enabled = false;
-            this.btnInsert.Location = new System.Drawing.Point(832, 230);
+            this.btnInsert.Location = new System.Drawing.Point(832, 241);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(71, 55);
-            this.btnInsert.TabIndex = 58;
+            this.btnInsert.TabIndex = 11;
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click_1);
             // 
@@ -144,10 +240,10 @@
             this.btnNew.ForeColor = System.Drawing.Color.Tomato;
             this.btnNew.Image = global::IT_Management.Properties.Resources.icon3;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNew.Location = new System.Drawing.Point(832, 172);
+            this.btnNew.Location = new System.Drawing.Point(832, 183);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(267, 43);
-            this.btnNew.TabIndex = 57;
+            this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click_2);
@@ -157,7 +253,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label4.Location = new System.Drawing.Point(521, 15);
+            this.label4.Location = new System.Drawing.Point(496, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 31);
             this.label4.TabIndex = 50;
@@ -182,19 +278,20 @@
             this.cbLocation.Location = new System.Drawing.Point(544, 67);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 5;
+            this.cbLocation.TabIndex = 3;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             this.cbLocation.Click += new System.EventHandler(this.cbLocation_Click);
             // 
             // txtBuydate
             // 
+            this.txtBuydate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuydate.CustomFormat = "yyyy/MM/dd";
             this.txtBuydate.Enabled = false;
             this.txtBuydate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.txtBuydate.Location = new System.Drawing.Point(544, 277);
+            this.txtBuydate.Location = new System.Drawing.Point(544, 278);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(168, 20);
-            this.txtBuydate.TabIndex = 9;
+            this.txtBuydate.TabIndex = 8;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -222,7 +319,7 @@
             // 
             this.têt.AutoSize = true;
             this.têt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.têt.Location = new System.Drawing.Point(435, 277);
+            this.têt.Location = new System.Drawing.Point(435, 280);
             this.têt.Name = "têt";
             this.têt.Size = new System.Drawing.Size(75, 20);
             this.têt.TabIndex = 43;
@@ -236,7 +333,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(544, 109);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
-            this.cbFactorys.TabIndex = 6;
+            this.cbFactorys.TabIndex = 4;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged_1);
             // 
             // cbParts
@@ -247,7 +344,7 @@
             this.cbParts.Location = new System.Drawing.Point(544, 151);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
-            this.cbParts.TabIndex = 7;
+            this.cbParts.TabIndex = 5;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // cbPartment
@@ -258,7 +355,7 @@
             this.cbPartment.Location = new System.Drawing.Point(544, 193);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
-            this.cbPartment.TabIndex = 8;
+            this.cbPartment.TabIndex = 6;
             // 
             // txtIPPrinter
             // 
@@ -267,7 +364,9 @@
             this.txtIPPrinter.Location = new System.Drawing.Point(173, 235);
             this.txtIPPrinter.Name = "txtIPPrinter";
             this.txtIPPrinter.Size = new System.Drawing.Size(168, 26);
-            this.txtIPPrinter.TabIndex = 4;
+            this.txtIPPrinter.TabIndex = 1;
+            this.txtIPPrinter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIPPrinter_KeyPress);
+            this.txtIPPrinter.Leave += new System.EventHandler(this.txtIPPrinter_Leave);
             // 
             // txtPrinterName
             // 
@@ -285,7 +384,7 @@
             this.txtUserName.Location = new System.Drawing.Point(173, 151);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(168, 26);
-            this.txtUserName.TabIndex = 2;
+            this.txtUserName.TabIndex = 0;
             // 
             // txtIdPrinter
             // 
@@ -295,6 +394,7 @@
             this.txtIdPrinter.ReadOnly = true;
             this.txtIdPrinter.Size = new System.Drawing.Size(168, 26);
             this.txtIdPrinter.TabIndex = 1;
+            this.txtIdPrinter.TextChanged += new System.EventHandler(this.txtIdPrinter_TextChanged);
             // 
             // label8
             // 
@@ -384,26 +484,10 @@
             this.dgvPCDesktop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPCDesktop.BackgroundColor = System.Drawing.Color.Khaki;
             this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPCDesktop.Location = new System.Drawing.Point(2, 348);
+            this.dgvPCDesktop.Location = new System.Drawing.Point(2, 334);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
-            this.dgvPCDesktop.Size = new System.Drawing.Size(1139, 336);
+            this.dgvPCDesktop.Size = new System.Drawing.Size(1145, 381);
             this.dgvPCDesktop.TabIndex = 0;
-            // 
-            // txtid
-            // 
-            this.txtid.Location = new System.Drawing.Point(652, 238);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(60, 20);
-            this.txtid.TabIndex = 61;
-            // 
-            // txtModel
-            // 
-            this.txtModel.Enabled = false;
-            this.txtModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtModel.Location = new System.Drawing.Point(544, 235);
-            this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(168, 26);
-            this.txtModel.TabIndex = 62;
             // 
             // fmPrinterInk
             // 
@@ -454,7 +538,13 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.TextBox txtid;
+        private System.Windows.Forms.TextBox txtMAC;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbMACError;
+        private System.Windows.Forms.Label lbIpError;
+        private System.Windows.Forms.ComboBox cbModel;
+        private System.Windows.Forms.RichTextBox rtbNote;
+        private System.Windows.Forms.Label label17;
     }
 }

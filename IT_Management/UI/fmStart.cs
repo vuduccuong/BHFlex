@@ -24,12 +24,41 @@ namespace IT_Management.UI
             //this.Hide();
             fmAddData a = new fmAddData();
             a.ShowDialog();
+            btnShow1.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
            // this.Hide();
             new fmTypeDevices().ShowDialog();
+            btnShow2.Show();
+        }
+
+        private void fmStart_Load(object sender, EventArgs e)
+        {
+            btnShow1.Hide();
+            btnShow2.Hide();
+        }
+
+        private void btnShow1_Click(object sender, EventArgs e)
+        {
+            fmAddData a = new fmAddData();
+            a.ShowDialog();
+            btnShow1.Hide();
+        }
+
+        private void btnShow2_Click(object sender, EventArgs e)
+        {
+            new fmTypeDevices().ShowDialog();
+            btnShow2.Hide();
+        }
+
+        private void fmStart_Leave(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != System.Windows.Forms.DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
