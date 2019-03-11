@@ -174,7 +174,7 @@
             this.rtbNote.Location = new System.Drawing.Point(789, 198);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(272, 62);
-            this.rtbNote.TabIndex = 16;
+            this.rtbNote.TabIndex = 15;
             this.rtbNote.Text = "";
             // 
             // label17
@@ -359,7 +359,7 @@
             this.btnNewLap.Location = new System.Drawing.Point(787, 271);
             this.btnNewLap.Name = "btnNewLap";
             this.btnNewLap.Size = new System.Drawing.Size(272, 40);
-            this.btnNewLap.TabIndex = 17;
+            this.btnNewLap.TabIndex = 16;
             this.btnNewLap.Text = "New";
             this.btnNewLap.UseVisualStyleBackColor = true;
             this.btnNewLap.Click += new System.EventHandler(this.btnNew_Click);
@@ -371,7 +371,7 @@
             this.txtTypeDiveces.Name = "txtTypeDiveces";
             this.txtTypeDiveces.ReadOnly = true;
             this.txtTypeDiveces.Size = new System.Drawing.Size(168, 26);
-            this.txtTypeDiveces.TabIndex = 0;
+            this.txtTypeDiveces.TabIndex = 29;
             this.txtTypeDiveces.Text = "Laptop";
             // 
             // label7
@@ -411,8 +411,9 @@
             this.txtGroup.Name = "txtGroup";
             this.txtGroup.ReadOnly = true;
             this.txtGroup.Size = new System.Drawing.Size(168, 26);
-            this.txtGroup.TabIndex = 8;
+            this.txtGroup.TabIndex = 39;
             this.txtGroup.Text = "Work Group";
+            this.txtGroup.TextChanged += new System.EventHandler(this.txtGroup_TextChanged);
             // 
             // label4
             // 
@@ -464,7 +465,7 @@
             this.btnUpdateLap.Location = new System.Drawing.Point(886, 320);
             this.btnUpdateLap.Name = "btnUpdateLap";
             this.btnUpdateLap.Size = new System.Drawing.Size(75, 53);
-            this.btnUpdateLap.TabIndex = 19;
+            this.btnUpdateLap.TabIndex = 18;
             this.btnUpdateLap.UseVisualStyleBackColor = true;
             this.btnUpdateLap.Click += new System.EventHandler(this.btnUpdateLap_Click);
             // 
@@ -475,7 +476,7 @@
             this.btnDeleteLap.Location = new System.Drawing.Point(984, 320);
             this.btnDeleteLap.Name = "btnDeleteLap";
             this.btnDeleteLap.Size = new System.Drawing.Size(75, 53);
-            this.btnDeleteLap.TabIndex = 20;
+            this.btnDeleteLap.TabIndex = 19;
             this.btnDeleteLap.UseVisualStyleBackColor = true;
             this.btnDeleteLap.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -486,7 +487,7 @@
             this.btnInsertLap.Location = new System.Drawing.Point(787, 320);
             this.btnInsertLap.Name = "btnInsertLap";
             this.btnInsertLap.Size = new System.Drawing.Size(75, 53);
-            this.btnInsertLap.TabIndex = 18;
+            this.btnInsertLap.TabIndex = 17;
             this.btnInsertLap.UseVisualStyleBackColor = true;
             this.btnInsertLap.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -532,7 +533,7 @@
             this.txtPcName.Name = "txtPcName";
             this.txtPcName.ReadOnly = true;
             this.txtPcName.Size = new System.Drawing.Size(168, 26);
-            this.txtPcName.TabIndex = 3;
+            this.txtPcName.TabIndex = 38;
             // 
             // txtUserName
             // 
@@ -550,7 +551,7 @@
             this.txtIdPc.Name = "txtIdPc";
             this.txtIdPc.ReadOnly = true;
             this.txtIdPc.Size = new System.Drawing.Size(168, 26);
-            this.txtIdPc.TabIndex = 1;
+            this.txtIdPc.TabIndex = 36;
             // 
             // label14
             // 
@@ -702,6 +703,7 @@
             this.dgvPCLaptop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPCLaptop.Location = new System.Drawing.Point(0, 387);
             this.dgvPCLaptop.Name = "dgvPCLaptop";
+            this.dgvPCLaptop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPCLaptop.Size = new System.Drawing.Size(1119, 273);
             this.dgvPCLaptop.TabIndex = 0;
             // 

@@ -83,6 +83,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            cbLocation.Focus();
             cbLocation.Text = "-- Select location --";
             cbFactorys.Text = "";
             cbParts.Text = "";
@@ -123,7 +124,7 @@ namespace IT_Management.UI.FormTypeDevices
                 var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
                 string name = getCodeLocation.Rows[0][0].ToString();
 
-                txtBarcodeScannerName.Text = (String.Format(name + "P1D" + lastIp + setBuydate));
+                txtBarcodeScannerName.Text = (String.Format(name + "SWF" + lastIp + setBuydate));
             }
             catch
             {
@@ -185,6 +186,27 @@ namespace IT_Management.UI.FormTypeDevices
             #endregion
         }
         public void Inserted() {
+            var strIdDevices = String.Format("select id from TypeDevices where NameDeviceType='Barcode Scanner Wifi 2D'");
+            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
+            String getIdDevices = IdDevice.Rows[0][0].ToString();
+
+            var idPartment = cbPartment.SelectedValue.ToString();
+
+            var query = String.Format("insert into DeviceInfos(IdDevice,nameTypeDeviceInfos,NameDevice,IPAdress,MACAdress,Model,BuyDate,Note,idDeviceType,IdPartment,isDelete) values('" + txtBarcodeScannerName.Text + "','" + txtBarcodeScannerName.Text + "','Barcode Scanner Wifi 2D','" + txtIPBarcodeScanner.Text + "','" + txtMAC.Text + "', '" + cbModel.Text + "', '" + txtBuydate.Text + "','" + rtbNote.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
+            var check = DataProvider.Instance.ExecuteNonQuery(query);
+            if (check > 0)
+            {
+                MessageBox.Show("Insert Succes !!!");
+                BarcodeScannerLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Faill !!!");
+            }
+
+        }
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
             int id = txtid.Text.Length;
             int printername = txtBarcodeScannerName.Text.Length;
             int mac = txtMAC.Text.Length;
@@ -201,33 +223,16 @@ namespace IT_Management.UI.FormTypeDevices
                 DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dia == DialogResult.Yes)
                 {
-                    var strIdDevices = String.Format("select id from TypeDevices where NameDeviceType='Barcode Scanner Wifi 2D'");
-                    var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
-                    String getIdDevices = IdDevice.Rows[0][0].ToString();
-
-                    var idPartment = cbPartment.SelectedValue.ToString();
-
-                    var query = String.Format("insert into DeviceInfos(IdDevice,nameTypeDeviceInfos,NameDevice,IPAdress,MACAdress,Model,BuyDate,Note,idDeviceType,IdPartment,isDelete) values('" + txtBarcodeScannerName.Text + "','" + txtBarcodeScannerName.Text + "','Barcode Scanner Wifi 2D','" + txtIPBarcodeScanner.Text + "','" + txtMAC.Text + "', '" + cbModel.Text + "', '" + txtBuydate.Text + "','" + rtbNote.Text + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "',0)");
-                    var check = DataProvider.Instance.ExecuteNonQuery(query);
-                    if (check > 0)
-                    {
-                        MessageBox.Show("Insert Succes !!!");
-                        BarcodeScannerLoaddata();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Faill !!!");
-                    }
+                    Inserted();
                 }
                 else
                 {
-                    rtbNote.Focus();
+                    rtbNote.Clear();
                 }
             }
-        }
-        private void btnInsert_Click(object sender, EventArgs e)
-        {
-            Inserted();
+            else {
+                Inserted();
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -251,16 +256,19 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
-            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
-            if (Delete > 0)
+            if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Delete Sucess !!!");
-                BarcodeScannerLoaddata();
-            }
-            else
-            {
-                MessageBox.Show("Delete Fall :(");
+                var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
+                var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
+                if (Delete > 0)
+                {
+                    MessageBox.Show("Delete Sucess !!!");
+                    BarcodeScannerLoaddata();
+                }
+                else
+                {
+                    MessageBox.Show("Delete Fall :(");
+                }
             }
         }
 
@@ -302,6 +310,53 @@ namespace IT_Management.UI.FormTypeDevices
             }
             var a = txtIPBarcodeScanner.Text;
             var b = Regex.IsMatch(a, @"\.");
+        }
+
+        private void txtSearchByPcName_Click(object sender, EventArgs e)
+        {
+            txtSearchByPcName.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String search = "select di.id, di.NameDevice, di.nameTypeDeviceInfos, di.IPAdress,di.MACAdress, di.Model, di.BuyDate, lc.NameLocation, fa.NameFactory, p.NamePart, pt.NamePartment, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and di.NameDevice='Barcode Scanner Wifi 2D' and di.isDelete='0'";
+                DataTable datable = DataProvider.Instance.ExecuteQuery(search);
+                dgvPDA1D.DataSource = datable;
+
+                txtSearchByPcName.Clear();
+                txtMAC.Enabled = false;
+                #region ClearDataBindings
+                txtMAC.DataBindings.Clear();
+                txtid.DataBindings.Clear();
+                txtBarcodeScannerName.DataBindings.Clear();
+                txtIPBarcodeScanner.DataBindings.Clear();
+                cbModel.DataBindings.Clear();
+                rtbNote.DataBindings.Clear();
+                cbLocation.DataBindings.Clear();
+                cbFactorys.DataBindings.Clear();
+                cbParts.DataBindings.Clear();
+                cbPartment.DataBindings.Clear();
+
+                #endregion
+                #region DataBindinds
+                txtMAC.DataBindings.Add("text", datable, "MACAdress");
+                txtid.DataBindings.Add("text", datable, "id");
+                txtBarcodeScannerName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
+                txtIPBarcodeScanner.DataBindings.Add("text", datable, "IPAdress");
+                cbModel.DataBindings.Add("text", datable, "Model");
+                rtbNote.DataBindings.Add("text", datable, "Note");
+                cbLocation.DataBindings.Add("text", datable, "NameLocation");
+                cbFactorys.DataBindings.Add("text", datable, "NameFactory");
+                cbParts.DataBindings.Add("text", datable, "NamePart");
+                cbPartment.DataBindings.Add("text", datable, "NamePartment");
+                #endregion
+            }
+            catch
+            {
+                MessageBox.Show("Fall", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

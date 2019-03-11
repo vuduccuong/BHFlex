@@ -176,6 +176,7 @@
             this.dtgListFactory.Name = "dtgListFactory";
             this.dtgListFactory.ReadOnly = true;
             this.dtgListFactory.RowTemplate.Height = 24;
+            this.dtgListFactory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListFactory.Size = new System.Drawing.Size(1181, 443);
             this.dtgListFactory.TabIndex = 0;
             // 

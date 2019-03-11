@@ -65,6 +65,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +81,7 @@
             this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPCDesktop.Location = new System.Drawing.Point(3, 339);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
+            this.dgvPCDesktop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPCDesktop.Size = new System.Drawing.Size(1110, 339);
             this.dgvPCDesktop.TabIndex = 0;
             // 
@@ -140,7 +143,7 @@
             this.txtTypeDiveces.Name = "txtTypeDiveces";
             this.txtTypeDiveces.ReadOnly = true;
             this.txtTypeDiveces.Size = new System.Drawing.Size(168, 26);
-            this.txtTypeDiveces.TabIndex = 0;
+            this.txtTypeDiveces.TabIndex = 32;
             this.txtTypeDiveces.Text = "Printer Photo Copy";
             // 
             // label7
@@ -249,7 +252,7 @@
             this.txtPrinterName.Name = "txtPrinterName";
             this.txtPrinterName.ReadOnly = true;
             this.txtPrinterName.Size = new System.Drawing.Size(168, 26);
-            this.txtPrinterName.TabIndex = 3;
+            this.txtPrinterName.TabIndex = 0;
             // 
             // txtUserName
             // 
@@ -267,7 +270,7 @@
             this.txtIdPrinter.Name = "txtIdPrinter";
             this.txtIdPrinter.ReadOnly = true;
             this.txtIdPrinter.Size = new System.Drawing.Size(168, 26);
-            this.txtIdPrinter.TabIndex = 1;
+            this.txtIdPrinter.TabIndex = 33;
             // 
             // label8
             // 
@@ -354,6 +357,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.txtSearchByPcName);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.rtbNote);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.cbModel);
@@ -489,6 +494,28 @@
             this.label4.TabIndex = 50;
             this.label4.Text = "Printer Photo Copy";
             // 
+            // txtSearchByPcName
+            // 
+            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.txtSearchByPcName.Location = new System.Drawing.Point(852, 13);
+            this.txtSearchByPcName.Name = "txtSearchByPcName";
+            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
+            this.txtSearchByPcName.TabIndex = 123;
+            this.txtSearchByPcName.Text = "Search by Printer Name";
+            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(1037, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 27);
+            this.button1.TabIndex = 124;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // fmPrinterPhotoCopy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,5 +572,7 @@
         private System.Windows.Forms.ComboBox cbModel;
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtSearchByPcName;
+        private System.Windows.Forms.Button button1;
     }
 }

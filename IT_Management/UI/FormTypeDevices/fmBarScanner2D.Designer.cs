@@ -58,6 +58,8 @@
             this.lbMACError = new System.Windows.Forms.Label();
             this.lbIpError = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
+            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,6 +211,7 @@
             this.dgvPDA1D.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPDA1D.Location = new System.Drawing.Point(3, 349);
             this.dgvPDA1D.Name = "dgvPDA1D";
+            this.dgvPDA1D.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPDA1D.Size = new System.Drawing.Size(1114, 347);
             this.dgvPDA1D.TabIndex = 104;
             // 
@@ -368,12 +371,36 @@
             this.cbModel.Size = new System.Drawing.Size(190, 26);
             this.cbModel.TabIndex = 7;
             // 
+            // txtSearchByPcName
+            // 
+            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.txtSearchByPcName.Location = new System.Drawing.Point(879, 17);
+            this.txtSearchByPcName.Name = "txtSearchByPcName";
+            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
+            this.txtSearchByPcName.TabIndex = 117;
+            this.txtSearchByPcName.Text = "Search by ScannerName";
+            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(1064, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 27);
+            this.button1.TabIndex = 118;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // fmBarScanner2D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1116, 608);
+            this.Controls.Add(this.txtSearchByPcName);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lbMACError);
             this.Controls.Add(this.lbIpError);
@@ -407,6 +434,7 @@
             this.Name = "fmBarScanner2D";
             this.Text = "Barcode Scanner 2D";
             this.Load += new System.EventHandler(this.fmBarScanner2D_Load);
+            this.Click += new System.EventHandler(this.fmBarScanner2D_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -444,5 +472,7 @@
         private System.Windows.Forms.Label lbMACError;
         private System.Windows.Forms.Label lbIpError;
         private System.Windows.Forms.ComboBox cbModel;
+        private System.Windows.Forms.TextBox txtSearchByPcName;
+        private System.Windows.Forms.Button button1;
     }
 }

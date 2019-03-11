@@ -105,6 +105,7 @@
             this.dgvPCDesktop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPCDesktop.Location = new System.Drawing.Point(0, 3);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
+            this.dgvPCDesktop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPCDesktop.Size = new System.Drawing.Size(1129, 324);
             this.dgvPCDesktop.TabIndex = 0;
             // 
@@ -255,7 +256,7 @@
             this.txtIdPc.Name = "txtIdPc";
             this.txtIdPc.ReadOnly = true;
             this.txtIdPc.Size = new System.Drawing.Size(168, 26);
-            this.txtIdPc.TabIndex = 1;
+            this.txtIdPc.TabIndex = 32;
             // 
             // txtUserName
             // 
@@ -264,7 +265,7 @@
             this.txtUserName.Location = new System.Drawing.Point(151, 129);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(168, 26);
-            this.txtUserName.TabIndex = 0;
+            this.txtUserName.TabIndex = 1;
             // 
             // txtPcName
             // 
@@ -273,7 +274,7 @@
             this.txtPcName.Name = "txtPcName";
             this.txtPcName.ReadOnly = true;
             this.txtPcName.Size = new System.Drawing.Size(168, 26);
-            this.txtPcName.TabIndex = 3;
+            this.txtPcName.TabIndex = 37;
             // 
             // txtIP
             // 
@@ -282,7 +283,7 @@
             this.txtIP.Location = new System.Drawing.Point(493, 61);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(168, 26);
-            this.txtIP.TabIndex = 5;
+            this.txtIP.TabIndex = 6;
             this.txtIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIP_KeyPress);
             this.txtIP.Leave += new System.EventHandler(this.txtIP_Leave);
             // 
@@ -293,7 +294,7 @@
             this.txtMAC.Location = new System.Drawing.Point(493, 95);
             this.txtMAC.Name = "txtMAC";
             this.txtMAC.Size = new System.Drawing.Size(168, 26);
-            this.txtMAC.TabIndex = 6;
+            this.txtMAC.TabIndex = 7;
             this.txtMAC.Leave += new System.EventHandler(this.txtMAC_Leave);
             // 
             // btnAddSW
@@ -304,7 +305,7 @@
             this.btnAddSW.Location = new System.Drawing.Point(981, 61);
             this.btnAddSW.Name = "btnAddSW";
             this.btnAddSW.Size = new System.Drawing.Size(78, 28);
-            this.btnAddSW.TabIndex = 14;
+            this.btnAddSW.TabIndex = 15;
             this.btnAddSW.Text = "ADD SW";
             this.btnAddSW.UseVisualStyleBackColor = true;
             this.btnAddSW.Click += new System.EventHandler(this.btnAddSW_Click);
@@ -317,7 +318,7 @@
             this.cbPartment.Location = new System.Drawing.Point(151, 301);
             this.cbPartment.Name = "cbPartment";
             this.cbPartment.Size = new System.Drawing.Size(168, 26);
-            this.cbPartment.TabIndex = 4;
+            this.cbPartment.TabIndex = 5;
             // 
             // cbParts
             // 
@@ -327,7 +328,7 @@
             this.cbParts.Location = new System.Drawing.Point(151, 266);
             this.cbParts.Name = "cbParts";
             this.cbParts.Size = new System.Drawing.Size(168, 26);
-            this.cbParts.TabIndex = 3;
+            this.cbParts.TabIndex = 4;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
             // 
             // cbFactorys
@@ -338,7 +339,7 @@
             this.cbFactorys.Location = new System.Drawing.Point(151, 231);
             this.cbFactorys.Name = "cbFactorys";
             this.cbFactorys.Size = new System.Drawing.Size(168, 26);
-            this.cbFactorys.TabIndex = 2;
+            this.cbFactorys.TabIndex = 3;
             this.cbFactorys.SelectedIndexChanged += new System.EventHandler(this.cbFactorys_SelectedIndexChanged);
             // 
             // label4
@@ -358,7 +359,7 @@
             this.txtGroup.Name = "txtGroup";
             this.txtGroup.ReadOnly = true;
             this.txtGroup.Size = new System.Drawing.Size(168, 26);
-            this.txtGroup.TabIndex = 8;
+            this.txtGroup.TabIndex = 34;
             this.txtGroup.Text = "Work Group";
             // 
             // têt
@@ -497,7 +498,7 @@
             this.cbModel.Location = new System.Drawing.Point(493, 268);
             this.cbModel.Name = "cbModel";
             this.cbModel.Size = new System.Drawing.Size(168, 26);
-            this.cbModel.TabIndex = 11;
+            this.cbModel.TabIndex = 12;
             // 
             // cbOS
             // 
@@ -515,7 +516,7 @@
             this.cbOS.Location = new System.Drawing.Point(493, 233);
             this.cbOS.Name = "cbOS";
             this.cbOS.Size = new System.Drawing.Size(168, 26);
-            this.cbOS.TabIndex = 10;
+            this.cbOS.TabIndex = 11;
             // 
             // cbHDD
             // 
@@ -529,7 +530,7 @@
             this.cbHDD.Location = new System.Drawing.Point(493, 199);
             this.cbHDD.Name = "cbHDD";
             this.cbHDD.Size = new System.Drawing.Size(168, 26);
-            this.cbHDD.TabIndex = 9;
+            this.cbHDD.TabIndex = 10;
             // 
             // cbRAM
             // 
@@ -546,7 +547,7 @@
             this.cbRAM.Location = new System.Drawing.Point(493, 164);
             this.cbRAM.Name = "cbRAM";
             this.cbRAM.Size = new System.Drawing.Size(168, 26);
-            this.cbRAM.TabIndex = 8;
+            this.cbRAM.TabIndex = 9;
             // 
             // cbCPU
             // 
@@ -560,7 +561,7 @@
             this.cbCPU.Location = new System.Drawing.Point(493, 132);
             this.cbCPU.Name = "cbCPU";
             this.cbCPU.Size = new System.Drawing.Size(168, 26);
-            this.cbCPU.TabIndex = 7;
+            this.cbCPU.TabIndex = 8;
             // 
             // txtSearchByPcName
             // 
@@ -670,7 +671,7 @@
             this.cbLocation.Location = new System.Drawing.Point(151, 198);
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(168, 26);
-            this.cbLocation.TabIndex = 1;
+            this.cbLocation.TabIndex = 2;
             this.cbLocation.SelectedIndexChanged += new System.EventHandler(this.cbLocation_SelectedIndexChanged);
             // 
             // txtBuydate
@@ -683,7 +684,7 @@
             this.txtBuydate.Location = new System.Drawing.Point(493, 301);
             this.txtBuydate.Name = "txtBuydate";
             this.txtBuydate.Size = new System.Drawing.Size(168, 26);
-            this.txtBuydate.TabIndex = 12;
+            this.txtBuydate.TabIndex = 13;
             this.txtBuydate.Value = new System.DateTime(2019, 3, 4, 15, 59, 37, 0);
             this.txtBuydate.Leave += new System.EventHandler(this.txtBuydate_Leave);
             // 
@@ -694,7 +695,7 @@
             this.txtSW.Location = new System.Drawing.Point(789, 61);
             this.txtSW.Name = "txtSW";
             this.txtSW.Size = new System.Drawing.Size(186, 26);
-            this.txtSW.TabIndex = 13;
+            this.txtSW.TabIndex = 14;
             // 
             // txtTypeDiveces
             // 

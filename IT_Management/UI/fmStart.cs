@@ -52,12 +52,11 @@ namespace IT_Management.UI
             new fmTypeDevices().ShowDialog();
             btnShow2.Hide();
         }
-
-        private void fmStart_Leave(object sender, FormClosingEventArgs e)
+        private void fmStart_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != System.Windows.Forms.DialogResult.OK)
             {
-                e.Cancel = true;
+                
             }
         }
     }

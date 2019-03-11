@@ -70,6 +70,33 @@ namespace IT_Management.UI.FormTypeDevices
         }
         public void Inserted()
         {
+            var soft = "";
+            foreach (var item in lbSW.Items)
+            {
+                soft = soft + "," + item;
+            }
+
+            //var idDevideInfo = Guid.NewGuid();
+            var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='" + txtTypeDiveces.Text + "'");
+            var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
+            String getIdDevices = IdDevice.Rows[0][0].ToString();
+
+            var idPartment = cbPartment.SelectedValue.ToString();
+            var query = String.Format("insert into DeviceInfos(IdDevice,NameDevice,NameUser,nameTypeDeviceInfos,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,idDeviceType,IdPartment,Note,isDelete) values('" + txtIdPc.Text + "', 'Desktop', '" + txtUserName.Text + "','" + txtPcName.Text + "', '" + txtMAC.Text + "', '" + txtIP.Text + "', '" + cbModel.Text + "', '" + cbCPU.Text + "', '" + cbRAM.Text + "', '" + cbHDD.Text + "', '" + cbOS.Text + "', '" + txtBuydate.Text + "','" + soft.Substring(1) + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "','" + rtbNote.Text + "',0)");
+            var check = DataProvider.Instance.ExecuteNonQuery(query);
+            if (check > 0)
+            {
+                MessageBox.Show("Succes !!!");
+                pcLoaddata();
+            }
+            else
+            {
+                MessageBox.Show("Error !!!");
+            }
+        }
+
+        private void btnInsert_Click_1(object sender, EventArgs e)
+        {
             #region length<=0
             int note = rtbNote.Text.Length;
             int id = txtid.Text.Length;
@@ -88,48 +115,25 @@ namespace IT_Management.UI.FormTypeDevices
             int hdd = cbHDD.Text.Length;
             int os = cbOS.Text.Length;
             int buydate = txtBuydate.Text.Length;
-            int sw = lbSW.Text.Length;
+            //int sw = lbSW.Text.Length;
             #endregion
             if (note <= 0 || id <= 0 || idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
-                ip <= 0 || mac <= 0 || cpu <= 0 || ram <= 0 || hdd <= 0 || os <= 0 || buydate <= 0 || sw <= 0)
+                ip <= 0 || mac <= 0 || cpu <= 0 || ram <= 0 || hdd <= 0 || os <= 0 || buydate <= 0 /*|| sw <= 0*/)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dia == DialogResult.Yes)
                 {
-                    var soft = "";
-                    foreach (var item in lbSW.Items)
-                    {
-                        soft = soft + "," + item;
-                    }
-
-                    //var idDevideInfo = Guid.NewGuid();
-                    var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='" + txtTypeDiveces.Text + "'");
-                    var IdDevice = DataProvider.Instance.ExecuteQuery(strIdDevices);
-                    String getIdDevices = IdDevice.Rows[0][0].ToString();
-
-                    var idPartment = cbPartment.SelectedValue.ToString();
-                    var query = String.Format("insert into DeviceInfos(IdDevice,NameDevice,NameUser,nameTypeDeviceInfos,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,idDeviceType,IdPartment,Note,isDelete) values('" + txtIdPc.Text + "', 'Desktop', '" + txtUserName.Text + "','" + txtPcName.Text + "', '" + txtMAC.Text + "', '" + txtIP.Text + "', '" + cbModel.Text + "', '" + cbCPU.Text + "', '" + cbRAM.Text + "', '" + cbHDD.Text + "', '" + cbOS.Text + "', '" + txtBuydate.Text + "','" + soft.Substring(1) + "', '" + getIdDevices.ToString() + "', '" + idPartment.ToString() + "','" + rtbNote.Text + "',0)");
-                    var check = DataProvider.Instance.ExecuteNonQuery(query);
-                    if (check > 0)
-                    {
-                        MessageBox.Show("Succes !!!");
-                        pcLoaddata();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error !!!");
-                    }
+                    Inserted();
                 }
                 else
                 {
                     txtUserName.Focus();
                 }
             }
-        }
-
-        private void btnInsert_Click_1(object sender, EventArgs e)
-        {
-            Inserted();
+            else
+            {
+                Inserted();
+            }
             #region insert
             //var soft = "";
             //foreach (var item in lbSW.Items)
@@ -423,16 +427,19 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
-            var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
-            if (Delete > 0)
+            if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("Delete Sucess !!!");
-                pcLoaddata();
-            }
-            else
-            {
-                MessageBox.Show("Delete Fall :(");
+                var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
+                var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
+                if (Delete > 0)
+                {
+                    MessageBox.Show("Delete Sucess !!!");
+                    pcLoaddata();
+                }
+                else
+                {
+                    MessageBox.Show("Delete Fall :(");
+                }
             }
         } 
         private void lbSW_DoubleClick_1(object sender, EventArgs e)
@@ -441,6 +448,7 @@ namespace IT_Management.UI.FormTypeDevices
         }
         private void txtIP_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //  ^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
