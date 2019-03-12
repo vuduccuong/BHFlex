@@ -59,6 +59,7 @@
             this.têt = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbSerch = new System.Windows.Forms.ComboBox();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.lbMACError = new System.Windows.Forms.Label();
@@ -90,9 +91,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvPCDesktop);
-            this.panel2.Location = new System.Drawing.Point(0, 372);
+            this.panel2.Location = new System.Drawing.Point(0, 415);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1146, 330);
+            this.panel2.Size = new System.Drawing.Size(1146, 287);
             this.panel2.TabIndex = 1;
             // 
             // dgvPCDesktop
@@ -106,7 +107,7 @@
             this.dgvPCDesktop.Location = new System.Drawing.Point(0, 3);
             this.dgvPCDesktop.Name = "dgvPCDesktop";
             this.dgvPCDesktop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPCDesktop.Size = new System.Drawing.Size(1129, 324);
+            this.dgvPCDesktop.Size = new System.Drawing.Size(1129, 281);
             this.dgvPCDesktop.TabIndex = 0;
             // 
             // label1
@@ -243,7 +244,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(728, 64);
+            this.label14.Location = new System.Drawing.Point(728, 95);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 20);
             this.label14.TabIndex = 14;
@@ -302,7 +303,7 @@
             this.btnAddSW.Enabled = false;
             this.btnAddSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSW.ForeColor = System.Drawing.Color.Tomato;
-            this.btnAddSW.Location = new System.Drawing.Point(981, 61);
+            this.btnAddSW.Location = new System.Drawing.Point(981, 92);
             this.btnAddSW.Name = "btnAddSW";
             this.btnAddSW.Size = new System.Drawing.Size(78, 28);
             this.btnAddSW.TabIndex = 15;
@@ -387,6 +388,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.cbSerch);
             this.panel1.Controls.Add(this.rtbNote);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.lbMACError);
@@ -439,14 +441,37 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1129, 369);
+            this.panel1.Size = new System.Drawing.Size(1129, 391);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // cbSerch
+            // 
+            this.cbSerch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSerch.ForeColor = System.Drawing.Color.Red;
+            this.cbSerch.FormattingEnabled = true;
+            this.cbSerch.Items.AddRange(new object[] {
+            "PcNames",
+            "Location",
+            "Factory",
+            "BuyDate",
+            "Part",
+            "Partment",
+            "Model",
+            "CPU",
+            "RAM",
+            "HDD",
+            "OS"});
+            this.cbSerch.Location = new System.Drawing.Point(789, 14);
+            this.cbSerch.Name = "cbSerch";
+            this.cbSerch.Size = new System.Drawing.Size(186, 24);
+            this.cbSerch.TabIndex = 103;
+            this.cbSerch.Click += new System.EventHandler(this.cbSerch_Click);
             // 
             // rtbNote
             // 
             this.rtbNote.Enabled = false;
-            this.rtbNote.Location = new System.Drawing.Point(789, 183);
+            this.rtbNote.Location = new System.Drawing.Point(789, 214);
             this.rtbNote.Name = "rtbNote";
             this.rtbNote.Size = new System.Drawing.Size(270, 62);
             this.rtbNote.TabIndex = 16;
@@ -456,7 +481,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(728, 186);
+            this.label17.Location = new System.Drawing.Point(728, 217);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(43, 20);
             this.label17.TabIndex = 102;
@@ -567,11 +592,11 @@
             // 
             this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.txtSearchByPcName.Location = new System.Drawing.Point(789, 9);
+            this.txtSearchByPcName.Location = new System.Drawing.Point(789, 46);
             this.txtSearchByPcName.Name = "txtSearchByPcName";
             this.txtSearchByPcName.Size = new System.Drawing.Size(186, 26);
             this.txtSearchByPcName.TabIndex = 21;
-            this.txtSearchByPcName.Text = "Search by PCName";
+            this.txtSearchByPcName.Text = "Key word";
             this.txtSearchByPcName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtSearchByPcName_MouseClick);
             this.txtSearchByPcName.TextChanged += new System.EventHandler(this.txtSearchByPcName_TextChanged);
             // 
@@ -579,7 +604,7 @@
             // 
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(981, 9);
+            this.button1.Location = new System.Drawing.Point(981, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 26);
             this.button1.TabIndex = 22;
@@ -589,7 +614,7 @@
             // lbSW
             // 
             this.lbSW.FormattingEnabled = true;
-            this.lbSW.Location = new System.Drawing.Point(789, 96);
+            this.lbSW.Location = new System.Drawing.Point(789, 127);
             this.lbSW.Name = "lbSW";
             this.lbSW.Size = new System.Drawing.Size(270, 82);
             this.lbSW.TabIndex = 15;
@@ -597,7 +622,7 @@
             // 
             // txtid
             // 
-            this.txtid.Location = new System.Drawing.Point(1023, 132);
+            this.txtid.Location = new System.Drawing.Point(1023, 163);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(36, 20);
             this.txtid.TabIndex = 54;
@@ -609,7 +634,7 @@
             this.btnNew.ForeColor = System.Drawing.Color.Tomato;
             this.btnNew.Image = global::IT_Management.Properties.Resources.icon3;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNew.Location = new System.Drawing.Point(787, 252);
+            this.btnNew.Location = new System.Drawing.Point(787, 283);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(272, 40);
             this.btnNew.TabIndex = 17;
@@ -622,7 +647,7 @@
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(886, 301);
+            this.btnUpdate.Location = new System.Drawing.Point(886, 332);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 53);
             this.btnUpdate.TabIndex = 19;
@@ -633,7 +658,7 @@
             // 
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDelete.Location = new System.Drawing.Point(984, 301);
+            this.btnDelete.Location = new System.Drawing.Point(984, 332);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 53);
             this.btnDelete.TabIndex = 20;
@@ -644,7 +669,7 @@
             // 
             this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
             this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInsert.Location = new System.Drawing.Point(787, 301);
+            this.btnInsert.Location = new System.Drawing.Point(787, 332);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 53);
             this.btnInsert.TabIndex = 18;
@@ -692,7 +717,7 @@
             // 
             this.txtSW.Enabled = false;
             this.txtSW.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSW.Location = new System.Drawing.Point(789, 61);
+            this.txtSW.Location = new System.Drawing.Point(789, 92);
             this.txtSW.Name = "txtSW";
             this.txtSW.Size = new System.Drawing.Size(186, 26);
             this.txtSW.TabIndex = 14;
@@ -792,5 +817,6 @@
         private System.Windows.Forms.Label lbIpError;
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbSerch;
     }
 }

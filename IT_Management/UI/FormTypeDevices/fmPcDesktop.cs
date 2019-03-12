@@ -215,6 +215,7 @@ namespace IT_Management.UI.FormTypeDevices
         }
 
         public void ClearDataGipView() {
+            cbSerch.Text = "-- Search By --";
             rtbNote.DataBindings.Clear();
             txtid.DataBindings.Clear();
             txtIdPc.DataBindings.Clear();
@@ -459,9 +460,56 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void button1_Click(object sender, EventArgs e)
         {
+            #region Search
+            var a = "";
             try
             {
-                String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text+"'";
+                if (cbSerch.Text == "PcNames")
+                {
+                    a = "di.nameTypeDeviceInfos";
+                }
+                else if (cbSerch.Text == "Location") {
+                    a = "lc.NameLocation";
+                }
+                else if (cbSerch.Text == "Factory")
+                {
+                    a = "fa.NameFactory";
+                }
+                else if (cbSerch.Text == "BuyDate")
+                {
+                    a = "di.BuyDate";
+                }
+                else if (cbSerch.Text == "Part")
+                {
+                    a = "p.NamePart";
+                }
+                else if (cbSerch.Text == "Partment")
+                {
+                    a = "pt.NamePartment";
+                }
+                else if (cbSerch.Text == "Model")
+                {
+                    a = "di.Model";
+                }
+                else if (cbSerch.Text == "CPU")
+                {
+                    a = "di.CPU";
+                }
+                else if (cbSerch.Text == "RAM")
+                {
+                    a = "di.RAM";
+                }
+                else if (cbSerch.Text == "HDD")
+                {
+                    a = " di.HDD";
+                }
+                else if (cbSerch.Text == "OS")
+                {
+                    a = "di.OS";
+                }
+                #endregion
+                String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where "+a+" like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text+"'";
+                //String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text + "'";
                 DataTable datable = DataProvider.Instance.ExecuteQuery(search);
                 dgvPCDesktop.DataSource = datable;
 
@@ -493,7 +541,7 @@ namespace IT_Management.UI.FormTypeDevices
             }
             catch
             {
-                MessageBox.Show("Lỗi rồi gọi cho phòng IT nhé", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không có dữ liệu!\nVui lòng kiểm tra lại", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void txtSearchByPcName_MouseClick(object sender, MouseEventArgs e)
@@ -538,6 +586,11 @@ namespace IT_Management.UI.FormTypeDevices
         private void txtSearchByPcName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbSerch_Click(object sender, EventArgs e)
+        {
+            cbSerch.Text = "";
         }
     }
 }
