@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPrinterInk));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
@@ -65,8 +67,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvPCDesktop = new System.Windows.Forms.DataGridView();
-            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +117,28 @@
             this.panel1.Size = new System.Drawing.Size(1145, 326);
             this.panel1.TabIndex = 6;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtSearchByPcName
+            // 
+            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.txtSearchByPcName.Location = new System.Drawing.Point(885, 11);
+            this.txtSearchByPcName.Name = "txtSearchByPcName";
+            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
+            this.txtSearchByPcName.TabIndex = 119;
+            this.txtSearchByPcName.Text = "Search by Printer Name";
+            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(1070, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 27);
+            this.button1.TabIndex = 120;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // rtbNote
             // 
@@ -240,6 +262,7 @@
             // 
             // btnNew
             // 
+            this.btnNew.BackColor = System.Drawing.Color.LightCyan;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.Tomato;
             this.btnNew.Image = global::IT_Management.Properties.Resources.icon3;
@@ -249,7 +272,7 @@
             this.btnNew.Size = new System.Drawing.Size(267, 43);
             this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click_2);
             // 
             // label4
@@ -493,28 +516,6 @@
             this.dgvPCDesktop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPCDesktop.Size = new System.Drawing.Size(1145, 381);
             this.dgvPCDesktop.TabIndex = 0;
-            // 
-            // txtSearchByPcName
-            // 
-            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.txtSearchByPcName.Location = new System.Drawing.Point(885, 11);
-            this.txtSearchByPcName.Name = "txtSearchByPcName";
-            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
-            this.txtSearchByPcName.TabIndex = 119;
-            this.txtSearchByPcName.Text = "Search by Printer Name";
-            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(1070, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 27);
-            this.button1.TabIndex = 120;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // fmPrinterInk
             // 

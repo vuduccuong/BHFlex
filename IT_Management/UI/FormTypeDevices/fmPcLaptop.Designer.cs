@@ -350,6 +350,7 @@
             // 
             // btnNewLap
             // 
+            this.btnNewLap.BackColor = System.Drawing.Color.LightCyan;
             this.btnNewLap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnNewLap.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewLap.ForeColor = System.Drawing.Color.Tomato;
@@ -360,7 +361,7 @@
             this.btnNewLap.Size = new System.Drawing.Size(272, 40);
             this.btnNewLap.TabIndex = 16;
             this.btnNewLap.Text = "New";
-            this.btnNewLap.UseVisualStyleBackColor = true;
+            this.btnNewLap.UseVisualStyleBackColor = false;
             this.btnNewLap.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtTypeDiveces

@@ -123,6 +123,7 @@
             // 
             // btnNew
             // 
+            this.btnNew.BackColor = System.Drawing.Color.LightCyan;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.Tomato;
             this.btnNew.Image = global::IT_Management.Properties.Resources.icon3;
@@ -132,7 +133,7 @@
             this.btnNew.Size = new System.Drawing.Size(272, 41);
             this.btnNew.TabIndex = 10;
             this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // txtTypeDiveces
