@@ -28,10 +28,6 @@ namespace IT_Management.UI.FormTypeDevices
         private void fmPcDesktop_Load(object sender, EventArgs e)
         {
             pcLoaddata();
-            //cbLocation.Enabled = false;
-            //cbFactorys.Hide();
-            //cbParts.Hide();
-            //cbPartment.Hide();
             LoadLocation();
             lbSW.Enabled = false;
             btnInsert.Enabled = false;
@@ -97,7 +93,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnInsert_Click_1(object sender, EventArgs e)
         {
-            #region length<=0
+            #region length
             int note = rtbNote.Text.Length;
             int id = txtid.Text.Length;
             int idPC = txtIdPc.Text.Length;
@@ -117,15 +113,11 @@ namespace IT_Management.UI.FormTypeDevices
             int buydate = txtBuydate.Text.Length;
             //int sw = lbSW.Text.Length;
             #endregion
-            if (note <= 0 || id <= 0 || idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
+            if (idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
                 ip <= 0 || mac <= 0 || cpu <= 0 || ram <= 0 || hdd <= 0 || os <= 0 || buydate <= 0 /*|| sw <= 0*/)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dia == DialogResult.Yes)
-                {
-                    Inserted();
-                }
-                else
+                DialogResult dia = MessageBox.Show("Xin mời nhập đủ thông tin !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dia == DialogResult.OK)
                 {
                     txtUserName.Focus();
                 }
@@ -134,31 +126,7 @@ namespace IT_Management.UI.FormTypeDevices
             {
                 Inserted();
             }
-            #region insert
-            //var soft = "";
-            //foreach (var item in lbSW.Items)
-            //{
-            //    soft = soft + "," + item;
-            //}
-
-            ////var idDevideInfo = Guid.NewGuid();
-            //var strIdDevices = String.Format("select Id from TypeDevices where NameDeviceType='"+txtTypeDiveces.Text+"'");
-            //var IdDevice =DataProvider.Instance.ExecuteQuery(strIdDevices);
-            //String getIdDevices = IdDevice.Rows[0][0].ToString();
-
-            //var idPartment = cbPartment.SelectedValue.ToString();
-            //var query = String.Format("insert into DeviceInfos(IdDevice,NameDevice,NameUser,nameTypeDeviceInfos,MACAdress,IPAdress,Model,CPU,RAM,HDD,OS,BuyDate,SoftWare,idDeviceType,IdPartment,Note,isDelete) values('" + txtIdPc.Text+"', 'Desktop', '"+txtUserName.Text+"','"+txtPcName.Text+"', '"+txtMAC.Text+"', '"+txtIP.Text+"', '"+cbModel.Text+"', '"+cbCPU.Text+"', '"+cbRAM.Text+"', '"+cbHDD.Text+"', '"+cbOS.Text+"', '"+txtBuydate.Text+"','"+soft.Substring(1)+"', '"+ getIdDevices.ToString()+"', '"+ idPartment.ToString()+"','"+rtbNote.Text+"',0)");
-            //var check = DataProvider.Instance.ExecuteNonQuery(query);
-            //if (check > 0)
-            //{
-            //    MessageBox.Show("Succes !!!");
-            //    pcLoaddata();
-            //}
-            //else {
-            //    MessageBox.Show("Error !!!");
-            //}
-            #endregion
-
+            
         }
 
         private void btnAddSW_Click(object sender, EventArgs e)
@@ -168,11 +136,10 @@ namespace IT_Management.UI.FormTypeDevices
                     txtSW.Text = string.Empty;
                     txtSW.Focus();
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }                                   //di.IdDevice ,
+        }                                  
         public void pcLoaddata()
         {
             String strLoaddata = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text+ "' and di.isDelete='0'";
@@ -295,6 +262,7 @@ namespace IT_Management.UI.FormTypeDevices
 
             txtUserName.Focus();
         }
+
         public void enableTrue()
         {
             rtbNote.Enabled = true;
@@ -323,6 +291,7 @@ namespace IT_Management.UI.FormTypeDevices
         {
             LoadLocation();
         }
+
         private void txtBuydate_Leave(object sender, EventArgs e)
         {
             try
@@ -344,10 +313,9 @@ namespace IT_Management.UI.FormTypeDevices
             }
             catch
             {
-                MessageBox.Show("Vui Lòng nhập IP");
+                MessageBox.Show("Vui Lòng nhập IP và chọn lại thời gian");
                 txtIP.Focus();
             }
-
         }
 
         private void cbLocation_SelectedIndexChanged(object sender, EventArgs e)
@@ -428,7 +396,8 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có thật sự muốn xóa" +
+                " không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
                 var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
                 var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
@@ -442,71 +411,114 @@ namespace IT_Management.UI.FormTypeDevices
                     MessageBox.Show("Delete Fall :(");
                 }
             }
-        } 
+        }
+
         private void lbSW_DoubleClick_1(object sender, EventArgs e)
         {
             lbSW.Items.Remove(lbSW.SelectedItem);
         }
+
         private void txtIP_KeyPress(object sender, KeyPressEventArgs e)
         {
             //  ^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}$
+            //var a = txtIP.Text;
+            //var b = Regex.IsMatch(a,@"\.");
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
-            var a = txtIP.Text;
-            var b = Regex.IsMatch(a,@"\.");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            #region Search
-            var a = "";
             try
             {
-                if (cbSerch.Text == "PcNames")
+                #region Search Option
+                var a = cbSerch.Text;
+                switch (a)
                 {
-                    a = "di.nameTypeDeviceInfos";
+                    case "PcNames":
+                        a = "di.nameTypeDeviceInfos";
+                        break;
+                    case "Location":
+                        a = "lc.NameLocation";
+                        break;
+                    case "Factory":
+                        a = "fa.NameFactory";
+                        break;
+                    case "Part":
+                        a = "p.NamePart";
+                        break;
+                    case "Partment":
+                        a = "pt.NamePartment";
+                        break;
+                    case "BuyDate":
+                        a = "di.BuyDate";
+                        break;
+                    case "Model":
+                        a = "di.Model";
+                        break;
+                    case "CPU":
+                        a = "di.CPU";
+                        break;
+                    case "RAM":
+                        a = "di.RAM";
+                        break;
+                    case "HDD":
+                        a = " di.HDD";
+                        break;
+                    case "OS":
+                        a = "di.OS";
+                        break;
+                    default:
+                        MessageBox.Show("Chưa nhập đủ thông tin. \nVui lòng kiểm tra lại", "Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        break;
                 }
-                else if (cbSerch.Text == "Location") {
-                    a = "lc.NameLocation";
-                }
-                else if (cbSerch.Text == "Factory")
-                {
-                    a = "fa.NameFactory";
-                }
-                else if (cbSerch.Text == "BuyDate")
-                {
-                    a = "di.BuyDate";
-                }
-                else if (cbSerch.Text == "Part")
-                {
-                    a = "p.NamePart";
-                }
-                else if (cbSerch.Text == "Partment")
-                {
-                    a = "pt.NamePartment";
-                }
-                else if (cbSerch.Text == "Model")
-                {
-                    a = "di.Model";
-                }
-                else if (cbSerch.Text == "CPU")
-                {
-                    a = "di.CPU";
-                }
-                else if (cbSerch.Text == "RAM")
-                {
-                    a = "di.RAM";
-                }
-                else if (cbSerch.Text == "HDD")
-                {
-                    a = " di.HDD";
-                }
-                else if (cbSerch.Text == "OS")
-                {
-                    a = "di.OS";
-                }
+                #region if search
+                //if (cbSerch.Text == "PcNames")
+                //{
+                //    a = "di.nameTypeDeviceInfos";
+                //}
+                //else if (cbSerch.Text == "Location") {
+                //    a = "lc.NameLocation";
+                //}
+                //else if (cbSerch.Text == "Factory")
+                //{
+                //    a = "fa.NameFactory";
+                //}
+                //else if (cbSerch.Text == "BuyDate")
+                //{
+                //    a = "di.BuyDate";
+                //}
+                //else if (cbSerch.Text == "Part")
+                //{
+                //    a = "p.NamePart";
+                //}
+                //else if (cbSerch.Text == "Partment")
+                //{
+                //    a = "pt.NamePartment";
+                //}
+                //else if (cbSerch.Text == "Model")
+                //{
+                //    a = "di.Model";
+                //}
+                //else if (cbSerch.Text == "CPU")
+                //{
+                //    a = "di.CPU";
+                //}
+                //else if (cbSerch.Text == "RAM")
+                //{
+                //    a = "di.RAM";
+                //}
+                //else if (cbSerch.Text == "HDD")
+                //{
+                //    a = " di.HDD";
+                //}
+                //else if (cbSerch.Text == "OS")
+                //{
+                //    a = "di.OS";
+                //}
+                #endregion
                 #endregion
                 String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where "+a+" like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text+"'";
                 //String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text + "'";
@@ -578,19 +590,14 @@ namespace IT_Management.UI.FormTypeDevices
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtSearchByPcName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbSerch_Click(object sender, EventArgs e)
         {
             cbSerch.Text = "";
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

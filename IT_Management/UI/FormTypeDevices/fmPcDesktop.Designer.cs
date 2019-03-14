@@ -598,7 +598,6 @@
             this.txtSearchByPcName.TabIndex = 21;
             this.txtSearchByPcName.Text = "Key word";
             this.txtSearchByPcName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtSearchByPcName_MouseClick);
-            this.txtSearchByPcName.TextChanged += new System.EventHandler(this.txtSearchByPcName_TextChanged);
             // 
             // button1
             // 

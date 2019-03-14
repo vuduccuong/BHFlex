@@ -99,10 +99,7 @@ namespace IT_Management.UI.FormTypeDevices
             //    NewClick();
             //}
             //else
-            //{
-
-            //}
-            int id = txtid.Text.Length;
+            
             int printername = txtBarcodeScannerName.Text.Length;
             int mac = txtMAC.Text.Length;
             int locaiton = cbLocation.Text.Length;
@@ -113,16 +110,12 @@ namespace IT_Management.UI.FormTypeDevices
             int ip = txtIPBarcodeScanner.Text.Length;
             int note = rtbNote.Text.Length;
 
-            if (id <= 0 || printername <= 0 || mac <= 0 || locaiton <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 || ip <= 0 || note <= 0)
+            if (printername <= 0 || mac <= 0 || locaiton <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 || ip <= 0)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dia == DialogResult.Yes)
+                DialogResult dia = MessageBox.Show("Xin mời nhập đủ thông tin !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dia == DialogResult.OK)
                 {
-                    Inserted();
-                }
-                else
-                {
-                    rtbNote.Clear();
+                    rtbNote.Focus();
                 }
             }
             else

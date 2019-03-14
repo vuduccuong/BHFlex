@@ -144,7 +144,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1126, 388);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtSearchByPcName
             // 
@@ -413,7 +412,6 @@
             this.txtGroup.Size = new System.Drawing.Size(168, 26);
             this.txtGroup.TabIndex = 39;
             this.txtGroup.Text = "Work Group";
-            this.txtGroup.TextChanged += new System.EventHandler(this.txtGroup_TextChanged);
             // 
             // label4
             // 
@@ -446,7 +444,6 @@
             this.cbParts.Size = new System.Drawing.Size(168, 26);
             this.cbParts.TabIndex = 3;
             this.cbParts.SelectedIndexChanged += new System.EventHandler(this.cbParts_SelectedIndexChanged);
-            this.cbParts.Click += new System.EventHandler(this.cbParts_Click);
             // 
             // cbPartment
             // 

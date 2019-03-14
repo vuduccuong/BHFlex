@@ -240,7 +240,6 @@ namespace IT_Management.UI.FormTypeDevices
         }
         private void btnInsert_Click_1(object sender, EventArgs e)
         {
-            int id = txtIdPrinter.Text.Length;
             int user = txtUserName.Text.Length;
             int printername = txtPrinterName.Text.Length;
             int mac = txtMAC.Text.Length;
@@ -252,14 +251,11 @@ namespace IT_Management.UI.FormTypeDevices
             int ip = txtIPPrinter.Text.Length;
             int note = rtbNote.Text.Length;
 
-            if (id <= 0 || user <= 0 || printername <= 0 || mac <= 0 || locaiton <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 || ip <= 0 || note <= 0)
+            if ( user <= 0 || printername <= 0 || mac <= 0 || locaiton <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 || ip <= 0)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dia == DialogResult.Yes)
+                DialogResult dia = MessageBox.Show("Xin mời nhập đủ thông tin !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dia == DialogResult.OK)
                 {
-                    Inserted();
-                }
-                else {
                     rtbNote.Clear();
                 }
             }

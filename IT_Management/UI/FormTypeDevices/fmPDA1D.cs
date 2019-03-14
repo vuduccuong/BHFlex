@@ -45,7 +45,6 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int ip = txtIPPDA1D.Text.Length;
             int model = cbModel.Text.Length;
             int mac = txtMAC.Text.Length;
             int buydate = txtBuydate.Text.Length;
@@ -55,14 +54,10 @@ namespace IT_Management.UI.FormTypeDevices
             int partment = cbPartment.Text.Length;
             int note = rtbNote.Text.Length;
 
-            if (ip == 0 || model == 0 || mac == 0 || buydate <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || note <= 0)
+            if (model == 0 || mac == 0 || buydate <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dia == DialogResult.Yes)
-                {
-                    Inserted();
-                }
-                else
+                DialogResult dia = MessageBox.Show("Xin mời nhập đủ thông tin !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dia == DialogResult.OK)
                 {
                     rtbNote.Focus();
                 }

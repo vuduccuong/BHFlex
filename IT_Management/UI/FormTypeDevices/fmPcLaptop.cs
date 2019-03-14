@@ -200,7 +200,7 @@ namespace IT_Management.UI.FormTypeDevices
             }
             catch
             {
-                MessageBox.Show("Vui Lòng nhập IP");
+                MessageBox.Show("Vui Lòng nhập IP và chọn lại thời gian");
                 txtIP.Focus();
             }
         }
@@ -222,12 +222,6 @@ namespace IT_Management.UI.FormTypeDevices
             cbParts.DataSource = lstPart;
             cbParts.DisplayMember = "PartName";
             cbParts.ValueMember = "Id";
-        }
-
-        private void cbParts_Click(object sender, EventArgs e)
-        {
-            //var idPart = this.cbParts.SelectedValue.ToString();
-            //LoadListPartmentByPart(idPart);
         }
 
         public void Inserted()
@@ -277,17 +271,17 @@ namespace IT_Management.UI.FormTypeDevices
             int buydate = txtBuydate.Text.Length;
             //int sw = lbSW.Text.Length;
             #endregion
-            if (note <= 0 || id <= 0 || idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
+            if (idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
                 ip <= 0 || mac <= 0 || cpu <= 0 || ram <= 0 || hdd <= 0 || os <= 0 || buydate <= 0 /*|| sw <= 0*/)
             {
-                DialogResult dia = MessageBox.Show("Thông tin chưa đầy đủ, Bạn vẫn muốn tiếp tục Insert?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dia == DialogResult.Yes)
+                DialogResult dia = MessageBox.Show("Xin mời nhập đủ thông tin !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dia == DialogResult.OK)
                 {
-                    Inserted();
+                    txtUserName.Focus();
                 }
                 else
                 {
-                    txtUserName.Focus();
+                    
                 }
             }
             else
@@ -329,7 +323,7 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có thật sự muốn thoát không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Bạn có thật sự muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
                 var strDelete = String.Format("update DeviceInfos set isDelete=1 where Id='" + txtid.Text + "'");
                 var Delete = DataProvider.Instance.ExecuteNonQuery(strDelete);
@@ -389,11 +383,6 @@ namespace IT_Management.UI.FormTypeDevices
         private void lbSW_DoubleClick_1(object sender, EventArgs e)
         {
             lbSW.Items.Remove(lbSW.SelectedItem);
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void txtIP_Leave(object sender, EventArgs e)
@@ -487,9 +476,5 @@ namespace IT_Management.UI.FormTypeDevices
             txtSearchByPcName.Clear();
         }
 
-        private void txtGroup_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
