@@ -342,24 +342,28 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnUpdate_Click_1(object sender, EventArgs e)
         {
-            var soft = "";
-            foreach (var item in lbSW.Items)
+            if (MessageBox.Show("Bạn muốn UPdate không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
-                soft = soft + "," + item;
-            }
-            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='"+cbPartment.Text+"'";
-            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
-            String getIdPartmnet = idPartment.Rows[0][0].ToString();
+                var soft = "";
+                foreach (var item in lbSW.Items)
+                {
+                    soft = soft + "," + item;
+                }
+                var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
+                var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+                String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
-            var strUpdate = "update DeviceInfos set nameTypeDeviceInfos='"+txtPcName.Text+ "',idDevice='"+txtIdPc.Text+"', NameUser='" + txtUserName.Text+"',MACAdress='"+txtMAC.Text+"',IPAdress='"+txtIP.Text+"',Model='"+cbModel.Text+"',CPU='"+cbCPU.Text+"',RAM='"+cbRAM.Text+"',HDD='"+cbHDD.Text+"',OS='"+cbOS.Text+"',SoftWare='"+ soft.Substring(1)+"',BuyDate='"+txtBuydate.Text+"',IdPartment='"+ getIdPartmnet.ToString()+ "',Note='"+rtbNote.Text+"' where id='" + txtid.Text+"'";
-            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
-            if (Updated > 0)
-            {
-                MessageBox.Show("Update Sucess !!!");
-                pcLoaddata();
-            }
-            else {
-                MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+                var strUpdate = "update DeviceInfos set nameTypeDeviceInfos='" + txtPcName.Text + "',idDevice='" + txtIdPc.Text + "', NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + cbModel.Text + "',CPU='" + cbCPU.Text + "',RAM='" + cbRAM.Text + "',HDD='" + cbHDD.Text + "',OS='" + cbOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "',Note='" + rtbNote.Text + "' where id='" + txtid.Text + "'";
+                var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+                if (Updated > 0)
+                {
+                    MessageBox.Show("Update Sucess !!!");
+                    pcLoaddata();
+                }
+                else
+                {
+                    MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+                }
             }
         }
 
@@ -491,7 +495,6 @@ namespace IT_Management.UI.FormTypeDevices
                 #endregion
                 String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where "+a+" like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text+"'";
                 
-
                 txtSearchByPcName.Clear();
                 loadAndSearchData(search);
                 txtMAC.Enabled = false;
@@ -540,10 +543,30 @@ namespace IT_Management.UI.FormTypeDevices
         {
             cbSerch.Text = "";
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            btnNew_Click_1(this, new EventArgs());
+        }
 
+        private void insertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnInsert_Click_1(this, new EventArgs());
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnUpdate_Click_1(this,new EventArgs());
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnDelete_Click_1(this, new EventArgs());
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new fmStart().Show();
         }
     }
 }

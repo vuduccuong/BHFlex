@@ -324,24 +324,27 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnUpdateLap_Click(object sender, EventArgs e)
         {
-            var soft = "";
-            foreach (var item in lbSW.Items)
+            if (MessageBox.Show("Bạn muốn UPdate không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
             {
-                soft = soft + "," + item;
-            }
-            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='"+cbPartment.Text+"'";
-            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
-            String getIdPartmnet = idPartment.Rows[0][0].ToString();
-            var strUpdate = "update DeviceInfos set nameTypeDeviceInfos='" + txtPcName.Text + "',idDevice='" + txtIdPc.Text + "',NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + cbModel.Text + "',CPU='" + cbCPU.Text + "',RAM='" + cbRAM.Text + "',HDD='" + cbHDD.Text + "',OS='" + cbOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "',Note='"+rtbNote.Text+"' where id='" + txtid.Text + "'";
-            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
-            if (Updated > 0)
-            {
-                MessageBox.Show("Update Sucess !!!");
-                pcLoaddata();
-            }
-            else
-            {
-                MessageBox.Show("Update fall \nLỗi lòi mắt rồi :(");
+                var soft = "";
+                foreach (var item in lbSW.Items)
+                {
+                    soft = soft + "," + item;
+                }
+                var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
+                var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+                String getIdPartmnet = idPartment.Rows[0][0].ToString();
+                var strUpdate = "update DeviceInfos set nameTypeDeviceInfos='" + txtPcName.Text + "',idDevice='" + txtIdPc.Text + "',NameUser='" + txtUserName.Text + "',MACAdress='" + txtMAC.Text + "',IPAdress='" + txtIP.Text + "',Model='" + cbModel.Text + "',CPU='" + cbCPU.Text + "',RAM='" + cbRAM.Text + "',HDD='" + cbHDD.Text + "',OS='" + cbOS.Text + "',SoftWare='" + soft.Substring(1) + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "',Note='" + rtbNote.Text + "' where id='" + txtid.Text + "'";
+                var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+                if (Updated > 0)
+                {
+                    MessageBox.Show("Update Sucess !!!");
+                    pcLoaddata();
+                }
+                else
+                {
+                    MessageBox.Show("Update fall \nLỗi lòi mắt rồi :(");
+                }
             }
         }
 

@@ -146,20 +146,23 @@ namespace IT_Management.UI.FormTypeDevices
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
-            var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
-            String getIdPartmnet = idPartment.Rows[0][0].ToString();
+            if (MessageBox.Show("Bạn muốn UPdate không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
+            {
+                var strSelectIdPartmet = "select Partments.id from DeviceInfos left join Partments on Partments.id = DeviceInfos.idPartment where Partments.NamePartment='" + cbPartment.Text + "'";
+                var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
+                String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
-            var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',IPAdress='" + txtIPPrinter.Text + "', idDevice='" + txtIdPrinter.Text + "',nameTypeDeviceInfos='" + txtPrinterName.Text + "',Model='" + cbModel.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "',Note='"+rtbNote.Text+"' where id='" + txtid.Text + "'";
-            var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
-            if (Updated > 0)
-            {
-                MessageBox.Show("Update Sucess !!!");
-                PrinterLoadData();
-            }
-            else
-            {
-                MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+                var strUpdate = "update DeviceInfos set NameUser='" + txtUserName.Text + "',IPAdress='" + txtIPPrinter.Text + "', idDevice='" + txtIdPrinter.Text + "',nameTypeDeviceInfos='" + txtPrinterName.Text + "',Model='" + cbModel.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet.ToString() + "',Note='" + rtbNote.Text + "' where id='" + txtid.Text + "'";
+                var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
+                if (Updated > 0)
+                {
+                    MessageBox.Show("Update Sucess !!!");
+                    PrinterLoadData();
+                }
+                else
+                {
+                    MessageBox.Show("Update Fall \nLỗi lòi mắt rồi :(");
+                }
             }
         }
         private void btnDelete_Click(object sender, EventArgs e)
