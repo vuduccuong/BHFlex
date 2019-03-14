@@ -56,6 +56,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
@@ -65,8 +67,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSearchByPcName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPCDesktop)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +84,6 @@
             this.dgvPCDesktop.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPCDesktop.Size = new System.Drawing.Size(1112, 355);
             this.dgvPCDesktop.TabIndex = 0;
-            this.dgvPCDesktop.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPCDesktop_CellContentClick);
             // 
             // label15
             // 
@@ -358,7 +357,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.txtSearchByPcName);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.rtbNote);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.cbModel);
@@ -397,7 +396,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1118, 327);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtSearchByPcName
+            // 
+            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.txtSearchByPcName.Location = new System.Drawing.Point(850, 13);
+            this.txtSearchByPcName.Name = "txtSearchByPcName";
+            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
+            this.txtSearchByPcName.TabIndex = 121;
+            this.txtSearchByPcName.Text = "Search by Printer Name";
+            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(1035, 13);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 27);
+            this.btnSearch.TabIndex = 122;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // rtbNote
             // 
@@ -494,28 +514,6 @@
             this.label4.TabIndex = 50;
             this.label4.Text = "Printer Laser";
             // 
-            // txtSearchByPcName
-            // 
-            this.txtSearchByPcName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchByPcName.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.txtSearchByPcName.Location = new System.Drawing.Point(850, 13);
-            this.txtSearchByPcName.Name = "txtSearchByPcName";
-            this.txtSearchByPcName.Size = new System.Drawing.Size(179, 26);
-            this.txtSearchByPcName.TabIndex = 121;
-            this.txtSearchByPcName.Text = "Search by Printer Name";
-            this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(1035, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 27);
-            this.button1.TabIndex = 122;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // fmPrinterLaser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,6 +571,6 @@
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtSearchByPcName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BuydateDAO.cs" />
     <Compile Include="DAO\CustommerDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\DeviceTypeDAO.cs" />

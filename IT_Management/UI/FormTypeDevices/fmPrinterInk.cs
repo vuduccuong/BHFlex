@@ -128,20 +128,12 @@ namespace IT_Management.UI.FormTypeDevices
         {
             try
             {
-                String lastIp = null;
-                string[] listPara = txtIPPrinter.Text.ToString().Split('.');
-                lastIp += listPara[2];
-                lastIp += listPara[3];
-                var a = txtBuydate.Value;
-                var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
-
-
-                String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
-                var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
-                string name = getCodeLocation.Rows[0][0].ToString();
-
-                txtIdPrinter.Text = (String.Format(name + "PR" + lastIp + setBuydate));
-                txtPrinterName.Text = (String.Format(name + "PR" + lastIp + setBuydate));
+                var ip = txtIPPrinter.Text;
+                DateTime a = txtBuydate.Value;
+                var location = cbLocation.Text;
+                var codeName = "PR";
+                txtPrinterName.Text = BuydateDAO.Instance.getBuyDate(ip, a, location, codeName);
+                txtIdPrinter.Text = BuydateDAO.Instance.getBuyDate(ip, a, location, codeName);
             }
             catch
             {

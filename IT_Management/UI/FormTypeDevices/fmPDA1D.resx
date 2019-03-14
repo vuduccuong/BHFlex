@@ -1280,7 +1280,7 @@
         ILyoAll1u1Hf1o6Dx44rF7uxXN3lBiA3lhvLJZYbgNxYbiw9LsD/B1xULHyodUfGAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnSearch.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAABGdBTUEAALGPC/xhBQAAAJBQTFRF////
         RML8PMD8///9N7/8S8T8U8b8+f3+/f7/Y8r82vD8XMj88Pn+acz88vr9+v39itX80e/84PP8dc/8s+P9

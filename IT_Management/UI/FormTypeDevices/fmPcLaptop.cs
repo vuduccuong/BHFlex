@@ -46,14 +46,47 @@ namespace IT_Management.UI.FormTypeDevices
         public void pcLoaddata()
         {
             String strLoaddata = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text+ "' and di.isDelete='0';";
-            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
-            dgvPCLaptop.DataSource = datable;
+            loadAndSearchData(strLoaddata);
 
             lbMACError.Hide();
             lbIpError.Hide();
 
             txtMAC.Enabled = false;
-            ClearDataGipView();
+
+        }
+
+        private void LoadDataToListView(string[] arrData)
+        {
+           foreach(var item in arrData)
+            {
+                lbSW.Items.Add(item);
+            }
+        }
+
+        private void loadAndSearchData(string strLoaddata)
+        {
+            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
+            dgvPCLaptop.DataSource = datable;
+
+            txtid.DataBindings.Clear();
+            txtIdPc.DataBindings.Clear();
+            txtUserName.DataBindings.Clear();
+            txtPcName.DataBindings.Clear();
+            cbLocation.DataBindings.Clear();
+            cbFactorys.DataBindings.Clear();
+            cbParts.DataBindings.Clear();
+            cbPartment.DataBindings.Clear();
+            cbModel.DataBindings.Clear();
+            txtIP.DataBindings.Clear();
+            txtMAC.DataBindings.Clear();
+            cbCPU.DataBindings.Clear();
+            cbRAM.DataBindings.Clear();
+            cbHDD.DataBindings.Clear();
+            cbOS.DataBindings.Clear();
+            txtBuydate.DataBindings.Clear();
+            txtSW.DataBindings.Clear();
+            lbSW.DataBindings.Clear();
+
             #region DataBindinds
             txtid.DataBindings.Add("text", datable, "id");
             txtIdPc.DataBindings.Add("text", datable, "idDevice");
@@ -75,37 +108,6 @@ namespace IT_Management.UI.FormTypeDevices
             var arrData = txtSW.Text.Split(',');
             LoadDataToListView(arrData);
             #endregion
-
-        }
-
-        private void LoadDataToListView(string[] arrData)
-        {
-           foreach(var item in arrData)
-            {
-                lbSW.Items.Add(item);
-            }
-        }
-
-        private void ClearDataGipView()
-        {
-            txtid.DataBindings.Clear();
-            txtIdPc.DataBindings.Clear();
-            txtUserName.DataBindings.Clear();
-            txtPcName.DataBindings.Clear();
-            cbLocation.DataBindings.Clear();
-            cbFactorys.DataBindings.Clear();
-            cbParts.DataBindings.Clear();
-            cbPartment.DataBindings.Clear();
-            cbModel.DataBindings.Clear();
-            txtIP.DataBindings.Clear();
-            txtMAC.DataBindings.Clear();
-            cbCPU.DataBindings.Clear();
-            cbRAM.DataBindings.Clear();
-            cbHDD.DataBindings.Clear();
-            cbOS.DataBindings.Clear();
-            txtBuydate.DataBindings.Clear();
-            txtSW.DataBindings.Clear();
-            lbSW.DataBindings.Clear();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -183,20 +185,28 @@ namespace IT_Management.UI.FormTypeDevices
         {
             try
             {
-                String lastIp = null;
-                string[] listPara = txtIP.Text.ToString().Split('.');
-                lastIp += listPara[2];
-                lastIp += listPara[3];
-                var a = txtBuydate.Value;
-                var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
+                #region
+                //String lastIp = null;
+                //string[] listPara = txtIP.Text.ToString().Split('.');
+                //lastIp += listPara[2];
+                //lastIp += listPara[3];
+                //var a = txtBuydate.Value;
+                //var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
 
 
-                String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
-                var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
-                string name = getCodeLocation.Rows[0][0].ToString();
+                //String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
+                //var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
+                //string name = getCodeLocation.Rows[0][0].ToString();
 
-                txtIdPc.Text = (String.Format(name + "PC" + lastIp + setBuydate));
-                txtPcName.Text = (String.Format(name + "PC" + lastIp + setBuydate));
+                //txtIdPc.Text = (String.Format(name + "PC" + lastIp + setBuydate));
+                //txtPcName.Text = (String.Format(name + "PC" + lastIp + setBuydate));
+                #endregion
+                var ip = txtIP.Text;
+                DateTime a = txtBuydate.Value;
+                var location = cbLocation.Text;
+                var codeName = "PC";
+                txtPcName.Text = BuydateDAO.Instance.getBuyDate(ip, a, location, codeName);
+                txtIdPc.Text = BuydateDAO.Instance.getBuyDate(ip, a, location, codeName);
             }
             catch
             {
@@ -279,10 +289,6 @@ namespace IT_Management.UI.FormTypeDevices
                 {
                     txtUserName.Focus();
                 }
-                else
-                {
-                    
-                }
             }
             else
             {
@@ -297,30 +303,7 @@ namespace IT_Management.UI.FormTypeDevices
             txtSW.Text = string.Empty;
             txtSW.Focus();
         }
-
-        public void InsertData()
-        {
-            ClearDataGipView();
-            var idpc = txtIdPc.Text;
-            var username = txtUserName.Text;
-            var pcname = txtPcName.Text;
-            var model = cbModel.Text;
-            var ip = txtIP.Text;
-            var mac = txtMAC.Text;
-            var cpu = cbCPU.Text;
-            var ram = cbRAM.Text;
-            var hdd = cbHDD.Text;
-            var os = cbOS.Text;
-            var buydate = txtBuydate.Text;
-            var sw = lbSW.Text;
-
-            String strInsert = string.Format("");
-            DataTable datable = DataProvider.Instance.ExecuteQuery(strInsert);
-            dgvPCLaptop.DataSource = datable;
-
-            pcLoaddata();
-        }
-
+        
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.OK)
@@ -423,46 +406,6 @@ namespace IT_Management.UI.FormTypeDevices
             var b = Regex.IsMatch(a, @"\.");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text + "'";
-                DataTable datable = DataProvider.Instance.ExecuteQuery(search);
-                dgvPCLaptop.DataSource = datable;
-
-                txtSearchByPcName.Clear();
-                ClearDataGipView();
-                txtMAC.Enabled = false;
-
-                #region DataBindinds
-                txtid.DataBindings.Add("text", datable, "id");
-                txtIdPc.DataBindings.Add("text", datable, "idDevice");
-                txtUserName.DataBindings.Add("text", datable, "NameUser");
-                txtPcName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
-                cbLocation.DataBindings.Add("text", datable, "NameLocation");
-                cbFactorys.DataBindings.Add("text", datable, "NameFactory");
-                cbParts.DataBindings.Add("text", datable, "NamePart");
-                cbPartment.DataBindings.Add("text", datable, "NamePartment");
-                cbModel.DataBindings.Add("text", datable, "Model");
-                txtIP.DataBindings.Add("text", datable, "IPAdress");
-                txtMAC.DataBindings.Add("text", datable, "MACAdress");
-                cbCPU.DataBindings.Add("text", datable, "CPU");
-                cbRAM.DataBindings.Add("text", datable, "RAM");
-                cbHDD.DataBindings.Add("text", datable, "HDD");
-                cbOS.DataBindings.Add("text", datable, "OS");
-                txtBuydate.DataBindings.Add("text", datable, "BuyDate");
-                txtSW.DataBindings.Add("text", datable, "SoftWare");
-                var arrData = txtSW.Text.Split(',');
-                loadDataListBox(arrData);
-                #endregion
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi rồi gọi cho phòng IT nhé", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
         private void loadDataListBox(string[] arrData)
         {
             foreach (string item in arrData)
@@ -476,5 +419,21 @@ namespace IT_Management.UI.FormTypeDevices
             txtSearchByPcName.Clear();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text + "'";
+
+                loadAndSearchData(search);
+                txtSearchByPcName.Clear();
+                txtMAC.Enabled = false;
+
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi rồi gọi cho phòng IT nhé", "Erorr", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

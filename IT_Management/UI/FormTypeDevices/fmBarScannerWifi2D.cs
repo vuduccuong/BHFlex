@@ -112,19 +112,11 @@ namespace IT_Management.UI.FormTypeDevices
         {
             try
             {
-                String lastIp = null;
-                string[] listPara = txtIPBarcodeScanner.Text.ToString().Split('.');
-                lastIp += listPara[2];
-                lastIp += listPara[3];
-                var a = txtBuydate.Value;
-                var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
-
-
-                String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
-                var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
-                string name = getCodeLocation.Rows[0][0].ToString();
-
-                txtBarcodeScannerName.Text = (String.Format(name + "SWF" + lastIp + setBuydate));
+                var ip = txtIPBarcodeScanner.Text;
+                DateTime a = txtBuydate.Value;
+                var location = cbLocation.Text;
+                var codeName = "SWF";
+                txtBarcodeScannerName.Text = BuydateDAO.Instance.getBuyDate(ip, a, location,codeName);
             }
             catch
             {
@@ -153,37 +145,11 @@ namespace IT_Management.UI.FormTypeDevices
         public void BarcodeScannerLoaddata()
         {
             String strLoaddata = "select di.id,di.NameDevice, di.nameTypeDeviceInfos, di.IPAdress,di.MACAdress, di.Model, di.BuyDate, lc.NameLocation, fa.NameFactory, p.NamePart, pt.NamePartment, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='Barcode Scanner Wifi 2D' and di.isDelete='0'";
-            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
-            dgvPDA1D.DataSource = datable;
+            loadAndSearchData(strLoaddata);
             txtMAC.Enabled = false;
             lbMACError.Hide();
             lbIpError.Hide();
-
-            #region ClearDataBindings
-            txtid.DataBindings.Clear();
-            txtBarcodeScannerName.DataBindings.Clear();
-            txtIPBarcodeScanner.DataBindings.Clear();
-            cbModel.DataBindings.Clear();
-            txtMAC.DataBindings.Clear();
-            rtbNote.DataBindings.Clear();
-            cbLocation.DataBindings.Clear();
-            cbFactorys.DataBindings.Clear();
-            cbParts.DataBindings.Clear();
-            cbPartment.DataBindings.Clear();
-
-            #endregion
-            #region DataBindinds
-            txtMAC.DataBindings.Add("text", datable, "MACAdress");
-            txtid.DataBindings.Add("text", datable, "id");
-            txtBarcodeScannerName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
-            txtIPBarcodeScanner.DataBindings.Add("text", datable, "IPAdress");
-            cbModel.DataBindings.Add("text", datable, "Model");
-            rtbNote.DataBindings.Add("text", datable, "Note");
-            cbLocation.DataBindings.Add("text", datable, "NameLocation");
-            cbFactorys.DataBindings.Add("text", datable, "NameFactory");
-            cbParts.DataBindings.Add("text", datable, "NamePart");
-            cbPartment.DataBindings.Add("text", datable, "NamePartment");
-            #endregion
+            
         }
         public void Inserted() {
             var strIdDevices = String.Format("select id from TypeDevices where NameDeviceType='Barcode Scanner Wifi 2D'");
@@ -312,41 +278,45 @@ namespace IT_Management.UI.FormTypeDevices
             txtSearchByPcName.Clear();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loadAndSearchData(string search) {
+            DataTable datable = DataProvider.Instance.ExecuteQuery(search);
+            dgvPDA1D.DataSource = datable;
+            #region ClearDataBindings
+            txtMAC.DataBindings.Clear();
+            txtid.DataBindings.Clear();
+            txtBarcodeScannerName.DataBindings.Clear();
+            txtIPBarcodeScanner.DataBindings.Clear();
+            cbModel.DataBindings.Clear();
+            rtbNote.DataBindings.Clear();
+            cbLocation.DataBindings.Clear();
+            cbFactorys.DataBindings.Clear();
+            cbParts.DataBindings.Clear();
+            cbPartment.DataBindings.Clear();
+
+            #endregion
+            #region DataBindinds
+            txtMAC.DataBindings.Add("text", datable, "MACAdress");
+            txtid.DataBindings.Add("text", datable, "id");
+            txtBarcodeScannerName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
+            txtIPBarcodeScanner.DataBindings.Add("text", datable, "IPAdress");
+            cbModel.DataBindings.Add("text", datable, "Model");
+            rtbNote.DataBindings.Add("text", datable, "Note");
+            cbLocation.DataBindings.Add("text", datable, "NameLocation");
+            cbFactorys.DataBindings.Add("text", datable, "NameFactory");
+            cbParts.DataBindings.Add("text", datable, "NamePart");
+            cbPartment.DataBindings.Add("text", datable, "NamePartment");
+            #endregion
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
                 String search = "select di.id, di.NameDevice, di.nameTypeDeviceInfos, di.IPAdress,di.MACAdress, di.Model, di.BuyDate, lc.NameLocation, fa.NameFactory, p.NamePart, pt.NamePartment, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and di.NameDevice='Barcode Scanner Wifi 2D' and di.isDelete='0'";
-                DataTable datable = DataProvider.Instance.ExecuteQuery(search);
-                dgvPDA1D.DataSource = datable;
-
+                loadAndSearchData(search);
                 txtSearchByPcName.Clear();
                 txtMAC.Enabled = false;
-                #region ClearDataBindings
-                txtMAC.DataBindings.Clear();
-                txtid.DataBindings.Clear();
-                txtBarcodeScannerName.DataBindings.Clear();
-                txtIPBarcodeScanner.DataBindings.Clear();
-                cbModel.DataBindings.Clear();
-                rtbNote.DataBindings.Clear();
-                cbLocation.DataBindings.Clear();
-                cbFactorys.DataBindings.Clear();
-                cbParts.DataBindings.Clear();
-                cbPartment.DataBindings.Clear();
 
-                #endregion
-                #region DataBindinds
-                txtMAC.DataBindings.Add("text", datable, "MACAdress");
-                txtid.DataBindings.Add("text", datable, "id");
-                txtBarcodeScannerName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
-                txtIPBarcodeScanner.DataBindings.Add("text", datable, "IPAdress");
-                cbModel.DataBindings.Add("text", datable, "Model");
-                rtbNote.DataBindings.Add("text", datable, "Note");
-                cbLocation.DataBindings.Add("text", datable, "NameLocation");
-                cbFactorys.DataBindings.Add("text", datable, "NameFactory");
-                cbParts.DataBindings.Add("text", datable, "NamePart");
-                cbPartment.DataBindings.Add("text", datable, "NamePartment");
-                #endregion
             }
             catch
             {

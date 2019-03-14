@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmPcLaptop));
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtSearchByPcName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.rtbNote = new System.Windows.Forms.RichTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
@@ -91,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.txtSearchByPcName);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.rtbNote);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.cbModel);
@@ -156,16 +156,16 @@
             this.txtSearchByPcName.Text = "Search by PCName";
             this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(981, 8);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 26);
-            this.button1.TabIndex = 22;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(981, 8);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 26);
+            this.btnSearch.TabIndex = 22;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // rtbNote
             // 
@@ -776,6 +776,6 @@
         private System.Windows.Forms.RichTextBox rtbNote;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtSearchByPcName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -59,7 +59,7 @@
             this.lbIpError = new System.Windows.Forms.Label();
             this.cbModel = new System.Windows.Forms.ComboBox();
             this.txtSearchByPcName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPDA1D)).BeginInit();
             this.SuspendLayout();
             // 
@@ -382,16 +382,16 @@
             this.txtSearchByPcName.Text = "Search by ScannerName";
             this.txtSearchByPcName.Click += new System.EventHandler(this.txtSearchByPcName_Click);
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(1072, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 27);
-            this.button1.TabIndex = 120;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.Location = new System.Drawing.Point(1072, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 27);
+            this.btnSearch.TabIndex = 120;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // fmBarScannerWifi2D
             // 
@@ -400,7 +400,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1132, 647);
             this.Controls.Add(this.txtSearchByPcName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cbModel);
             this.Controls.Add(this.lbMACError);
             this.Controls.Add(this.lbIpError);
@@ -472,6 +472,6 @@
         private System.Windows.Forms.Label lbIpError;
         private System.Windows.Forms.ComboBox cbModel;
         private System.Windows.Forms.TextBox txtSearchByPcName;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -111,6 +111,7 @@
             // 
             // txtOption
             // 
+            this.txtOption.Enabled = false;
             this.txtOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOption.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.txtOption.Location = new System.Drawing.Point(596, 23);

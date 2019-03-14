@@ -111,7 +111,6 @@ namespace IT_Management.UI.FormTypeDevices
             int hdd = cbHDD.Text.Length;
             int os = cbOS.Text.Length;
             int buydate = txtBuydate.Text.Length;
-            //int sw = lbSW.Text.Length;
             #endregion
             if (idPC <= 0 || user <= 0 || pcname <= 0 || location <= 0 || factory <= 0 || part <= 0 || partment <= 0 || model <= 0 ||
                 ip <= 0 || mac <= 0 || cpu <= 0 || ram <= 0 || hdd <= 0 || os <= 0 || buydate <= 0 /*|| sw <= 0*/)
@@ -143,34 +142,9 @@ namespace IT_Management.UI.FormTypeDevices
         public void pcLoaddata()
         {
             String strLoaddata = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation, di.note from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.NameDevice='" + txtTypeDiveces.Text+ "' and di.isDelete='0'";
-            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
-            dgvPCDesktop.DataSource = datable;
+            loadAndSearchData(strLoaddata);
             lbIpError.Hide();
             lbMACError.Hide();
-
-            ClearDataGipView();
-            #region DataBindinds
-            rtbNote.DataBindings.Add("text",datable, "Note");
-            txtid.DataBindings.Add("text", datable, "id");
-            txtIdPc.DataBindings.Add("text", datable, "idDevice");
-            txtUserName.DataBindings.Add("text", datable, "NameUser");
-            txtPcName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
-            cbLocation.DataBindings.Add("text", datable, "NameLocation");
-            cbFactorys.DataBindings.Add("text", datable, "NameFactory");
-            cbParts.DataBindings.Add("text", datable, "NamePart");
-            cbPartment.DataBindings.Add("text", datable, "NamePartment");
-            cbModel.DataBindings.Add("text", datable, "Model");
-            txtIP.DataBindings.Add("text", datable, "IPAdress");
-            txtMAC.DataBindings.Add("text", datable, "MACAdress");
-            cbCPU.DataBindings.Add("text", datable, "CPU");
-            cbRAM.DataBindings.Add("text", datable, "RAM");
-            cbHDD.DataBindings.Add("text", datable, "HDD");
-            cbOS.DataBindings.Add("text", datable, "OS");
-            txtBuydate.DataBindings.Add("text", datable, "BuyDate");
-            txtSW.DataBindings.Add("text", datable, "SoftWare");
-            var arrData = txtSW.Text.Split(',');
-            loadDataListBox(arrData);
-            #endregion
             txtMAC.Enabled = false;
         }
 
@@ -181,7 +155,10 @@ namespace IT_Management.UI.FormTypeDevices
             }
         }
 
-        public void ClearDataGipView() {
+        public void loadAndSearchData(string strLoaddata) {
+
+            DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
+            dgvPCDesktop.DataSource = datable;
             cbSerch.Text = "-- Search By --";
             rtbNote.DataBindings.Clear();
             txtid.DataBindings.Clear();
@@ -202,30 +179,30 @@ namespace IT_Management.UI.FormTypeDevices
             txtBuydate.DataBindings.Clear();
             txtSW.DataBindings.Clear();
             lbSW.DataBindings.Clear();
+
+            #region DataBindinds
+            rtbNote.DataBindings.Add("text", datable, "Note");
+            txtid.DataBindings.Add("text", datable, "id");
+            txtIdPc.DataBindings.Add("text", datable, "idDevice");
+            txtUserName.DataBindings.Add("text", datable, "NameUser");
+            txtPcName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
+            cbLocation.DataBindings.Add("text", datable, "NameLocation");
+            cbFactorys.DataBindings.Add("text", datable, "NameFactory");
+            cbParts.DataBindings.Add("text", datable, "NamePart");
+            cbPartment.DataBindings.Add("text", datable, "NamePartment");
+            cbModel.DataBindings.Add("text", datable, "Model");
+            txtIP.DataBindings.Add("text", datable, "IPAdress");
+            txtMAC.DataBindings.Add("text", datable, "MACAdress");
+            cbCPU.DataBindings.Add("text", datable, "CPU");
+            cbRAM.DataBindings.Add("text", datable, "RAM");
+            cbHDD.DataBindings.Add("text", datable, "HDD");
+            cbOS.DataBindings.Add("text", datable, "OS");
+            txtBuydate.DataBindings.Add("text", datable, "BuyDate");
+            txtSW.DataBindings.Add("text", datable, "SoftWare");
+            var arrData = txtSW.Text.Split(',');
+            loadDataListBox(arrData);
+            #endregion
         }
-
-        /* public void InsertData() {
-            ClearDataGipView();
-            var idpc = txtIdPc.Text;
-            var username = txtUserName.Text;
-            var pcname = txtPcName.Text;
-            var model = cbModel.Text;
-            var ip = txtIP.Text;
-            var mac = txtMAC.Text;
-            var cpu = cbCPU.Text;
-            var ram = cbRAM.Text;
-            var hdd = cbHDD.Text;
-            var os = cbOS.Text;
-            var buydate = txtBuydate.Text;
-            var sw = lbSW.Text;
-
-            String strInsert = string.Format("");
-            DataTable datable = DataProvider.Instance.ExecuteQuery(strInsert);
-            dgvPCDesktop.DataSource = datable;
-
-            pcLoaddata();
-        }*/
-
         private void LoadLocation()
         {
             List<Location> lstLocation = LocationDAO.Instance.GetListCustommer();
@@ -296,20 +273,12 @@ namespace IT_Management.UI.FormTypeDevices
         {
             try
             {
-                String lastIp = null;
-                string[] listPara = txtIP.Text.ToString().Split('.');
-                lastIp += listPara[2];
-                lastIp += listPara[3];
-                var a = txtBuydate.Value;
-                var setBuydate = (String.Format("{0:yy/MM}", a)).Replace("-", "");
-
-
-                String CodeLocation = "select CodeLocation from Locations where NameLocation ='" + cbLocation.Text + "'";
-                var getCodeLocation = DataProvider.Instance.ExecuteQuery(CodeLocation);
-                string name = getCodeLocation.Rows[0][0].ToString();
-
-                txtIdPc.Text = (String.Format(name + "PC" + lastIp + setBuydate));
-                txtPcName.Text = (String.Format(name + "PC" + lastIp + setBuydate));
+                var ip = txtIP.Text;
+                DateTime a = txtBuydate.Value;
+                var location = cbLocation.Text;
+                var codeName = "PC";
+                txtPcName.Text = BuydateDAO.Instance.getBuyDate(ip, a, location,codeName);
+                txtIdPc.Text = BuydateDAO.Instance.getBuyDate(ip, a, location,codeName);
             }
             catch
             {
@@ -521,35 +490,12 @@ namespace IT_Management.UI.FormTypeDevices
                 #endregion
                 #endregion
                 String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where "+a+" like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text+"'";
-                //String search = "select di.id, di.idDevice, di.NameUser,di.nameTypeDeviceInfos, di.NameDevice, di.NameGroup, di.IPAdress, di.MACAdress, di.CPU, di.RAM, di.HDD, di.OS, di.BuyDate,di.SoftWare,di.Model, pt.NamePartment, p.NamePart, fa.NameFactory, lc.NameLocation from DeviceInfos di inner join Partments pt on di.IdPartment = pt.Id inner join Parts p on pt.IdPart = p.Id inner join Factorys fa on p.IdFactory = fa.Id inner join Locations lc on fa.IdLocation = lc.Id where di.nameTypeDeviceInfos like '%" + txtSearchByPcName.Text + "%' and NameDevice ='" + txtTypeDiveces.Text + "'";
-                DataTable datable = DataProvider.Instance.ExecuteQuery(search);
-                dgvPCDesktop.DataSource = datable;
+                
 
                 txtSearchByPcName.Clear();
-                ClearDataGipView();
+                loadAndSearchData(search);
                 txtMAC.Enabled = false;
-
-                #region DataBindinds
-                txtid.DataBindings.Add("text", datable, "id");
-                txtIdPc.DataBindings.Add("text", datable, "idDevice");
-                txtUserName.DataBindings.Add("text", datable, "NameUser");
-                txtPcName.DataBindings.Add("text", datable, "nameTypeDeviceInfos");
-                cbLocation.DataBindings.Add("text", datable, "NameLocation");
-                cbFactorys.DataBindings.Add("text", datable, "NameFactory");
-                cbParts.DataBindings.Add("text", datable, "NamePart");
-                cbPartment.DataBindings.Add("text", datable, "NamePartment");
-                cbModel.DataBindings.Add("text", datable, "Model");
-                txtIP.DataBindings.Add("text", datable, "IPAdress");
-                txtMAC.DataBindings.Add("text", datable, "MACAdress");
-                cbCPU.DataBindings.Add("text", datable, "CPU");
-                cbRAM.DataBindings.Add("text", datable, "RAM");
-                cbHDD.DataBindings.Add("text", datable, "HDD");
-                cbOS.DataBindings.Add("text", datable, "OS");
-                txtBuydate.DataBindings.Add("text", datable, "BuyDate");
-                txtSW.DataBindings.Add("text", datable, "SoftWare");
-                var arrData = txtSW.Text.Split(',');
-                loadDataListBox(arrData);
-                #endregion
+                
             }
             catch
             {
