@@ -237,7 +237,7 @@ namespace IT_Management.UI.FormTypeDevices
                 var idPartment = DataProvider.Instance.ExecuteQuery(strSelectIdPartmet);
                 String getIdPartmnet = idPartment.Rows[0][0].ToString();
 
-                var strUpdate = "update DeviceInfos set Model='" + cbModel.Text + "',MACAdress='" + txtMAC.Text + "',idDevice='" + txtPDAName.Text + "',nameTypeDeviceInfos='" + txtPDAName.Text + "', IPAdress='" + txtIPPDA1D.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet + "' where id='" + txtid.Text + "'";
+                var strUpdate = "update DeviceInfos set Model='" + cbModel.Text + "',MACAdress='" + txtMAC.Text + "',idDevice='" + txtPDAName.Text + "',nameTypeDeviceInfos='" + txtPDAName.Text + "', IPAdress='" + txtIPPDA1D.Text + "',BuyDate='" + txtBuydate.Text + "',IdPartment='" + getIdPartmnet + "',Note='"+rtbNote.Text.ToString()+"' where id='" + txtid.Text + "'";
                 var Updated = DataProvider.Instance.ExecuteNonQuery(strUpdate);
                 if (Updated > 0)
                 {

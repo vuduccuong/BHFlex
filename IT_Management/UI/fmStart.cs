@@ -67,7 +67,7 @@ namespace IT_Management.UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             x++;
-            if (x == 5) {
+            if (x == 4) {
                 timer1.Stop();
                 pictureBox1.Hide();
                 button1.Show();
@@ -101,6 +101,11 @@ namespace IT_Management.UI
         private void timer3_Tick(object sender, EventArgs e)
         {
             ranDomColor();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

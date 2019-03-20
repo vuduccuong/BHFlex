@@ -110,11 +110,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 39.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 45.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Crimson;
             this.label1.Location = new System.Drawing.Point(919, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(773, 68);
+            this.label1.Size = new System.Drawing.Size(680, 69);
             this.label1.TabIndex = 4;
             this.label1.Text = "WelCome To BHFlex Vina";
             // 
@@ -134,6 +134,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // timer2
             // 
@@ -143,7 +144,7 @@
             // 
             // timer3
             // 
-            this.timer3.Interval = 500;
+            this.timer3.Interval = 600;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // fmStart

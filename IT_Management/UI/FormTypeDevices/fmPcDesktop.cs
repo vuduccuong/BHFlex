@@ -33,6 +33,7 @@ namespace IT_Management.UI.FormTypeDevices
             btnInsert.Enabled = false;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+            cbSerch.Text = "-- Search By --";
         }
 
         private void LoadListPartment()
@@ -156,10 +157,9 @@ namespace IT_Management.UI.FormTypeDevices
         }
 
         public void loadAndSearchData(string strLoaddata) {
-
             DataTable datable = DataProvider.Instance.ExecuteQuery(strLoaddata);
             dgvPCDesktop.DataSource = datable;
-            cbSerch.Text = "-- Search By --";
+
             rtbNote.DataBindings.Clear();
             txtid.DataBindings.Clear();
             txtIdPc.DataBindings.Clear();
@@ -181,7 +181,6 @@ namespace IT_Management.UI.FormTypeDevices
             lbSW.DataBindings.Clear();
 
             #region DataBindinds
-            rtbNote.DataBindings.Add("text", datable, "Note");
             txtid.DataBindings.Add("text", datable, "id");
             txtIdPc.DataBindings.Add("text", datable, "idDevice");
             txtUserName.DataBindings.Add("text", datable, "NameUser");
@@ -198,6 +197,7 @@ namespace IT_Management.UI.FormTypeDevices
             cbHDD.DataBindings.Add("text", datable, "HDD");
             cbOS.DataBindings.Add("text", datable, "OS");
             txtBuydate.DataBindings.Add("text", datable, "BuyDate");
+            //rtbNote.DataBindings.Add("text", datable, "Note");
             txtSW.DataBindings.Add("text", datable, "SoftWare");
             var arrData = txtSW.Text.Split(',');
             loadDataListBox(arrData);
@@ -210,7 +210,6 @@ namespace IT_Management.UI.FormTypeDevices
             {
                 MessageBox.Show("No data in Location!");
             }
-
             cbLocation.DataSource = lstLocation;
             cbLocation.DisplayMember = "LocationName";
             cbLocation.ValueMember = "Id";
@@ -401,11 +400,11 @@ namespace IT_Management.UI.FormTypeDevices
                 e.Handled = true;
             }
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 #region Search Option
                 var a = cbSerch.Text;
                 switch (a)
@@ -499,11 +498,11 @@ namespace IT_Management.UI.FormTypeDevices
                 loadAndSearchData(search);
                 txtMAC.Enabled = false;
                 
-            }
-            catch
-            {
-                MessageBox.Show("Không có dữ liệu!\nVui lòng kiểm tra lại", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+           //}
+            //catch
+            //{
+            //    MessageBox.Show("Không có dữ liệu!\nVui lòng kiểm tra lại", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
         private void txtSearchByPcName_MouseClick(object sender, MouseEventArgs e)
         {
